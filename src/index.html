@@ -2,13 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>MaswQuiz</title>
+  <title>Star Wars Quiz - Maison d'Ailleurs</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+  <style>
+    /* Base styles to avoid blinking when actual styles load */
+    body {
+      background: #fafafa;
+    }
+    .loader {
+      position:absolute;
+      top: 50%; left: 0; right:0;
+      text-align:center;
+    }
+    </style>
 </head>
-<body>
-  <app-root>Loading...</app-root>
+<body class="font-override">
+    <app-root><div class="loader"><img src="assets/loader.svg" /></div></app-root>
 </body>
 </html>

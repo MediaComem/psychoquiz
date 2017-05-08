@@ -1,0 +1,33 @@
+/*
+ * Override default material design fonts ($mat-font-family)
+ */
+
+$mat-font-family: 'Titillium Web', sans-serif;
+
+.font-override { // body or wrapper class
+  
+  %mat-button-base,
+  .mat-button-toggle,
+  .mat-button,
+  .mat-raised-button,
+  .mat-fab,
+  .mat-icon-button,
+  .mat-mini-fab,
+  .mat-card,
+  .mat-checkbox,
+  .mat-input-container,
+  .mat-list,
+  .mat-menu-item,
+  .mat-radio-button,
+  .mat-select,
+  .mat-list .mat-list-item .mat-list-item-content,
+  .mat-nav-list .mat-list-item .mat-list-item-content,
+  .mat-simple-snackbar,
+  .mat-tab-label,
+  .mat-slide-toggle-content,
+  .mat-toolbar,
+  .mat-tooltip
+  {
+    font-family: $mat-font-family !important;
+  }
+}
