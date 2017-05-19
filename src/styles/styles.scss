@@ -1,5 +1,5 @@
 
-
+/*
 @import '~@angular/material/core/theming/all-theme';
 
 
@@ -27,8 +27,8 @@ $quiz-app-theme: mat-light-theme($quiz-app-primary, $quiz-app-accent, $quiz-app-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($quiz-app-theme);
-
-
+*/
+@import 'variables';
 @import 'base';
 @import 'typography';
 @import 'layout';

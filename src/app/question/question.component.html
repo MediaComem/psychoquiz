@@ -1,17 +1,15 @@
-<div id="answers">
-  <div class="top">top answer}</div>
-  <div class="right">right answer</div>
-  <div class="bottom">bottom answer</div>
+<div id="answers" class="verticalsplit">
+  <!--<div class="top">top answer</div>-->
+  <!--<div class="bottom">bottom answer</div>-->
   <div class="left">left answer</div>
+  <div class="right">right answer</div>
 </div>
 
 <div id="viewport">
   <div class="stack" swing-stack [stackConfig]="stackConfig" #swSwing (throwout)="onThrowOut($event)">
     <div class="card" swing-card #questionCard [ngClass]="c.name" *ngFor="let c of cards">
-            <p>{{ c.symbol }}</p>
-            
-
-
+        <img class="icon rotate-left" src="assets/arrow.svg" />
+        <img class="icon rotate-right" src="assets/arrow.svg" />
     </div>
   </div>
 </div>

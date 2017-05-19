@@ -1,10 +1,21 @@
 
+
 body {
-    color: #333;
-    font-family: $mat-font-family;
-    //font-family: 'Titillium Web', sans-serif!important;
+    color: $color-base;
+    font-family: $font-base;
     margin:0;
     padding:0;
     overflow:hidden;
     width: 100vw;
+}
+
+
+.rotate-left {
+    transform: rotate(-90deg);
+}
+.rotate-right {
+    transform: rotate(90deg);
+}
+.rotate-180 {
+    transform: rotate(180deg);
 }

@@ -1,5 +1,5 @@
+@import '../../styles/variables';
 .card-container {
-  background: white;
   position: fixed;
 }
 
@@ -7,49 +7,48 @@
   width: 500px;
   height: 500px;
   max-width: 70%;
-  background: #C7433E;
-  border: 10px solid #ED5D52;
   margin: 50vh auto 0;
   position: relative;
+  border-radius: 5em;
   top: -260px;
   .stack {
     width: 200px;
-    height: 300px;
-    background: #ED5D52;
+    height: 200px;
+    background: black;
     position: absolute;
     top: 100px;
     left: 50%;
     margin-left: -100px;
-    border-radius: 10px;
+    border-radius: 100em;
   }
 }
 
 .card {
   width: 200px;
-  height: 300px;
+  height: 200px;
   list-style: none;
-  background: #fff;
-  border-radius: 5px;
+  background: rgba(#000,.9);
+  border-radius: 5em;
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2), 1px 1px 1px rgba(0, 0, 0, 0.2);
-  line-height: 300px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05) inset, 0px 0px 12px rgba($color-base, 0.6);
+  line-height: 200px;
   text-align: center;
   font-size: 100px;
-  border: 10px solid #ECECEC;
   box-sizing: border-box;
   cursor: default;
-}
-
-.clubs,
-.spades {
-  color: #373737;
-}
-
-.diamonds,
-.hearts {
-  color: #ED5D52;
+  p {
+    margin: 0;
+  }
+  .icon {
+    height: 60px;
+    width: auto;
+    opacity: 0.3;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
 
 .in-deck:nth-child(3) {
@@ -93,9 +92,32 @@
 #answers {
   position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
+  background: #111;
+}
+
+
+// 2-ways swipe
+#answers.verticalsplit {
+  display: flex;
+  .left,
+  .right {
+    flex: 1;
+    padding: 1em;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba($color-base, 0.6);
+  }
+  .left {}
+  .right {}
+}
+
+
+
+
+
+// 4-ways swipe
+#answers.triangles-4 {
   .top,
   .right,
   .bottom,
