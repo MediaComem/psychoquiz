@@ -88,7 +88,7 @@ avec un token généré qui sera dans la base de données
 }
 ```
 
-![schema](./schema.png)
+[![schema](./schema.png)](PsychoquizBackend.html)
 
 
 #### Calculs des résultats
