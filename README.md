@@ -84,10 +84,11 @@ avec un token généré qui sera dans la base de données
     "id": number,
     "participationId": number,
     "statementId": number,
-    "response": boolean
+    "value": boolean
 }
 ```
 
+![schema](./schema.png)
 
 
 #### Calculs des résultats
