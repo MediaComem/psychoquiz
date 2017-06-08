@@ -19,6 +19,16 @@
     - `/quiz/results` Fin du quiz – Page de résultat
 - `a-propos` A propos
 
+#### Possibilité d'avoir un arbre d'affirmations
+
+Ce qui permettrait de se passer des chapitres, car on a un autre type de structure.
+Le système sous forme d'arbre permettrait de "forcer le trait" de chaque profil : sans l'arbre, comment faire pour assurer qu’un sondé n’obtienne pas un score de 20% pour chacun des 5 profils ? Ou de 50% sur deux profils, etc.
+
+L'idée de l'arbre est que chaque affirmation stocke l'affirmation suivante en fonction du **oui** et en fonction du **non**. Il est possible de stocker la même affirmation dans **oui** et dans **non**, il s'agirait ainsi d'un choix n'indiquant pas d'affirmation spécifique.
+
+
+
+
 ### Backend
 
 Le calcul "psycho" se fait côté serveur, en fonction des réponses données.
