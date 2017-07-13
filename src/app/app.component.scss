@@ -1,0 +1,35 @@
+@import '../styles/_variables.scss';
+$menuHeight: 30px;
+#menu {
+  overflow: hidden;
+  border-bottom: 1px solid $color-base;
+  background: #333;
+  position: fixed;
+  height: $menuHeight;
+  line-height: $menuHeight;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  a {
+    border:none;
+    color:white;
+  }
+}
+
+#main-content {
+  .component {
+    margin-top: $menuHeight;
+    padding: 1em 0;
+    animation: 0.5s ease-out 0s 1 fadeIn;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+  100% {
+    opacity: 1
+  }
+}

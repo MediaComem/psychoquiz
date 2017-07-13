@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-13 -10 200 220" width="100%" preserveAspectRatio="xMinYMin meet">
+              <title>Noémie Sandoz - UX Designer</title>
+              <defs>
+                <pattern id="noemieSandoz" x="-50" y="0" height="460" width="400" viewBox="0 0 660 800" patternUnits="userSpaceOnUse">
+                  <image x="0%" y="0%" width="460" height="400" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://media.heig-vd.ch/img/interviews/Noemie_Sandoz.jpg"></image>
+                </pattern>
+              </defs>
+              <polygon fill="url('#noemieSandoz')" points="173.27 150.2 173.27 50.45 86.89 0.58 0.5 50.45 0.5 150.2 86.89 200.08 173.27 150.2"></polygon>
+            </svg>

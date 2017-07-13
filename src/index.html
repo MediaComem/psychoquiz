@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>Star Wars Quiz - Maison d'Ailleurs</title>
@@ -8,21 +9,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Titillium+Web" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style>
     /* Base styles to avoid blinking when actual styles load */
+
     body {
       background: #000;
-      color:white;
+      color: white;
     }
+
     .loader {
-      position:absolute;
-      top: 50%; left: 0; right:0;
-      text-align:center;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      text-align: center;
     }
-    </style>
+
+    .gps_ring {
+      border: 2px solid #fff;
+      -webkit-border-radius: 50%;
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      top: 50%;
+      left: 50vw;
+      right: 50vw;
+      text-align: center;
+      -webkit-animation: pulsate 1s ease-out;
+      -webkit-animation-iteration-count: infinite;
+      opacity: 0.0;
+    }
+
+    .gps_ring:before {
+      content: "";
+      display: block;
+      border: 2px solid #fff;
+      -webkit-border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      left: -8px;
+      top: -8px;
+      -webkit-animation: pulsate 1s ease-out;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-delay: 0.1s;
+      opacity: 0.0;
+    }
+
+    .gps_ring:after {
+      content: "";
+      display: block;
+      border: 2px solid #fff;
+      -webkit-border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      left: -18px;
+      top: -18px;
+      -webkit-animation: pulsate 1s ease-out;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-delay: 0.2s;
+      opacity: 0.0;
+    }
+
+    @-webkit-keyframes pulsate {
+      0% {
+        -webkit-transform: scale(0.1, 0.1);
+        opacity: 0.0;
+      }
+      50% {
+        opacity: 1.0;
+      }
+      100% {
+        -webkit-transform: scale(1.2, 1.2);
+        opacity: 0.0;
+      }
+    }
+
+  </style>
 </head>
+
 <body class="font-override">
-    <app-root><div class="loader"><img src="assets/loader.svg" /></div></app-root>
+  <app-root>
+    <div class="gps_ring"></div>
+  </app-root>
 </body>
+
 </html>

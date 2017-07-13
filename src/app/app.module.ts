@@ -11,14 +11,35 @@ import { QuestionComponent } from './question/question.component';
 import { AdminComponent } from './admin/admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { AuthGuard } from './_guards/auth.guard';
+
+import { HttpHelper } from './_services/http.helper';
+
+import { AuthService } from './_services/auth.service';
+import { QuestionService } from './_services/question.service';
+import { LoginComponent } from './login/login.component';
+
+
+
 
 const appRoutes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: QuestionComponent
   },
-  { path: 'admin', component: AdminComponent  },
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    component: AdminComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 
@@ -28,7 +49,8 @@ const appRoutes: Routes = [
     AppComponent,
     QuestionComponent,
     AdminComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -37,7 +59,12 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    HttpHelper,
+    AuthService,
+    AuthGuard,
+    QuestionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
