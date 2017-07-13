@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import {
   StackConfig,
   Stack,
@@ -10,16 +10,16 @@ import {
   SwingCardComponent
 } from 'angular2-swing';
 
-import { Question } from './question';
+import { Question } from './question.model';
 
 
 @Component({
-  selector: 'question',
+  selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss']
 })
 
-export class QuestionComponent {
+export class QuestionComponent implements OnInit {
   @ViewChild('swSwing') swingStack: SwingStackComponent;
   @ViewChildren('questionCard') swingCards: QueryList<SwingCardComponent>;
 
@@ -45,6 +45,10 @@ export class QuestionComponent {
       { name: 'diamonds', symbol: '♦' },
       { name: 'spades', symbol: '♠' }
     ];
+  }
+  
+  ngOnInit() {
+  
   }
 
   ngAfterViewInit() {
