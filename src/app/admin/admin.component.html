@@ -1,20 +1,23 @@
 <div class="component">
-  <h1 class="component-title">Administration</h1>
+  <h1 class="component-title"><a routerLink="/admin" >Administration</a></h1>
   <div class="component-container">
-    <h4>Choississez une activité</h4>
     <div class="flex">
-    <button class="activity">
-      Gérer les chapitres
-    </button>
-    <button class="activity">
-      Gérer les affirmations
-    </button>
-    <button class="activity">
-      Voir les resultats
-    </button>
-    <button class="activity">
-      Exporter les resultats
-    </button>
+      <a routerLinkActive="active" routerLink="chapters" class="button btn activity">
+        Chapitres
+      </a>
+      <a routerLinkActive="active" routerLink="statements" class="button btn activity">
+        Affirmations
+      </a>
+      <a routerLinkActive="active" routerLink="profiles" class="button btn activity">
+        Profils
+      </a>
+      <a routerLinkActive="active" routerLink="results" class="button btn activity">
+        Resultats
+      </a>
+
+    </div>
+    <div class="tab-content">
+      <router-outlet></router-outlet>
     </div>
 
   </div>

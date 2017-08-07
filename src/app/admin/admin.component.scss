@@ -1,7 +1,21 @@
 .flex {
-  justify-content: space-between;
+  justify-content: space-around;
+  border-bottom: 1px solid #111;
+  padding-bottom: 1em;
 }
+.tab-content {
+  border-top: 1px solid #444;
+}
+
 .activity {
     padding: 3px 1em;
     flex:inherit;
+}
+h1 a {
+  border:none;
+}
+
+.active {
+  color:white;
+  border-color:white;
 }

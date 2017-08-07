@@ -16,9 +16,15 @@ import { AuthGuard } from './_guards/auth.guard';
 import { HttpHelper } from './_services/http.helper';
 
 import { AuthService } from './_services/auth.service';
+import { ChapterService } from './_services/chapter.service';
 import { QuestionService } from './_services/question.service';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 
+import { OverviewComponent } from './admin/overview/overview.component';
+import { ChaptersComponent } from './admin/chapters/chapters.component';
+import { StatementsComponent } from './admin/statements/statements.component';
+import { ResultsComponent } from './admin/results/results.component';
+import { ProfilesComponent } from './admin/profiles/profiles.component';
 
 
 
@@ -28,14 +34,22 @@ const appRoutes: Routes = [
     component: QuestionComponent
   },
   {
-    path: 'admin',
-    canActivate: [AuthGuard],
-    component: AdminComponent
-  },
-  {
-    path: 'login',
+    path: 'admin/login',
     component: LoginComponent
   },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    component: AdminComponent,
+     children: [
+      { path: '', component: OverviewComponent },
+      { path: 'chapters', component: ChaptersComponent },
+      { path: 'profiles', component: ProfilesComponent },
+      { path: 'statements', component: StatementsComponent },
+      { path: 'results', component: ResultsComponent}
+    ]
+  },
+  
   {
     path: '**',
     component: PageNotFoundComponent
@@ -50,7 +64,12 @@ const appRoutes: Routes = [
     QuestionComponent,
     AdminComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    ChaptersComponent,
+    StatementsComponent,
+    ResultsComponent,
+    OverviewComponent,
+    ProfilesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -61,6 +80,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     HttpHelper,
+    ChapterService,
     AuthService,
     AuthGuard,
     QuestionService

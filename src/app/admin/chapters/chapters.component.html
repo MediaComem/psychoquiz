@@ -1,0 +1,32 @@
+<div class="">
+  <div class="add-chapter">
+    <h3>Ajouter un chapitre</h3>
+    <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
+
+      <div class="form-group required">
+        <label for="title">Titre</label>
+        <input type="text" [(ngModel)]="model.title" class="form-control" id="title" name="title" required>
+      </div>
+
+      <div class="form-group required">
+        <label for="imgUrl">Image (URL)</label>
+        <input type="text" [(ngModel)]="model.imgUrl" class="form-control" id="imgUrl" name="imgUrl" required>
+      </div>
+      <div class="form-group required">
+        <label for="intro">Introduction</label>
+        <textarea [(ngModel)]="model.imgUrl" class="form-control" id="imgUrl" name="imgUrl" required></textarea>
+      </div>
+
+      <div class="form-group required">
+        <label for="number">Number</label>
+        <input type="number" [(ngModel)]="model.number" class="form-control" id="number" name="number" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!chapterForm.form.valid">Ajouter le chapitre</button>
+      </div>
+    </form>
+  </div>
+  <div class="chapter-list">
+  </div>
+
+</div>

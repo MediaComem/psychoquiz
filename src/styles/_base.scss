@@ -31,19 +31,32 @@ a:hover {
 }
 
 form {
+  width: 100%;
   label {
     width: 20%;
     min-width: 100px;
     display: inline-block;
+    vertical-align: top;
+  }
+  .required>label {
+    &:after {
+      content:" *";
+      color: red;
+    }
   }
   textarea,
   input[type="text"],
   input[type="email"],
+  input[type="number"],
   input[type="password"] {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid darken($color-base, 40);
     color: $color-base;
+    display:inline-block;
+    width: 30%;
+    vertical-align: top;
     padding: 4px 6px;
+    
     outline: 0;
     &:focus {
       border-color: lighten($color-base, 0);
@@ -51,6 +64,50 @@ form {
       outline: 0;
     }
   }
+  textarea {
+    min-height: 100px;
+  }
+  .form-group {
+    margin-bottom: 1em;
+  }
+}
+
+table.list {
+  width: 100%;
+  border-collapse: collapse;
+  tr {
+    td {
+      border-bottom: 1px solid darken($color-base, 44);
+      border-left:0;
+      border-right:0;
+      border-top:0;
+      padding: 0.5em 0;
+      &.xl {
+        width: 3%;
+      }
+      &.s {
+        width: 7%;
+      }
+      &.m {
+        width: 20%;
+      }
+      &.l {
+        width: 50%;
+      }
+      &.xl {
+        width: 70%;
+      }
+    }
+    
+  }
+}
+
+.ng-valid[required], .ng-valid.required  {
+  //border-color: #42A948; /* green */
+}
+
+.ng-dirty.ng-invalid:not(form)  {
+  border-color: #a94442; /* red */
 }
 
 input[type="submit"],
