@@ -2,6 +2,7 @@
   <h1 class="component-title">
     Connexion</h1>
   <div class="component-container">
+
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
@@ -10,7 +11,10 @@
 
       <div class="form-group">
         <label for="password">Mot de passe</label>
-        <input [(ngModel)]="password" required type="password" name="password" class="form-control password" id="password">
+        <input #passwordInput [(ngModel)]="password" required type="password" name="password" class="form-control password" id="password">
+      </div>
+      <div *ngIf="error" class="error">
+        <p>{{error}}</p>
       </div>
 
       <button [disabled]="!loginForm.form.valid" type="submit" class="btn btn-success">Connexion</button>

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule, ViewChild, ElementRef } from '@angular/core'
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../_services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,17 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _authService: AuthService,
+    private router: Router
+  ) { }
 
   email: string;
   password: string;
-
+  error: string;
   ngOnInit() {
 
   }
 
+  @ViewChild('passwordInput') passwordInput: ElementRef;
+
+
   onSubmit() {
-    console.log("submitting: " + this.email + ':' + this.password);
+    let pw = this.password;
+    this.password = '';
+    this._authService.login(this.email, pw)
+      .subscribe(res => {
+        if (!res) {
+          this.error = "Problème d'authentification. Veuillez saisir un nom d'utilisateur et un mot de passe correct.";
+          this.passwordInput.nativeElement.focus();
+        } else {
+          this.error = '';
+          this.router.navigate(['admin']);
+        }
+      })
   }
 
 }

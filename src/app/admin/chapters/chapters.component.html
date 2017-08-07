@@ -1,5 +1,5 @@
 <div class="">
-  <div class="add-chapter">
+  <div *ngIf="!editing" class="add-chapter">
     <h3>Ajouter un chapitre</h3>
     <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
 
@@ -14,11 +14,11 @@
       </div>
       <div class="form-group required">
         <label for="intro">Introduction</label>
-        <textarea [(ngModel)]="model.imgUrl" class="form-control" id="imgUrl" name="imgUrl" required></textarea>
+        <textarea [(ngModel)]="model.intro" class="form-control" id="intro" name="intro" required></textarea>
       </div>
 
       <div class="form-group required">
-        <label for="number">Number</label>
+        <label for="number">Numéro / poids</label>
         <input type="number" [(ngModel)]="model.number" class="form-control" id="number" name="number" required>
       </div>
       <div class="form-group">
@@ -26,7 +26,46 @@
       </div>
     </form>
   </div>
+
+    <div *ngIf="editing" class="edit-chapter">
+    <h3>Editer le Chapitre {{editingChapter.number}}</h3>
+    <form (ngSubmit)="editChapter(editingChapter.id)" #editChapterForm="ngForm">
+
+      <div class="form-group required">
+        <label for="title">Titre</label>
+        <input type="text" [(ngModel)]="editingChapter.title" class="form-control" id="title" name="title" required>
+      </div>
+
+      <div class="form-group required">
+        <label for="imgUrl">Image (URL)</label>
+        <input type="text" [(ngModel)]="editingChapter.imgUrl" class="form-control" id="imgUrl" name="imgUrl" required>
+      </div>
+      <div class="form-group required">
+        <label for="intro">Introduction</label>
+        <textarea [(ngModel)]="editingChapter.intro" class="form-control" id="intro" name="intro" required></textarea>
+      </div>
+
+      <div class="form-group required">
+        <label for="number">Numéro / poids</label>
+        <input type="number" [(ngModel)]="editingChapter.number" class="form-control" id="number" name="number" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-warn" (click)="editing = false">Annuler l'édition</button>
+        <button type="submit" class="btn btn-success" [disabled]="!editChapterForm.form.valid">Sauvegarder le chapitre</button>
+      </div>
+    </form>
+  </div>
   <div class="chapter-list">
+    <table *ngIf="chapters.length > 0" class="list">
+      <tbody>
+        <tr *ngFor="let chapter of chapters">
+          <td class="xs"><strong>{{chapter.number}}</strong></td>
+          <td>{{chapter.title}}</td>
+          <td>{{chapter.intro}}</td>
+          <td class="xs"><button (click)="editing='true' && editingChapter = chapter">edit</button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
 </div>

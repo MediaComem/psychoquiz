@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map'
 import { Chapter } from '../_models/chapter.model';
 import { environment } from '../../environments/environment';
 
-const ROUTE = environment.api + '/chapters';
+const ROUTE = environment.api + 'chapters';
 
 @Injectable()
 export class ChapterService {
@@ -19,10 +19,7 @@ export class ChapterService {
     ) { }
     private options = new RequestOptions({
         headers: new Headers({
-            'Authorization': 'Bearer ' 
-            + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
-            + '.eyJlbWFpbCI6ImFkbWluQHBxLmNoIiwiaWQiOjEsImlhdCI6MTUwMjEwODE1N30'
-            + '.08axoRHKuQqzNIa8HGy9Rpy6hqQvg3Pyi_mH4hkBcQg'
+            'Authorization': 'Bearer ' + 'token'
         })
     });
 
@@ -31,5 +28,17 @@ export class ChapterService {
             .map(this.httpHelper.extractData)
             .catch(this.httpHelper.handleError);
 
+    }
+
+    addChapter(number: number, title: string, intro: string, imgUrl: string): Observable<Chapter> {
+        let body = {
+            title: title,
+            number: number,
+            intro: intro,
+            imgUrl: imgUrl
+        }
+        return this.http.post(ROUTE, body, this.options)
+            .map(this.httpHelper.extractData)
+            .catch(this.httpHelper.handleError);
     }
 }
