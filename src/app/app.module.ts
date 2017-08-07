@@ -17,7 +17,7 @@ import { HttpHelper } from './_services/http.helper';
 
 import { AuthService } from './_services/auth.service';
 import { ChapterService } from './_services/chapter.service';
-import { QuestionService } from './_services/question.service';
+import { StatementService } from './_services/statement.service';
 import { LoginComponent } from './admin/login/login.component';
 
 import { OverviewComponent } from './admin/overview/overview.component';
@@ -81,9 +81,9 @@ const appRoutes: Routes = [
   providers: [
     HttpHelper,
     ChapterService,
+    StatementService,
     AuthService,
-    AuthGuard,
-    QuestionService
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

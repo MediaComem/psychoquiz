@@ -1,3 +1,47 @@
-<p>
-  statements works!
-</p>
+<div class="component component-inner">
+  <h3>Gestion des affirmations</h3>
+  <p>Vous trouverez ci-dessous une liste de toutes les affirmations avec la possibilité de les éditer et de les lier à un affirmation</p>
+
+  <div *ngIf="!editing" class="add-statement">
+    <h3>Ajouter une affirmation</h3>
+    <form (ngSubmit)="onSubmit()" #statementForm="ngForm">
+
+      <div class="form-group required">
+        <label for="text">Texte</label>
+        <input type="text" [(ngModel)]="model.text" class="form-control" id="text" name="text" required>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-success" [disabled]="!statementForm.form.valid">Ajouter l'affirmation</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="editing" class="edit-statement">
+    <h3>Editer l'affirmation {{editingStatement.number}}</h3>
+    <form (ngSubmit)="editStatement(editingStatement.id)" #editStatementForm="ngForm">
+
+      <div class="form-group required">
+        <label for="text">Texte</label>
+        <input type="text" [(ngModel)]="editingStatement.text" class="form-control" id="text" name="text" required>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-warn" (click)="editing = false">Annuler l'édition</button>
+        <button type="submit" class="btn btn-success" [disabled]="!editStatementForm.form.valid">Sauvegarder le affirmation</button>
+      </div>
+    </form>
+  </div>
+  <div class="statement-list">
+    <table *ngIf="statements.length > 0" class="list">
+      <tbody>
+        <tr *ngFor="let statement of statements">
+          <td class="xs"><strong>{{statement.ChapterId}}</strong></td>
+          <td>{{statement.text}}</td>
+          <td class="xs"><button (click)="editing='true' && editingStatement = statement">edit</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

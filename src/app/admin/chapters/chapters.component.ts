@@ -13,6 +13,14 @@ export class ChaptersComponent implements OnInit {
   @ViewChild('chapterForm') chapterForm;
   
 
+  model: Chapter = new Chapter();
+  editingChapter: Chapter;
+
+  chapters: Chapter[] = [];
+
+  submitted = false;
+
+  
   constructor(
     private _chapterService: ChapterService
   ) { }
@@ -24,12 +32,6 @@ export class ChaptersComponent implements OnInit {
       })
   }
 
-  model: Chapter = new Chapter();
-  editingChapter: Chapter;
-
-  chapters: Chapter[] = [];
-
-  submitted = false;
 
   onSubmit() { 
     this.submitted = true; 

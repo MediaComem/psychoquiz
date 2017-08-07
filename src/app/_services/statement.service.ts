@@ -6,13 +6,13 @@ import { HttpHelper } from './http.helper';
 import 'rxjs/add/operator/map'
 
 
-import { Chapter } from '../_models/chapter.model';
+import { Statement } from '../_models/statement.model';
 import { environment } from '../../environments/environment';
 
-const ROUTE = environment.api + 'chapters';
+const ROUTE = environment.api + 'statements';
 
 @Injectable()
-export class ChapterService {
+export class StatementService {
     constructor(
         private http: Http,
         private httpHelper: HttpHelper
@@ -23,19 +23,17 @@ export class ChapterService {
         })
     });
 
-    getChapters(): Observable<Chapter[]> {
+    getStatements(): Observable<Statement[]> {
         return this.http.get(ROUTE, this.options)
             .map(this.httpHelper.extractData)
             .catch(this.httpHelper.handleError);
 
     }
 
-    addChapter(number: number, title: string, intro: string, imgUrl: string): Observable<Chapter> {
+    addStatement(text: string, ChapterId): Observable<Statement> {
         let body = {
-            title: title,
-            number: number,
-            intro: intro,
-            imgUrl: imgUrl
+            text: text,
+            ChapterId: ChapterId
         }
         return this.http.post(ROUTE, body, this.options)
             .map(this.httpHelper.extractData)

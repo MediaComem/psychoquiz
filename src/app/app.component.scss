@@ -23,6 +23,10 @@ $menuHeight: 30px;
     padding: 1em 0;
     animation: 0.5s ease-out 0s 1 fadeIn;
   }
+  .component-inner { // subcomponents
+    padding:0;
+    margin:0;
+  }
 }
 
 @keyframes fadeIn {
