@@ -20,7 +20,9 @@ export class ChapterService {
     private options = new RequestOptions({
         headers: new Headers({
             'Authorization': 'Bearer ' 
-            + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHBxLmNoIiwiaWQiOjEsImlhdCI6MTUwMjEwODE1N30.08axoRHKuQqzNIa8HGy9Rpy6hqQvg3Pyi_mH4hkBcQg';
+            + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
+            + '.eyJlbWFpbCI6ImFkbWluQHBxLmNoIiwiaWQiOjEsImlhdCI6MTUwMjEwODE1N30'
+            + '.08axoRHKuQqzNIa8HGy9Rpy6hqQvg3Pyi_mH4hkBcQg'
         })
     });
 
