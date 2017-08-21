@@ -43,7 +43,7 @@ const appRoutes: Routes = [
     component: AdminComponent,
      children: [
       { path: '', component: OverviewComponent },
-      { path: 'chapters', component: ChaptersComponent },
+      { path: 'situations', component: ChaptersComponent },
       { path: 'profiles', component: ProfilesComponent },
       { path: 'statements', component: StatementsComponent },
       { path: 'results', component: ResultsComponent}

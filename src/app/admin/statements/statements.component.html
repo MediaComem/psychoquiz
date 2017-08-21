@@ -2,21 +2,30 @@
   <h3>Gestion des affirmations</h3>
   <p>Vous trouverez ci-dessous une liste de toutes les affirmations avec la possibilité de les éditer et de les lier à un affirmation</p>
 
+  <!-- Adding a statement -->
   <div *ngIf="!editing" class="add-statement">
     <h3>Ajouter une affirmation</h3>
-    <form (ngSubmit)="onSubmit()" #statementForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #addStatementForm="ngForm">
 
       <div class="form-group required">
         <label for="text">Texte</label>
         <input type="text" [(ngModel)]="model.text" class="form-control" id="text" name="text" required>
       </div>
 
+      <div class="form-group required">
+        <label for="chapter">Situation</label>
+        <select [(ngModel)]="model.ChapterId" class="form-control" id="chapter" name="chapter" required>
+          <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.number}}: {{chapter.title}}</option>
+        </select>
+      </div>
+
       <div class="form-group">
-        <button type="submit" class="btn btn-success" [disabled]="!statementForm.form.valid">Ajouter l'affirmation</button>
+        <button type="submit" class="btn btn-success" [disabled]="!addStatementForm.form.valid">Ajouter l'affirmation</button>
       </div>
     </form>
   </div>
 
+  <!-- Editing -->
   <div *ngIf="editing" class="edit-statement">
     <h3>Editer l'affirmation {{editingStatement.number}}</h3>
     <form (ngSubmit)="editStatement(editingStatement.id)" #editStatementForm="ngForm">
@@ -26,19 +35,40 @@
         <input type="text" [(ngModel)]="editingStatement.text" class="form-control" id="text" name="text" required>
       </div>
 
+      <div class="form-group required">
+        <label for="chapter">Situation</label>
+        <select [(ngModel)]="editingStatement.ChapterId" class="form-control" id="chapter" name="chapter" required>
+            <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.number}}: {{chapter.title}}</option>
+          </select>
+      </div>
+
       <div class="form-group">
         <button type="submit" class="btn btn-warn" (click)="editing = false">Annuler l'édition</button>
-        <button type="submit" class="btn btn-success" [disabled]="!editStatementForm.form.valid">Sauvegarder le affirmation</button>
+        <button type="submit" class="btn btn-success" [disabled]="!editStatementForm.form.valid">Sauvegarder l'affirmation</button>
       </div>
     </form>
   </div>
+
+  <!-- List of statements -->
   <div class="statement-list">
-    <table *ngIf="statements.length > 0" class="list">
+    <table *ngIf="statements && statements.length > 0" class="list">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>CID</th>
+          <th>Texte</th>
+          <th></th>
+        </tr>
+      </thead>
       <tbody>
         <tr *ngFor="let statement of statements">
-          <td class="xs"><strong>{{statement.ChapterId}}</strong></td>
-          <td>{{statement.text}}</td>
-          <td class="xs"><button (click)="editing='true' && editingStatement = statement">edit</button></td>
+          <td>{{statement?.id}}</td>
+          <td>{{statement?.ChapterId}}</td>
+          <td><em>{{statement?.text}}</em></td>
+          <td class="xs">
+            <button (click)="editing='true' && editingStatement = statement">editer</button>
+            <button (click)="linking='true' && linkingStatement = statement">lier les profils</button>
+          </td>
         </tr>
       </tbody>
     </table>

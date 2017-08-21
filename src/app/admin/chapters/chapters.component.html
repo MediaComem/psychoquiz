@@ -1,6 +1,6 @@
 <div class="component component-inner">
   <div *ngIf="!editing" class="add-chapter">
-    <h3>Ajouter un chapitre</h3>
+    <h3>Ajouter une situation</h3>
     <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
 
       <div class="form-group required">
@@ -22,13 +22,13 @@
         <input type="number" [(ngModel)]="model.number" class="form-control" id="number" name="number" required>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success" [disabled]="!chapterForm.form.valid">Ajouter le chapitre</button>
+        <button type="submit" class="btn btn-success" [disabled]="!chapterForm.form.valid">Ajouter la situation</button>
       </div>
     </form>
   </div>
 
     <div *ngIf="editing" class="edit-chapter">
-    <h3>Editer le Chapitre {{editingChapter.number}}</h3>
+    <h3>Editer la Situation {{editingChapter.number}}</h3>
     <form (ngSubmit)="editChapter(editingChapter.id)" #editChapterForm="ngForm">
 
       <div class="form-group required">
@@ -51,7 +51,7 @@
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-warn" (click)="editing = false">Annuler l'édition</button>
-        <button type="submit" class="btn btn-success" [disabled]="!editChapterForm.form.valid">Sauvegarder le chapitre</button>
+        <button type="submit" class="btn btn-success" [disabled]="!editChapterForm.form.valid">Sauvegarder la situation</button>
       </div>
     </form>
   </div>

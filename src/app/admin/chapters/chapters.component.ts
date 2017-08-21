@@ -10,11 +10,12 @@ import { Chapter } from '../../_models/chapter.model';
 })
 export class ChaptersComponent implements OnInit {
 
-  @ViewChild('chapterForm') chapterForm;
+  @ViewChild('addStatementForm') addStatementForm;
   
 
   model: Chapter = new Chapter();
   editingChapter: Chapter;
+  linkingChapter: Chapter;
 
   chapters: Chapter[] = [];
 
@@ -38,7 +39,7 @@ export class ChaptersComponent implements OnInit {
     this._chapterService.addChapter(this.model.number, this.model.title, this.model.intro, this.model.imgUrl)
       .subscribe(res => {
         this.chapters.push(res);
-        this.chapterForm.reset();
+        this.addStatementForm.reset();
         this.model = new Chapter();
       })
   }

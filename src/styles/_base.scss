@@ -70,6 +70,21 @@ form {
   .form-group {
     margin-bottom: 1em;
   }
+  select {
+    border: 1px solid darken($color-base, 40);
+    background: black;
+    color: $color-base;
+    padding: 4px 6px;
+    outline: 0;
+    &:focus {
+      border-color: lighten($color-base, 0);
+      color: white;
+      outline: 0;
+    }
+    option {
+      background: rgba(0,0,0,0.4);
+    }
+  }
 }
 
 table.list {

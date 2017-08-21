@@ -19,13 +19,16 @@ export class StatementsComponent implements OnInit {
     private _statementService: StatementService,
   ) { }
 
-  chapters: Chapter[] = [];
-  statements: Statement[] = [];
+  chapters: Chapter[];
+  statements: Statement[];
 
+  @ViewChild('form') form;
+  
   editingStatement: Statement;
-  model: Statement;
+  model: Statement = new Statement();
 
-
+  submitted = false;
+  
   ngOnInit() {
     this._chapterService.getChapters()
       .subscribe(chapters => {
@@ -35,6 +38,17 @@ export class StatementsComponent implements OnInit {
       .subscribe(statements => {
         this.statements = statements;
       });
+  }
+
+  onSubmit() { 
+    this.submitted = true; 
+
+    this._statementService.addStatement(this.model.text, this.model.ChapterId)
+      .subscribe(res => {
+        this.statements.push(res);
+        this.form.reset();
+        this.model = new Statement();
+      })
   }
 
 }
