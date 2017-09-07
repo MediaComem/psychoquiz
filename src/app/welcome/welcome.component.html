@@ -1,0 +1,19 @@
+<div class="component">
+  <h1 class="component-title">Bienvenue dans l'Univers de Star Wars</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet consectetur tortor. Sed fermentum ex sed felis interdum,
+    vel mollis quam lacinia. Quisque nec nisl vulputate, porta leo at, vehicula ante. Ut eget imperdiet nisi, sed ultrices
+    nisi. Vestibulum blandit dolor ut lacus sollicitudin, sit amet sollicitudin ligula molestie. Duis pellentesque libero
+    finibus enim lobortis, quis euismod lectus pulvinar. Suspendisse potenti.
+  </p>
+  <div class="call-to-action">
+    <div class="new-player" *ngIf="!oldPlayer">
+      <button (click)="startNew()">Démarrer l'experience</button>
+    </div>
+    <div class="old-player" *ngIf="oldPlayer">
+      <p>Il semble que vous avez une partie en cours !</p>
+      <a class="button" routerLink="/situation">Reprendre</a>
+      <button (click)="startNew()">Recommencer</button>
+    </div>
+  </div>
+</div>

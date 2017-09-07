@@ -23,6 +23,12 @@ export class ChapterService {
         })
     });
 
+    getRandomChapter(token:string): Observable<Chapter> {
+        return this.http.get(ROUTE + '/random?pt=' + token, new RequestOptions())
+        .map(this.httpHelper.extractData)
+        .catch(this.httpHelper.handleError);    
+    }
+
     getChapters(): Observable<Chapter[]> {
         return this.http.get(ROUTE, this.options)
             .map(this.httpHelper.extractData)

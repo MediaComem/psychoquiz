@@ -126,11 +126,15 @@ table.list {
 }
 
 input[type="submit"],
-button {
+button,
+a.button {
+  font-size: 12px;
+  font-family: $font-base;
+  text-transform: uppercase;
   color: $color-base;
   border: 1px solid darken($color-base, 30);
   border-radius: 3px;
-  padding: 4px 6px;
+  padding: 5px 8px;
   outline: 0;
   background: darken($color-base, 50);
   cursor: pointer;

@@ -1,0 +1,10 @@
+<div class="component">
+  <h1 class="component-title">{{chapter.title}}</h1>
+  <p>
+    {{chapter.intro}}
+  </p>
+  <img [src]="chapter.imgUrl" [alt]="'image for' + chapter.title"/>
+  <div class="call-to-action">
+      <a class="button" routerLink="tdr">C'est parti, répondre aux affirmations !</a>
+  </div>
+</div>
