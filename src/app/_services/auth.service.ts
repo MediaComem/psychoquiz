@@ -138,7 +138,8 @@ export class AuthService {
           this._userSource.next(response.json().user);
           this.userChecked = new Date();
 
-          return this.user;
+          return response.json().user;
+          
         })
         .catch((error: Response) => {
           console.warn(error);

@@ -12,7 +12,7 @@ export class ChaptersComponent implements OnInit {
 
   @ViewChild('addStatementForm') addStatementForm;
   
-
+  editing: boolean;
   model: Chapter = new Chapter();
   editingChapter: Chapter;
   linkingChapter: Chapter;

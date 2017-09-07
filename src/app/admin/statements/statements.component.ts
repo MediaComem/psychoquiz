@@ -28,6 +28,7 @@ export class StatementsComponent implements OnInit {
   model: Statement = new Statement();
 
   submitted = false;
+  editing: boolean;
   
   ngOnInit() {
     this._chapterService.getChapters()
