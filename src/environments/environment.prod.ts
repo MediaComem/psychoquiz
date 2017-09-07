@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://api.psychoquizz.ch/api/'
+  api: 'http://jesuistonpere.comem.ch/api/'
 };
