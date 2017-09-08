@@ -25,8 +25,6 @@ export class ParticipationService {
             return this.http.get(ROUTE + '/' + token, this.options)
             .map(res => {
                 if (res.json() && res.json().status === 'success') {
-                    let token = res.json().data.token
-                    localStorage.setItem('participation', token);
                     return res.json().data;
                 }
             })

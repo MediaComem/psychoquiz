@@ -1,10 +1,18 @@
 <div class="component">
+  <ng-container *ngIf="chapter">
   <h1 class="component-title">{{chapter.title}}</h1>
   <p>
     {{chapter.intro}}
   </p>
   <img [src]="chapter.imgUrl" [alt]="'image for' + chapter.title"/>
   <div class="call-to-action">
-      <a class="button" routerLink="tdr">C'est parti, répondre aux affirmations !</a>
+      <p *ngIf="chapter && (!chapter.Statements || chapter.Statements.length === 0)">Impossible de commencer le jeu, aucune affirmation n'a été attribuée à cette situation</p>
+      <p *ngIf="chapter.Statements && chapter.Statements.length > 0"><a class="button" routerLink="tdr">C'est parti, répondre aux affirmations !</a><em> ({{chapter.Statements.length}} élément<ng-container *ngIf="chapter.Statements.length > 1">s</ng-container>)</em></p>
   </div>
+  <button (click)="test()">test</button>
+  </ng-container>
+  <ng-container *ngIf="loading">
+    <p>Chargement...</p>
+  </ng-container>
+
 </div>

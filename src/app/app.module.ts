@@ -19,6 +19,7 @@ import { AuthService } from './_services/auth.service';
 import { ChapterService } from './_services/chapter.service';
 import { StatementService } from './_services/statement.service';
 import { ParticipationService } from './_services/participation.service';
+import { TinderService } from './_services/tinder.service';
 
 
 
@@ -100,6 +101,7 @@ const appRoutes: Routes = [
     StatementService,
     AuthService,
     ParticipationService,
+    TinderService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

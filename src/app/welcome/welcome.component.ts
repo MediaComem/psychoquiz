@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class WelcomeComponent implements OnInit {
 
   oldPlayer = false;
+  oldPlayerFinished = false;
   participation: Participation;
 
   constructor(
@@ -21,6 +22,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
     this._participationService.getParticipation()
       .subscribe(res => {
+        this.oldPlayerFinished = res ? res.finished: false;
         if (res && res.token) {
           this.oldPlayer = true;
         } else {
