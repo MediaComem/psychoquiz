@@ -33,11 +33,4 @@ export class ChapterComponent implements OnInit {
       });
   }
 
-  test() {
-    console.log(this._chapterService.currentChapter);
-    this._chapterService.currentChapter.subscribe(res => {
-      console.log(res);
-    });
-  }
-
 }

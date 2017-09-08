@@ -11,7 +11,7 @@
     <div class="stack" swing-stack [stackConfig]="stackConfig" #swSwing (throwout)="onThrowOut($event)">
       <div class="card" swing-card #questionCard [id]="'statement-' + st.id" *ngFor="let st of statements">
         <div  class="card-content">
-          {{st.text}}
+          <div class="inner">{{st.text}}</div>
         </div>
         <img class="icon rotate-left" src="assets/arrow.svg" />
         <img class="icon rotate-right" src="assets/arrow.svg" />
