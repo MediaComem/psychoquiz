@@ -41,11 +41,12 @@
   }
   .icon {
     position:absolute;
+    top: 75px;
     height: 60px;
     width: auto;
-    opacity: 0.3;
+    opacity: 0.2;
     &:hover {
-      opacity: 0.5;
+      opacity: 0.3;
     }
     &.rotate-left {
       left:10px;
@@ -55,9 +56,16 @@
     }
   }
   .card-content {
-    padding-top: 40px;
+    height: 100%;
     margin-left: 22px;
     margin-right: 22px;
+    position:relative;
+    display:table;
+    .inner {
+      display:table-cell;
+      vertical-align:middle;
+      text-align:center;
+    }
   }
 }
 

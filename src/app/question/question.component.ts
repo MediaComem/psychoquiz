@@ -103,13 +103,11 @@ export class QuestionComponent implements OnInit {
       .subscribe(res => {
         this.counter ++;
         if (this.counter === this.statements.length) {
-          this.finished = true;
+          this._router.navigate(['/situation']);
         }
       });
   }
 
   selectedAnswer: string;
-
-
 
 }

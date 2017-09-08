@@ -1,8 +1,5 @@
-<div class="component">
-  <div *ngIf="finished">
-    C'est terminé ! <a class="button" routerLink="/situation">Passons au chapitre suivant</a>
-  </div>
-  <div *ngIf="!finished" id="answers" class="verticalsplit">
+<div *ngIf="!finished" class="component">
+  <div  id="answers" class="verticalsplit">
     <div class="left">Je ne suis pas d'accord</div>
     <div class="right">Je suis d'accord</div>
   </div>
@@ -11,7 +8,7 @@
     <div class="stack" swing-stack [stackConfig]="stackConfig" #swSwing (throwout)="onThrowOut($event)">
       <div class="card" swing-card #questionCard [id]="'statement-' + st.id" *ngFor="let st of statements">
         <div  class="card-content">
-          {{st.text}}
+          <div class="inner">{{st.text}}</div>
         </div>
         <img class="icon rotate-left" src="assets/arrow.svg" />
         <img class="icon rotate-right" src="assets/arrow.svg" />

@@ -1,7 +1,16 @@
 .container {
   width: 100%;
-  max-width: 760px;
+  max-width: 640px;
   margin: 0 auto;
+}
+img {
+  max-width: 100%;
+}
+img.fullwidth {
+  width: 100vw;
+  max-width: inherit;
+
+  margin-left: -1em;
 }
 #main-content {
   position:absolute;
