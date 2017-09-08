@@ -27,7 +27,8 @@ import { LoginComponent } from './admin/login/login.component';
 import { OverviewComponent } from './admin/overview/overview.component';
 import { ChaptersComponent } from './admin/chapters/chapters.component';
 import { StatementsComponent } from './admin/statements/statements.component';
-import { ResultsComponent } from './admin/results/results.component';
+import { StatisticsComponent } from './admin/statistics/statistics.component';
+import { ResultsComponent } from './results/results.component';
 import { ProfilesComponent } from './admin/profiles/profiles.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ChapterComponent } from './chapter/chapter.component';
@@ -43,6 +44,10 @@ const appRoutes: Routes = [
   {
     path: 'situation/tdr',
     component: QuestionComponent
+  },
+  {
+    path: 'results',
+    component: ResultsComponent
   },
   {
     path: 'start',
@@ -61,7 +66,7 @@ const appRoutes: Routes = [
       { path: 'situations', component: ChaptersComponent },
       { path: 'profiles', component: ProfilesComponent },
       { path: 'statements', component: StatementsComponent },
-      { path: 'results', component: ResultsComponent}
+      { path: 'statistics', component: StatisticsComponent}
     ]
   },
   
@@ -86,7 +91,8 @@ const appRoutes: Routes = [
     OverviewComponent,
     ProfilesComponent,
     WelcomeComponent,
-    ChapterComponent
+    ChapterComponent,
+    StatisticsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

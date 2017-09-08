@@ -1,8 +1,5 @@
-<div class="component">
-  <div *ngIf="finished">
-    C'est terminé ! <a class="button" routerLink="/situation">Passons au chapitre suivant</a>
-  </div>
-  <div *ngIf="!finished" id="answers" class="verticalsplit">
+<div *ngIf="!finished" class="component">
+  <div  id="answers" class="verticalsplit">
     <div class="left">Je ne suis pas d'accord</div>
     <div class="right">Je suis d'accord</div>
   </div>

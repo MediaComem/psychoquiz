@@ -6,9 +6,8 @@
   </p>
   <img [src]="chapter.imgUrl" [alt]="'image for' + chapter.title" class="fullwidth"/>
   <div class="call-to-action">
-      <p *ngIf="chapter && (!chapter.Statements || chapter.Statements.length === 0)">Impossible de commencer le jeu, aucune affirmation n'a été attribuée à cette situation</p>
-      <p *ngIf="chapter.Statements && chapter.Statements.length > 0"><a class="button" routerLink="tdr">C'est parti, répondre aux affirmations !</a></p>
-      <p><em> ({{chapter.Statements.length}} élément<ng-container *ngIf="chapter.Statements.length > 1">s</ng-container>)</em></p>
+      <p *ngIf="chapter.Statements"><a class="button" routerLink="tdr">C'est parti, répondre aux affirmations !</a></p>
+      <p *ngIf="chapter.Statements"><em> ({{chapter.Statements.length}} élément<ng-container *ngIf="chapter.Statements.length > 1">s</ng-container>)</em></p>
   </div>
   </ng-container>
   <ng-container *ngIf="loading">

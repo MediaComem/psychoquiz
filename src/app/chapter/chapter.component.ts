@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ChapterService } from '../_services/chapter.service';
 import { TinderService } from '../_services/tinder.service';
 import { Chapter } from '../_models/chapter.model';
@@ -16,7 +17,8 @@ export class ChapterComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private _chapterService: ChapterService
+    private _chapterService: ChapterService,
+    private _router: Router
   ) { }
 
 
@@ -28,8 +30,14 @@ export class ChapterComponent implements OnInit {
     // problem: need to disable cache
     this._chapterService.getRandomChapter(this.token)
       .subscribe(res => {
-        this.loading = false;
-        this.chapter = res;
+        
+        if (res.finished) {
+          this._router.navigate(['/results']);
+        } else {
+          this.loading = false;
+          this.chapter = res;
+        }
+
       });
   }
 
