@@ -33,7 +33,7 @@ export class ChapterService {
 
 
     getRandomChapter(token: string): Observable<Chapter> {
-        return this.http.get(ROUTE + '/random?pt=' + token)
+        return this.http.get(ROUTE + '/random?pt=' + token + '&ts=' + new Date().getTime())
             .map(res => {
                 if (res.json().status == 'success') {
                     // Set current chapter as observable

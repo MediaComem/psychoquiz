@@ -25,6 +25,7 @@ export class ChapterComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.token = localStorage.getItem('participation');
+    // problem: need to disable cache
     this._chapterService.getRandomChapter(this.token)
       .subscribe(res => {
         this.loading = false;
