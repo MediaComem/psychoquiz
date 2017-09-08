@@ -4,24 +4,46 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { HttpHelper } from './http.helper';
 import 'rxjs/add/operator/map'
-
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+// import 'rxjs/add/operator/toPromise';
 
 import { Chapter } from '../_models/chapter.model';
 import { environment } from '../../environments/environment';
 
 const ROUTE = environment.api + 'chapters';
 
+
+
 @Injectable()
 export class ChapterService {
-    constructor(
-        private http: Http,
-        private httpHelper: HttpHelper
-    ) { }
+
+
+    private _chapterSource = new BehaviorSubject<Chapter>(new Chapter());
+    currentChapter = this._chapterSource.asObservable();
+
     private options = new RequestOptions({
         headers: new Headers({
             'Authorization': 'Bearer ' + 'token' // TODO: Change
         })
     });
+    constructor(
+        private http: Http,
+        private httpHelper: HttpHelper
+    ) { }
+
+
+    getRandomChapter(token: string): Observable<Chapter> {
+        return this.http.get(ROUTE + '/random?pt=' + token)
+            .map(res => {
+                if (res.json().status == 'success') {
+                    // Set current chapter as observable
+                    this._chapterSource.next(res.json().data);
+                    return res.json().data || {};
+                }
+                throw new Error(res.json().message || 'Error with API');
+            })
+            .catch(this.httpHelper.handleError);
+    }
 
     getChapters(): Observable<Chapter[]> {
         return this.http.get(ROUTE, this.options)
