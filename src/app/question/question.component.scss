@@ -32,8 +32,7 @@
   position: absolute;
   top: 0;
   left: 0;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05) inset, 0px 0px 12px rgba($color-base, 0.6);
-  line-height: 200px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05) inset, 0px 0px 12px rgba($color-base, 0.6);
   text-align: center;
   box-sizing: border-box;
   cursor: default;
@@ -41,12 +40,24 @@
     margin: 0;
   }
   .icon {
+    position:absolute;
     height: 60px;
     width: auto;
     opacity: 0.3;
     &:hover {
       opacity: 0.5;
     }
+    &.rotate-left {
+      left:10px;
+    }
+    &.rotate-right {
+      right: 10px;
+    }
+  }
+  .card-content {
+    padding-top: 40px;
+    margin-left: 22px;
+    margin-right: 22px;
   }
 }
 
