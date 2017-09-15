@@ -37,3 +37,17 @@ $menuHeight: 30px;
     opacity: 1
   }
 }
+
+
+#menu {
+  .title {
+    
+    padding-left: 1em;
+
+  }
+  .admin {
+    float:right;
+    padding-right: 1em;
+    opacity: 0.7;
+  }
+}

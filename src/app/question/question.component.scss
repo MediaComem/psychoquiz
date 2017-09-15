@@ -23,11 +23,36 @@
   }
 }
 
+.tdr-component {
+  padding: 0!important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 0px;
+  animation: 1s ease-out 0s 1 fadeIn;
+  .bg {
+    position: absolute;
+    top: -2em;
+    bottom: -2em;
+    left: -2em;
+    right: -2em;
+    background-repeat: no-repeat;
+    background-color: #333;
+    background-size: cover;
+    background-position: center center;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+
 .card {
   width: 200px;
   height: 200px;
   list-style: none;
-  background: rgba(#000,.9);
+  background: rgba(#000, .9);
   border-radius: 50em;
   position: absolute;
   top: 0;
@@ -40,7 +65,7 @@
     margin: 0;
   }
   .icon {
-    position:absolute;
+    position: absolute;
     top: 75px;
     height: 60px;
     width: auto;
@@ -49,7 +74,7 @@
       opacity: 0.3;
     }
     &.rotate-left {
-      left:10px;
+      left: 10px;
     }
     &.rotate-right {
       right: 10px;
@@ -59,12 +84,13 @@
     height: 100%;
     margin-left: 22px;
     margin-right: 22px;
-    position:relative;
-    display:table;
+    position: relative;
+    display: table;
     .inner {
-      display:table-cell;
-      vertical-align:middle;
-      text-align:center;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      color: white;
     }
   }
 }
@@ -113,9 +139,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #111;
+  background: rgba(10, 10, 10, 0.65);
 }
-
 
 // 2-ways swipe
 #answers.verticalsplit {
@@ -126,56 +151,15 @@
     padding: 1em;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba($color-base, 0.6);
   }
+  .text {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 3em;
+    margin-top: 15vh;
+    font-family: 'Elianto', $font-base;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
   .left {}
   .right {}
-}
-
-
-
-
-
-// 4-ways swipe
-#answers.triangles-4 {
-  .top,
-  .right,
-  .bottom,
-  .left {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-  }
-  .top {
-    bottom: auto;
-    width: 0;
-    height: 0;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-top: 50vh solid green;
-  }
-  .right {
-    left: auto;
-    width: 0;
-    height: 0;
-    border-top: 50vh solid transparent;
-    border-bottom: 50vh solid transparent;
-    border-right: 50vw solid orange;
-  }
-  .bottom {
-    top: auto;
-    width: 0;
-    height: 0;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-bottom: 50vh solid rebeccapurple;
-  }
-  .left {
-    right: auto;
-    width: 0;
-    height: 0;
-    border-top: 50vh solid transparent;
-    border-bottom: 50vh solid transparent;
-    border-left: 50vw solid darkcyan;
-  }
 }
