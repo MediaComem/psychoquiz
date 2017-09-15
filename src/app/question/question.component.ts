@@ -32,6 +32,7 @@ export class QuestionComponent implements OnInit {
 
   statements: Statement[];
   chapter: Chapter;
+  opacity: number = 0;
   opacityLeft: number = 0;
   opacityRight: number = 0;
 
@@ -95,33 +96,29 @@ export class QuestionComponent implements OnInit {
 
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
-      const precision = 10; // bigger is more (too) precise (lags with firefox mobile)
-      if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
-        //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
-        this.opacityRight = this.confidenceCalculator(event.throwOutConfidence) * 0.7;
-        this.opacityLeft = 0;
-      }
-      if (event.throwDirection.toString() === 'Symbol(LEFT)') {
-        //this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
-        this.opacityLeft = this.confidenceCalculator(event.throwOutConfidence) * 0.7;
-        this.opacityRight = 0;
-      }
+      
+      this.opacity = this.confidenceCalculator(event.throwOutConfidence, 15) * 0.7;
 
+      if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
+        if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
+          //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
+          this.opacityRight = this.opacity;
+          this.opacityLeft = 0;
+        }
+        if (event.throwDirection.toString() === 'Symbol(LEFT)') {
+          this.opacityLeft = this.opacity;
+          this.opacityRight = 0;
+        }
+      }
     });
   }
 
-  confidenceCalculator(confidence) {
+  confidenceCalculator(confidence, precision) {
     if (confidence >= 1) {
       return 1;
     }
-    let steps = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
-    for (var i = 0; i < steps.length; i++) {
-      let step = steps[i];
-      if (confidence > step - 0.1 && confidence <= step) {
-        return step;
-      }
-    }
-    return 1;
+    const v = confidence * precision;
+    return ~~v / precision;
   }
 
 
