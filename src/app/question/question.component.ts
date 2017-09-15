@@ -53,7 +53,7 @@ export class QuestionComponent implements OnInit {
       }
     }
   }
-  
+
   ngOnInit() {
     // Get statements from current chapter Observable
     this._chapterService.currentChapter.subscribe(res => {
@@ -86,47 +86,60 @@ export class QuestionComponent implements OnInit {
     //this.swingStack.throwoutleft.subscribe(
     //  (event: ThrowEvent) => console.log('Manual hook: ', event));
 
-    this.swingStack.throwin.subscribe((event:ThrowEvent) => {
+    this.swingStack.throwin.subscribe((event: ThrowEvent) => {
       this.opacityLeft = 0;
       this.opacityRight = 0;
     });
-    //this.swingStack.dragstart.subscribe((event: DragEvent) => console.log(event));
+
+    //this.swingStack.dragstart.subscribe((event: DragEvent) => {  });
 
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
-      const precision = 20; // bigger is more precise
+      const precision = 10; // bigger is more (too) precise (lags with firefox mobile)
       if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
-        this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.6;
+        //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
+        this.opacityRight = this.confidenceCalculator(event.throwOutConfidence) * 0.7;
         this.opacityLeft = 0;
       }
       if (event.throwDirection.toString() === 'Symbol(LEFT)') {
-        this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.6;
+        //this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
+        this.opacityLeft = this.confidenceCalculator(event.throwOutConfidence) * 0.7;
         this.opacityRight = 0;
       }
-      if (event.throwOutConfidence === 1) {
-        if (navigator.vibrate) {
-          navigator.vibrate(300);
-        }
-      }
+
     });
+  }
+
+  confidenceCalculator(confidence) {
+    if (confidence >= 1) {
+      return 1;
+    }
+    let steps = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+    for (var i = 0; i < steps.length; i++) {
+      let step = steps[i];
+      if (confidence > step - 0.1 && confidence <= step) {
+        return step;
+      }
+    }
+    return 1;
   }
 
 
   // Answer the statement and send answer to server
   onThrowOut(event: ThrowEvent) {
     if (navigator.vibrate) {
-      navigator.vibrate(600);
+      navigator.vibrate(60);
     }
     const id = event.target.attributes.getNamedItem('id').textContent;
     const stid = id.split('-').length == 2 ? parseInt(id.split('-')[1], 10) : 0;
     const answer = event.throwDirection.toString() === 'Symbol(RIGHT)';
     this.opacityLeft = 0.7;
     this.opacityRight = 0.7;
-    this._tinderService.postAnswer(answer,stid)
+    this._tinderService.postAnswer(answer, stid)
       .subscribe(res => {
         this.opacityLeft = 0;
         this.opacityRight = 0;
-        this.counter ++;
+        this.counter++;
         if (this.counter === this.statements.length) {
           this._router.navigate(['/situation']);
         }
