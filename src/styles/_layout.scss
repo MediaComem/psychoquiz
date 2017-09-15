@@ -20,6 +20,11 @@ img.fullwidth {
 .component-title {
   margin-bottom: 0.4em;
   animation: 1s ease-out 0s 1 pulseOnLoad;
+  text-align: center;
+  font-family: 'Elianto', $font-base;
+  text-transform:uppercase;
+  font-weight: 400;
+  letter-spacing: -1px;
   &:before {
     content: "- "
   }

@@ -12,6 +12,7 @@ import {
 } from 'angular2-swing';
 
 import { Statement } from '../_models/statement.model';
+import { Chapter } from '../_models/chapter.model';
 import { TinderService } from '../_services/tinder.service';
 import { ChapterService } from '../_services/chapter.service';
 
@@ -25,12 +26,14 @@ export class QuestionComponent implements OnInit {
   @ViewChild('swSwing') swingStack: SwingStackComponent;
   @ViewChildren('questionCard') swingCards: QueryList<SwingCardComponent>;
 
-  cards: Array<any>;
   stackConfig: StackConfig;
   counter: number = 0;
   finished = false;
 
   statements: Statement[];
+  chapter: Chapter;
+  opacityLeft: number = 0;
+  opacityRight: number = 0;
 
   constructor(
     private _tinderService: TinderService,
@@ -49,17 +52,12 @@ export class QuestionComponent implements OnInit {
         return 12000;
       }
     }
-
-    this.cards = [
-      { name: 'clubs', symbol: '♣' },
-      { name: 'diamonds', symbol: '♦' },
-      { name: 'spades', symbol: '♠' }
-    ];
   }
   
   ngOnInit() {
     // Get statements from current chapter Observable
     this._chapterService.currentChapter.subscribe(res => {
+      this.chapter = res;
       this.statements = res.Statements;
       if (!res || !res.Statements) {
         this._router.navigate(['situation']);
@@ -88,8 +86,24 @@ export class QuestionComponent implements OnInit {
     //this.swingStack.throwoutleft.subscribe(
     //  (event: ThrowEvent) => console.log('Manual hook: ', event));
 
+    this.swingStack.throwin.subscribe((event:ThrowEvent) => {
+      this.opacityLeft = 0;
+      this.opacityRight = 0;
+    });
     //this.swingStack.dragstart.subscribe((event: DragEvent) => console.log(event));
-    //this.swingStack.dragmove.subscribe((event: DragEvent) => console.log(event));
+
+
+    this.swingStack.dragmove.subscribe((event: DragEvent) => {
+      if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
+        this.opacityRight = event.throwOutConfidence * 0.6;
+        this.opacityLeft = 0;
+      }
+      if (event.throwDirection.toString() === 'Symbol(LEFT)') {
+        this.opacityLeft = event.throwOutConfidence * 0.6;
+        this.opacityRight = 0;
+      }
+
+    });
   }
 
 
@@ -99,8 +113,12 @@ export class QuestionComponent implements OnInit {
     const id = event.target.attributes.getNamedItem('id').textContent;
     const stid = id.split('-').length == 2 ? parseInt(id.split('-')[1], 10) : 0;
     const answer = event.throwDirection.toString() === 'Symbol(RIGHT)';
+    this.opacityLeft = 0.7;
+    this.opacityRight = 0.7;
     this._tinderService.postAnswer(answer,stid)
       .subscribe(res => {
+        this.opacityLeft = 0;
+        this.opacityRight = 0;
         this.counter ++;
         if (this.counter === this.statements.length) {
           this._router.navigate(['/situation']);
