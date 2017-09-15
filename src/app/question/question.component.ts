@@ -103,13 +103,20 @@ export class QuestionComponent implements OnInit {
         this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.6;
         this.opacityRight = 0;
       }
+      if (event.throwOutConfidence === 1) {
+        if (navigator.vibrate) {
+          navigator.vibrate(300);
+        }
+      }
     });
   }
 
 
   // Answer the statement and send answer to server
   onThrowOut(event: ThrowEvent) {
-   
+    if (navigator.vibrate) {
+      navigator.vibrate(600);
+    }
     const id = event.target.attributes.getNamedItem('id').textContent;
     const stid = id.split('-').length == 2 ? parseInt(id.split('-')[1], 10) : 0;
     const answer = event.throwDirection.toString() === 'Symbol(RIGHT)';
