@@ -94,22 +94,29 @@ export class QuestionComponent implements OnInit {
 
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
+      const precision = 20; // bigger is more precise
       if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
-        this.opacityRight = event.throwOutConfidence * 0.6;
+        this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.6;
         this.opacityLeft = 0;
       }
       if (event.throwDirection.toString() === 'Symbol(LEFT)') {
-        this.opacityLeft = event.throwOutConfidence * 0.6;
+        this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.6;
         this.opacityRight = 0;
       }
-
+      if (event.throwOutConfidence === 1) {
+        if (navigator.vibrate) {
+          navigator.vibrate(300);
+        }
+      }
     });
   }
 
 
   // Answer the statement and send answer to server
   onThrowOut(event: ThrowEvent) {
-   
+    if (navigator.vibrate) {
+      navigator.vibrate(600);
+    }
     const id = event.target.attributes.getNamedItem('id').textContent;
     const stid = id.split('-').length == 2 ? parseInt(id.split('-')[1], 10) : 0;
     const answer = event.throwDirection.toString() === 'Symbol(RIGHT)';
