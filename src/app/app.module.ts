@@ -17,6 +17,7 @@ import { HttpHelper } from './_services/http.helper';
 
 import { AuthService } from './_services/auth.service';
 import { ChapterService } from './_services/chapter.service';
+import { ProfileService } from './_services/profile.service';
 import { StatementService } from './_services/statement.service';
 import { ParticipationService } from './_services/participation.service';
 import { TinderService } from './_services/tinder.service';
@@ -104,6 +105,7 @@ const appRoutes: Routes = [
   providers: [
     HttpHelper,
     ChapterService,
+    ProfileService,
     StatementService,
     AuthService,
     ParticipationService,
