@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChapterService } from '../../_services/chapter.service';
 import { Chapter } from '../../_models/chapter.model';
 
@@ -10,8 +10,8 @@ import { Chapter } from '../../_models/chapter.model';
 })
 export class ChaptersComponent implements OnInit {
 
-  @ViewChild('addStatementForm') addStatementForm;
-  
+  @ViewChild('chapterForm') chapterForm;
+
   editing: boolean;
   model: Chapter = new Chapter();
   editingChapter: Chapter;
@@ -21,7 +21,7 @@ export class ChaptersComponent implements OnInit {
 
   submitted = false;
 
-  
+
   constructor(
     private _chapterService: ChapterService
   ) { }
@@ -34,17 +34,16 @@ export class ChaptersComponent implements OnInit {
   }
 
 
-  onSubmit() { 
-    this.submitted = true; 
+  onSubmit() {
+    this.submitted = true;
     this._chapterService.addChapter(this.model.number, this.model.title, this.model.intro, this.model.imgUrl)
       .subscribe(res => {
         this.chapters.push(res);
-        this.addStatementForm.reset();
+        this.chapterForm.reset();
         this.model = new Chapter();
-      })
+      });
   }
   editChapter(id: number) {
     console.log('editing chapter #' + id)
   }
 }
- 

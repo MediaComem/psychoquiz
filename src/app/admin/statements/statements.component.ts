@@ -13,23 +13,22 @@ export class StatementsComponent implements OnInit {
 
   @ViewChild('statementForm') statementForm;
 
+  chapters: Chapter[];
+  statements: Statement[];
+
+  @ViewChild('form') form;
+
+  editingStatement: Statement;
+  model: Statement = new Statement();
+
+  submitted = false;
+  editing: boolean;
 
   constructor(
     private _chapterService: ChapterService,
     private _statementService: StatementService,
   ) { }
 
-  chapters: Chapter[];
-  statements: Statement[];
-
-  @ViewChild('form') form;
-  
-  editingStatement: Statement;
-  model: Statement = new Statement();
-
-  submitted = false;
-  editing: boolean;
-  
   ngOnInit() {
     this._chapterService.getChapters()
       .subscribe(chapters => {
@@ -41,8 +40,8 @@ export class StatementsComponent implements OnInit {
       });
   }
 
-  onSubmit() { 
-    this.submitted = true; 
+  onSubmit() {
+    this.submitted = true;
 
     this._statementService.addStatement(this.model.text, this.model.ChapterId)
       .subscribe(res => {

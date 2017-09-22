@@ -10,12 +10,20 @@ import { ParticipationService } from '../_services/participation.service';
 })
 export class ResultsComponent implements OnInit {
 
+  results: any;
+
   constructor(
     private _participationService: ParticipationService,
     private _router: Router
   ) { }
 
+
   ngOnInit() {
+    this._participationService.getResults()
+      .subscribe(res => {
+        this.results = res;
+        console.log(this.results);
+      });
   }
 
   startNew() {

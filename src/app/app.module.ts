@@ -17,6 +17,7 @@ import { HttpHelper } from './_services/http.helper';
 
 import { AuthService } from './_services/auth.service';
 import { ChapterService } from './_services/chapter.service';
+import { ProfileService } from './_services/profile.service';
 import { StatementService } from './_services/statement.service';
 import { ParticipationService } from './_services/participation.service';
 import { TinderService } from './_services/tinder.service';
@@ -32,6 +33,7 @@ import { ResultsComponent } from './results/results.component';
 import { ProfilesComponent } from './admin/profiles/profiles.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ChapterComponent } from './chapter/chapter.component';
+import { LinkProfilesComponent } from './admin/statements/link-profiles/link-profiles.component';
 
 
 
@@ -66,10 +68,10 @@ const appRoutes: Routes = [
       { path: 'situations', component: ChaptersComponent },
       { path: 'profiles', component: ProfilesComponent },
       { path: 'statements', component: StatementsComponent },
+      { path: 'statements/:id', component: LinkProfilesComponent},
       { path: 'statistics', component: StatisticsComponent}
     ]
   },
-  
   {
     path: '**',
     component: PageNotFoundComponent
@@ -92,7 +94,8 @@ const appRoutes: Routes = [
     ProfilesComponent,
     WelcomeComponent,
     ChapterComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    LinkProfilesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -104,6 +107,7 @@ const appRoutes: Routes = [
   providers: [
     HttpHelper,
     ChapterService,
+    ProfileService,
     StatementService,
     AuthService,
     ParticipationService,

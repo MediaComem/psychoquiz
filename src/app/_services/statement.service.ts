@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { HttpHelper } from './http.helper';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 
 
 import { Statement } from '../_models/statement.model';
@@ -13,15 +13,17 @@ const ROUTE = environment.api + 'statements';
 
 @Injectable()
 export class StatementService {
-    constructor(
-        private http: Http,
-        private httpHelper: HttpHelper
-    ) { }
+
     private options = new RequestOptions({
         headers: new Headers({
             'Authorization': 'Bearer ' + 'token' // TODO: Change
         })
     });
+
+    constructor(
+        private http: Http,
+        private httpHelper: HttpHelper
+    ) { }
 
     getStatements(): Observable<Statement[]> {
         return this.http.get(ROUTE, this.options)
@@ -30,13 +32,31 @@ export class StatementService {
 
     }
 
+    getStatement(id: number): Observable<Statement> {
+        return this.http.get(ROUTE + '/' + id, this.options)
+            .map(this.httpHelper.extractData)
+            .catch(this.httpHelper.handleError);
+    }
+
     addStatement(text: string, ChapterId): Observable<Statement> {
-        let body = {
+        const body = {
             text: text,
             ChapterId: ChapterId
-        }
+        };
         return this.http.post(ROUTE, body, this.options)
             .map(this.httpHelper.extractData)
             .catch(this.httpHelper.handleError);
     }
+
+    editStatement(text: string, ChapterId: number, id: number): Observable<Statement> {
+        const body = {
+            text: text,
+            ChapterId: ChapterId
+        };
+        return this.http.put(ROUTE + '/' + id, body, this.options)
+            .map(this.httpHelper.extractData)
+            .catch(this.httpHelper.handleError);
+    }
+
+    
 }

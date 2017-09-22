@@ -23,16 +23,16 @@ export class ParticipationService {
         let token = localStorage.getItem('participation');
         if (token) {
             return this.http.get(ROUTE + '/' + token, this.options)
-            .map(res => {
-                if (res.json() && res.json().status === 'success') {
-                    return res.json().data;
-                }
-            })
-            .catch(this.httpHelper.handleError);
+                .map(res => {
+                    if (res.json() && res.json().status === 'success') {
+                        return res.json().data;
+                    }
+                })
+                .catch(this.httpHelper.handleError);
         } else {
             return Observable.of(new Participation());
         }
-        
+
     }
 
     newParticipation(): Observable<Participation> {
@@ -45,5 +45,21 @@ export class ParticipationService {
                 }
 
             }).catch(this.httpHelper.handleError);
+    }
+
+    getResults(): Observable<any> {
+        const token = localStorage.getItem('participation');
+        if (token) {
+            return this.http.get(ROUTE + '/' + token + '/results')
+                .map(res => {
+                    if (res.json() && res.json().status === 'success') {
+                        return res.json().data;
+                    }
+                })
+                .catch(this.httpHelper.handleError);
+        } else {
+            return Observable.of(null);
+        }
+
     }
 }
