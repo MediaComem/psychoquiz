@@ -1,0 +1,39 @@
+<div *ngIf="statement" class="component component-inner admin-component">
+  <h3>Gestion de l'affirmation n° {{statement.id}}</h3>
+  <blockquote>
+    <p>{{statement.text}}</p>
+  </blockquote>
+
+  <p class="success" *ngIf="success">
+    Sauvegarde effectuée (test)
+  </p>
+  
+
+  <form (ngSubmit)="editStatement()" #editStatementForm="ngForm">
+    <table *ngIf="profiles && profiles.length > 0" class="list">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th class="xs">Poids OUI</th>
+          <th class="xs">Poids NON</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let profile of profiles">
+          <td>{{profile.name}}</td>
+          <td class="xs"><input class="form-control" type="number" step="1" value="0" min="0" max="10"></td>
+          <td class="xs"><input class="form-control" type="number" step="1" value="0" min="0" max="10"></td>
+
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success" [disabled]="!editStatementForm.form.valid">Sauvegarder les poids</button>
+    </div>
+
+  </form>
+  <p>Utilisez cette page pour lier cette affirmation avec des profils. Le poids permet de pondérer les réponses données aux affirmations en fonction des profils afin d'avoir des résultats cohérents. Utiliser des valeurs entre 0 (aucune pondération) et 10 (pondération maximale).</p>
+</div>

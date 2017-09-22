@@ -27,6 +27,15 @@ $menuHeight: 30px;
     padding:0;
     margin:0;
   }
+  .admin-component {
+    width: 80%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    .admin-component {
+      width: 100%;
+    }
+  }
 }
 
 @keyframes fadeIn {

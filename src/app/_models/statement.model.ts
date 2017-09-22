@@ -1,4 +1,6 @@
 import { Chapter } from './chapter.model';
+import { Profile } from './profile.model';
+import { Weight } from './weight.model';
 
 export class Statement {
     public id: number;
@@ -7,4 +9,6 @@ export class Statement {
     public updatedAt: Date;
     public ChapterId: number;
     public Chapter: Chapter;
+    public Weights: Weight;
+    public Profiles: Profile[];
 }

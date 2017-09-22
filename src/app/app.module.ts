@@ -33,6 +33,7 @@ import { ResultsComponent } from './results/results.component';
 import { ProfilesComponent } from './admin/profiles/profiles.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ChapterComponent } from './chapter/chapter.component';
+import { LinkProfilesComponent } from './admin/statements/link-profiles/link-profiles.component';
 
 
 
@@ -67,10 +68,10 @@ const appRoutes: Routes = [
       { path: 'situations', component: ChaptersComponent },
       { path: 'profiles', component: ProfilesComponent },
       { path: 'statements', component: StatementsComponent },
+      { path: 'statements/:id', component: LinkProfilesComponent},
       { path: 'statistics', component: StatisticsComponent}
     ]
   },
-  
   {
     path: '**',
     component: PageNotFoundComponent
@@ -93,7 +94,8 @@ const appRoutes: Routes = [
     ProfilesComponent,
     WelcomeComponent,
     ChapterComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    LinkProfilesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

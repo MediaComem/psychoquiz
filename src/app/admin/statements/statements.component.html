@@ -1,4 +1,4 @@
-<div class="component component-inner">
+<div class="component component-inner admin-component">
   <h3>Gestion des affirmations</h3>
   <p>Vous trouverez ci-dessous une liste de toutes les affirmations avec la possibilité de les éditer et de les lier à un affirmation</p>
 
@@ -67,7 +67,7 @@
           <td><em>{{statement?.text}}</em></td>
           <td class="xs">
             <button (click)="editing='true' && editingStatement = statement">editer</button>
-            <button (click)="linking='true' && linkingStatement = statement">lier les profils</button>
+            <a class="button" [routerLink]="statement.id">lier les profils</a>
           </td>
         </tr>
       </tbody>

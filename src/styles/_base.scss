@@ -96,7 +96,7 @@ table.list {
       border-left:0;
       border-right:0;
       border-top:0;
-      padding: 0.5em 0;
+      padding: 0.2em 0.5em;
       &.xl {
         width: 3%;
       }
@@ -149,5 +149,48 @@ a.button {
     box-shadow: none;
     opacity: 0.4;
     cursor:default;
+  }
+}
+
+
+
+blockquote {
+  background: rgba(#f9f9f9, 0.3);
+  border-left: 10px solid rgba(#ccc, 0.3);
+  margin: 1.5em 0;
+  font-size: 1.3em;
+  padding: 1em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: rgba(#ccc, 0.3);
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+
+
+
+.success {
+  display:block;
+
+  background: rgba(green, 0.2);
+  border-left: 10px solid rgba(green, 0.2);
+  margin: 1.5em 0;
+  padding: 1em 10px;
+  padding: 1em;
+  color: darkseagreen;
+  &:before {
+    color: darkseagreen;
+    content: "\2713";
+    font-size: 2em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.2em;
   }
 }
