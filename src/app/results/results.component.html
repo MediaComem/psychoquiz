@@ -2,7 +2,7 @@
   <h3>Voici vos résultats</h3>
   <div class="flex">
     <div *ngFor="let profile of results" [class]="'profile profile-' + profile.name">
-      <h2>{{profile.name}}</h2>
+      <p class="title"><strong>{{profile.name}}</strong></p>
 
       <div class="chart-outer localPercent">
         <div class="chart-inner" [style.height]="profile.localPercent * 100 + '%'">
