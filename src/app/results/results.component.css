@@ -1,0 +1,35 @@
+.chart-outer {
+  border: 1px solid white;
+  width: 30px;
+  width: 8vw;
+  min-height: 150px;
+  height: 50vh;
+  display: inline-block;
+  position:relative;
+  overflow:hidden;
+  margin: 0 1vw;
+}
+
+
+.chart-inner {
+    background:white;
+    width: 100%;
+    min-height: 5px;
+    position:absolute;
+    bottom:0;
+    color: #eee;
+}
+
+.amount {
+    position:absolute;
+    bottom: 2px;
+    left:0;
+    right:0;
+    color: #000;
+    font-size: 0.8em;
+}
+
+.profile {
+    text-align:center;
+    margin-bottom: 2em;
+}
