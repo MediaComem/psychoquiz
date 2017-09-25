@@ -43,7 +43,7 @@ export class StatementsComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    this._statementService.addStatement(this.model.text, this.model.ChapterId)
+    this._statementService.addStatement(this.model.text, this.model.ChapterId, [])
       .subscribe(res => {
         this.statements.push(res);
         this.form.reset();

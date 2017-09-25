@@ -22,10 +22,19 @@
       <tbody>
 
         <tr *ngFor="let profile of profiles">
-          <td>{{profile.name}}</td>
-          <td class="xs"><input class="form-control" type="number" step="1" value="0" min="0" max="10"></td>
-          <td class="xs"><input class="form-control" type="number" step="1" value="0" min="0" max="10"></td>
-
+          <td>{{profile.name}} ({{profile.id}})</td>
+          <td class="xs">
+            <input class="form-control" type="number" 
+                    step="1" name="weightIfTrue-{{profile.id}}" 
+                    [(ngModel)]="weightIfTrue[profile.id]" 
+                    min="0" max="10">
+          </td>
+          <td class="xs">
+            <input class="form-control" type="number" 
+                    step="1" name="weightIfFalse-{{profile.id}}"
+                    [(ngModel)]="weightIfFalse[profile.id]"
+                     min="0" max="10">
+          </td>
         </tr>
       </tbody>
     </table>

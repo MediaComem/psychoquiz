@@ -1,7 +1,24 @@
 <div class="component">
   <h3>Voici vos résultats</h3>
-  <pre>{{results|json}}</pre>
-  <img src="https://www.snapsurveys.com/wp-content/uploads/2012/10/bar_wrong_perc.png" alt="chart" />
+  <div class="flex">
+    <div *ngFor="let profile of results" [class]="'profile profile-' + profile.name">
+      <h2>{{profile.name}}</h2>
+
+      <div class="chart-outer localPercent">
+        <div class="chart-inner" [style.height]="profile.localPercent * 100 + '%'">
+        </div>
+        <span class="amount">local<br>{{profile.localPercent | percent:'1.0-0'}}</span>
+      </div>
+      <div class="globalPercent chart-outer">
+        <div class="chart-inner" [style.height]="profile.globalPercent * 100 + '%'">
+        </div>
+        <span class="amount">global<br>{{profile.globalPercent | percent:'1.0-0'}}</span>
+      </div>
+
+    </div>
+  </div>
+  <button (click)="visible = !visible"><ng-container *ngIf="visible">Cacher </ng-container> <ng-container *ngIf="!visible">Afficher</ng-container>les résultats détaillés</button>
+  <pre *ngIf="visible">{{results|json}}</pre>
   <p>
     <button (click)="startNew()">Supprimer les résultats et recommencer</button>
   </p>

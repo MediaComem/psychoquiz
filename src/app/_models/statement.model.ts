@@ -9,6 +9,5 @@ export class Statement {
     public updatedAt: Date;
     public ChapterId: number;
     public Chapter: Chapter;
-    public Weights: Weight;
     public Profiles: Profile[];
 }

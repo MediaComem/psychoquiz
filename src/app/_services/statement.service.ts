@@ -38,20 +38,22 @@ export class StatementService {
             .catch(this.httpHelper.handleError);
     }
 
-    addStatement(text: string, ChapterId): Observable<Statement> {
+    addStatement(text: string, ChapterId: number, profiles: any[]): Observable<Statement> {
         const body = {
             text: text,
-            ChapterId: ChapterId
+            ChapterId: ChapterId,
+            profiles: profiles
         };
         return this.http.post(ROUTE, body, this.options)
             .map(this.httpHelper.extractData)
             .catch(this.httpHelper.handleError);
     }
 
-    editStatement(text: string, ChapterId: number, id: number): Observable<Statement> {
+    editStatement(text: string, ChapterId: number, profiles: any[], id: number): Observable<Statement> {
         const body = {
             text: text,
-            ChapterId: ChapterId
+            ChapterId: ChapterId,
+            profiles: profiles
         };
         return this.http.put(ROUTE + '/' + id, body, this.options)
             .map(this.httpHelper.extractData)

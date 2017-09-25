@@ -11,6 +11,7 @@ import { ParticipationService } from '../_services/participation.service';
 export class ResultsComponent implements OnInit {
 
   results: any;
+  visible = false;
 
   constructor(
     private _participationService: ParticipationService,
