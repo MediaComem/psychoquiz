@@ -1,0 +1,21 @@
+td.buttons {
+    width: 130px;
+    text-align:right;
+}
+
+tr.even {
+    background: #444;
+}
+
+tr.odd {
+    background: #303030;
+}
+
+
+table.list tr.even td {
+    border-bottom: 1px solid #636363;
+}
+
+table.list tr.odd td {
+    border-bottom: 1px solid #3D3D3D;
+}
