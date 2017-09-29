@@ -14,8 +14,8 @@
 
       <div class="form-group required">
         <label for="chapter">Situation</label>
-        <select [(ngModel)]="model.ChapterId" class="form-control" id="chapter" name="chapter" required>
-          <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.number}}: {{chapter.title}}</option>
+        <select [(ngModel)]="model.ChapterId" class="form-control chapter-select" id="chapter" name="chapter" required>
+          <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.number}} - {{chapter.intro}}</option>
         </select>
       </div>
 
@@ -37,8 +37,8 @@
 
       <div class="form-group required">
         <label for="chapter">Situation</label>
-        <select [(ngModel)]="editingStatement.ChapterId" class="form-control" id="chapter" name="chapter" required>
-            <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.number}}: {{chapter.title}}</option>
+        <select [(ngModel)]="editingStatement.ChapterId" class="form-control chapter-select" id="chapter" name="chapter" required>
+            <option *ngFor="let chapter of chapters" [value]="chapter.id">{{chapter.number}} - {{chapter.intro}}</option>
           </select>
       </div>
 

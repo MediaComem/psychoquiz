@@ -7,11 +7,14 @@
     </p>
 
     <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
-
+      <div *ngIf="model.imgUrl" class="image">
+        <img [src]="model.imgUrl" />
+      </div>
       <div class="form-group required">
         <label for="title">Titre</label>
         <input type="text" [(ngModel)]="model.title" class="form-control" id="title" name="title" required>
       </div>
+
 
       <div class="form-group required">
         <label for="imgUrl">Image (URL)</label>
@@ -35,6 +38,9 @@
     <div *ngIf="editing" class="edit-chapter">
     <h3>Editer la Situation {{editingChapter.number}}</h3>
     <form (ngSubmit)="editChapter(editingChapter.id)" #editChapterForm="ngForm">
+      <div class="image">
+        <img [src]="editingChapter.imgUrl" />
+      </div>
 
       <div class="form-group required">
         <label for="title">Titre</label>
@@ -65,8 +71,8 @@
       <tbody>
         <tr *ngFor="let chapter of chapters">
           <td class="xs"><strong>{{chapter.number}}</strong></td>
-          <td>{{chapter.title}}</td>
-          <td>{{chapter.intro}}</td>
+          <td class="intro">{{chapter.intro}}</td>
+          <td class="title">{{chapter.title}}</td>
           <td class="xs"><button [class]="editingChapter && chapter.id === editingChapter.id ? 'editing': 'not-editing'" (click)="setEdit(chapter)">edit</button></td>
         </tr>
       </tbody>
