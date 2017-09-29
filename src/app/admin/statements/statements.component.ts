@@ -23,6 +23,8 @@ export class StatementsComponent implements OnInit {
 
   submitted = false;
   editing: boolean;
+  success: boolean | string = false;
+  chapterIds: number[] = [];
 
   constructor(
     private _chapterService: ChapterService,
@@ -33,6 +35,9 @@ export class StatementsComponent implements OnInit {
     this._chapterService.getChapters()
       .subscribe(chapters => {
         this.chapters = chapters;
+        for (var index = 0; index < chapters.length; index++) {
+          this.chapterIds.push(chapters[index].id);
+        }
       });
     this._statementService.getStatements()
       .subscribe(statements => {
@@ -49,6 +54,50 @@ export class StatementsComponent implements OnInit {
         this.form.reset();
         this.model = new Statement();
       })
+  }
+
+  getEventOdd(ChapterId) {
+    let nb;
+    for (var index = 0; index < this.chapterIds.length; index++) {
+      if (ChapterId === this.chapterIds[index]) {
+        nb = index;
+      }
+    }
+    if (nb % 2 === 0) {
+      return 'even';
+    };
+    return 'odd';
+  }
+
+  setEdit(statement: Statement) {
+    if (this.editing && this.editingStatement.id === statement.id) {
+      this.editing = false;
+      this.editingStatement = new Statement();
+    } else {
+      this.editing = true;
+      this.editingStatement = JSON.parse(JSON.stringify(statement));
+    }
+  }
+
+
+  editStatement(id: number) {
+    this._statementService.editStatement(
+      this.editingStatement.text,
+      this.editingStatement.ChapterId,
+      this.editingStatement.Profiles,
+      id
+    ).subscribe(res => {
+      this.success = 'Affirmation ' + id + ' sauvegardé avec succès.';
+      this.setEdit(this.editingStatement);
+
+      for (let index = 0; index < this.statements.length; index++) {
+        const c = this.statements[index];
+        if (c.id === id) {
+          this.statements[index] = res;
+        }
+      }
+    })
+
   }
 
 }

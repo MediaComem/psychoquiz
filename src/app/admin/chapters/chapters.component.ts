@@ -21,6 +21,7 @@ export class ChaptersComponent implements OnInit {
 
   submitted = false;
 
+  success: boolean | string = false;
 
   constructor(
     private _chapterService: ChapterService
@@ -43,7 +44,32 @@ export class ChaptersComponent implements OnInit {
         this.model = new Chapter();
       });
   }
+
+  setEdit(chapter: Chapter) {
+    if (this.editing && this.editingChapter.id === chapter.id) {
+      this.editing = false;
+      this.editingChapter = new Chapter();
+    } else {
+      this.editing = true;
+      this.editingChapter = JSON.parse(JSON.stringify(chapter));
+    }
+  }
+
+
   editChapter(id: number) {
-    console.log('editing chapter #' + id)
+    this._chapterService.editChapter(id, this.editingChapter)
+      .subscribe(res => {
+        this.success = 'Situation ' + id + ' sauvegardé avec succès.';
+        this.setEdit(this.editingChapter);
+
+        for (let index = 0; index < this.chapters.length; index++) {
+          const c = this.chapters[index];
+          if (c.id === id) {
+            this.chapters[index] = res;
+          }
+          
+        }
+      })
+
   }
 }

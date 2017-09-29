@@ -40,7 +40,7 @@ form {
   }
   .required>label {
     &:after {
-      content:" *";
+      content: " *";
       color: red;
     }
   }
@@ -52,11 +52,10 @@ form {
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid darken($color-base, 40);
     color: $color-base;
-    display:inline-block;
+    display: inline-block;
     width: 30%;
     vertical-align: top;
     padding: 4px 6px;
-    
     outline: 0;
     &:focus {
       border-color: lighten($color-base, 0);
@@ -82,7 +81,7 @@ form {
       outline: 0;
     }
     option {
-      background: rgba(0,0,0,0.4);
+      background: rgba(0, 0, 0, 0.4);
     }
   }
 }
@@ -93,9 +92,9 @@ table.list {
   tr {
     td {
       border-bottom: 1px solid darken($color-base, 44);
-      border-left:0;
-      border-right:0;
-      border-top:0;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
       padding: 0.2em 0.5em;
       &.xl {
         width: 3%;
@@ -113,16 +112,17 @@ table.list {
         width: 70%;
       }
     }
-    
   }
 }
 
-.ng-valid[required], .ng-valid.required  {
+.ng-valid[required],
+.ng-valid.required {
   //border-color: #42A948; /* green */
 }
 
-.ng-dirty.ng-invalid:not(form)  {
-  border-color: #a94442; /* red */
+.ng-dirty.ng-invalid:not(form) {
+  border-color: #a94442;
+  /* red */
 }
 
 input[type="submit"],
@@ -137,22 +137,28 @@ a.button {
   padding: 5px 8px;
   outline: 0;
   background: darken($color-base, 70);
+  white-space:nowrap;
   cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   &:active {
-    position:relative;
+    position: relative;
     top: 1px;
     left: 1px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   }
   &[disabled] {
     box-shadow: none;
     opacity: 0.4;
-    cursor:default;
+    cursor: default;
+  }
+  &.editing {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    background: darken($color-base, 80);
   }
 }
-
-
 
 blockquote {
   background: rgba(#f9f9f9, 0.3);
@@ -162,6 +168,7 @@ blockquote {
   padding: 1em 10px;
   quotes: "\201C""\201D""\2018""\2019";
 }
+
 blockquote:before {
   color: rgba(#ccc, 0.3);
   content: open-quote;
@@ -170,15 +177,13 @@ blockquote:before {
   margin-right: 0.25em;
   vertical-align: -0.4em;
 }
+
 blockquote p {
   display: inline;
 }
 
-
-
 .success {
-  display:block;
-
+  display: block;
   background: rgba(green, 0.2);
   border-left: 10px solid rgba(green, 0.2);
   margin: 1.5em 0;

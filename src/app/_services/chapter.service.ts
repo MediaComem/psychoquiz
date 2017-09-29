@@ -63,4 +63,12 @@ export class ChapterService {
             .map(this.httpHelper.extractData)
             .catch(this.httpHelper.handleError);
     }
+
+    
+
+    editChapter(id: number, body: Chapter): Observable<Chapter> {
+        return this.http.put(ROUTE + '/' + id, body, this.options)
+            .map(this.httpHelper.extractData)
+            .catch(this.httpHelper.handleError);
+    }
 }

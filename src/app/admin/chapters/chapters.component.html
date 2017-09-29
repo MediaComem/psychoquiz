@@ -1,6 +1,11 @@
 <div class="component component-inner admin-component">
   <div *ngIf="!editing" class="add-chapter">
     <h3>Ajouter une situation</h3>
+
+    <p class="success" *ngIf="success">
+      {{ success }}
+    </p>
+
     <form (ngSubmit)="onSubmit()" #chapterForm="ngForm">
 
       <div class="form-group required">
@@ -50,7 +55,7 @@
         <input type="number" [(ngModel)]="editingChapter.number" class="form-control" id="number" name="number" required>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-warn" (click)="editing = false">Annuler l'édition</button>
+        <button type="submit" class="btn btn-warn" (click)="setEdit(editingChapter)">Annuler l'édition</button>
         <button type="submit" class="btn btn-success" [disabled]="!editChapterForm.form.valid">Sauvegarder la situation</button>
       </div>
     </form>
@@ -62,7 +67,7 @@
           <td class="xs"><strong>{{chapter.number}}</strong></td>
           <td>{{chapter.title}}</td>
           <td>{{chapter.intro}}</td>
-          <td class="xs"><button (click)="editing='true' && editingChapter = chapter">edit</button></td>
+          <td class="xs"><button [class]="editingChapter && chapter.id === editingChapter.id ? 'editing': 'not-editing'" (click)="setEdit(chapter)">edit</button></td>
         </tr>
       </tbody>
     </table>

@@ -43,7 +43,7 @@
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-warn" (click)="editing = false">Annuler l'édition</button>
+        <button type="submit" class="btn btn-warn" (click)="setEdit(editingStatement)">Annuler l'édition</button>
         <button type="submit" class="btn btn-success" [disabled]="!editStatementForm.form.valid">Sauvegarder l'affirmation</button>
       </div>
     </form>
@@ -61,13 +61,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let statement of statements">
+        <tr *ngFor="let statement of statements" [class]="getEventOdd(statement.ChapterId)">
           <td>{{statement?.id}}</td>
           <td>{{statement?.ChapterId}}</td>
           <td><em>{{statement?.text}}</em></td>
-          <td class="xs">
-            <button (click)="editing='true' && editingStatement = statement">editer</button>
-            <a class="button" [routerLink]="statement.id">lier les profils</a>
+          <td class="buttons">
+            <button [class]="editingStatement && statement.id === editingStatement.id ? 'editing': 'not-editing'" (click)="setEdit(statement)">Éditer</button>
+            <a class="button" [routerLink]="statement.id">Profils</a>
           </td>
         </tr>
       </tbody>
