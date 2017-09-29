@@ -1,0 +1,16 @@
+.title {
+    white-space: nowrap;
+}
+
+.image {
+    height: 150px;
+    margin: 1em;
+    float:right;
+    
+    img {
+        max-height: 130px;
+        width: auto;
+        padding: 10px;
+        border: 1px solid white;
+    }
+}

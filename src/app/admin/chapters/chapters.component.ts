@@ -42,6 +42,7 @@ export class ChaptersComponent implements OnInit {
         this.chapters.push(res);
         this.chapterForm.reset();
         this.model = new Chapter();
+        this.success = "La situation a été créée avec success."
       });
   }
 
