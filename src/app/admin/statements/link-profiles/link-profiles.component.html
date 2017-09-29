@@ -1,4 +1,5 @@
 <div *ngIf="statement" class="component component-inner admin-component">
+  <a routerLink="/admin/statements" class="button back"> &#8624; &nbsp; retour aux affirmations</a>
   <h3>Gestion de l'affirmation n° {{statement.id}}</h3>
   <blockquote>
     <p>{{statement.text}}</p>
@@ -7,7 +8,7 @@
   <p class="success" *ngIf="success">
     Sauvegarde effectuée
   </p>
-  
+
 
   <form (ngSubmit)="editStatement()" #editStatementForm="ngForm">
     <table *ngIf="profiles && profiles.length > 0" class="list">
@@ -24,16 +25,12 @@
         <tr *ngFor="let profile of profiles">
           <td>{{profile.name}} ({{profile.id}})</td>
           <td class="xs">
-            <input class="form-control" type="number" 
-                    step="1" name="weightIfTrue-{{profile.id}}" 
-                    [(ngModel)]="weightIfTrue[profile.id]" 
-                    min="0" max="10">
+            <input class="form-control" type="number" step="1" name="weightIfTrue-{{profile.id}}" [(ngModel)]="weightIfTrue[profile.id]"
+              min="0" max="10">
           </td>
           <td class="xs">
-            <input class="form-control" type="number" 
-                    step="1" name="weightIfFalse-{{profile.id}}"
-                    [(ngModel)]="weightIfFalse[profile.id]"
-                     min="0" max="10">
+            <input class="form-control" type="number" step="1" name="weightIfFalse-{{profile.id}}" [(ngModel)]="weightIfFalse[profile.id]"
+              min="0" max="10">
           </td>
         </tr>
       </tbody>
@@ -44,5 +41,7 @@
     </div>
 
   </form>
-  <p>Utilisez cette page pour lier cette affirmation avec des profils. Le poids permet de pondérer les réponses données aux affirmations en fonction des profils afin d'avoir des résultats cohérents. Utiliser des valeurs entre 0 (aucune pondération) et 10 (pondération maximale).</p>
+  <p>Utilisez cette page pour lier cette affirmation avec des profils. Le poids permet de pondérer les réponses données aux
+    affirmations en fonction des profils afin d'avoir des résultats cohérents. Utiliser des valeurs entre 0 (aucune pondération)
+    et 10 (pondération maximale).</p>
 </div>

@@ -95,23 +95,26 @@ table.list {
       border-left: 0;
       border-right: 0;
       border-top: 0;
-      padding: 0.2em 0.5em;
-      &.xl {
-        width: 3%;
-      }
-      &.s {
-        width: 7%;
-      }
-      &.m {
-        width: 20%;
-      }
-      &.l {
-        width: 50%;
-      }
-      &.xl {
-        width: 70%;
-      }
     }
+  }
+}
+th,td {
+  padding: 0.2em 0.5em;
+  
+  &.xl {
+    width: 3%;
+  }
+  &.s {
+    width: 7%;
+  }
+  &.m {
+    width: 20%;
+  }
+  &.l {
+    width: 50%;
+  }
+  &.xl {
+    width: 70%;
   }
 }
 

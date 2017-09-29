@@ -14,3 +14,10 @@
         border: 1px solid white;
     }
 }
+
+.chapter-list {
+    height: 50vh;
+    overflow-y: auto;
+    background: #333;
+    border:1px solid #555;
+}

@@ -1,3 +1,7 @@
+.component {
+    position:relative;
+    
+}
 td.buttons {
     width: 130px;
     text-align:right;
@@ -23,4 +27,20 @@ table.list tr.odd td {
 
 .chapter-select {
     max-width: 400px;
+}
+
+.statement-list {
+    height: 50vh;
+    overflow-y: auto;
+    background: #333;
+    border:1px solid #555;
+    padding-top: 2em;
+    thead {
+        position:absolute; // absolute to component
+        left:1px;
+        right: 1em;
+        background: #222;
+        margin-top: -2em;
+        padding: 0em 0.5em;
+    }
 }

@@ -54,16 +54,16 @@
     <table *ngIf="statements && statements.length > 0" class="list">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>CID</th>
+          <th class="xs">ID</th>
+          <th class="xs">CID</th>
           <th>Texte</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let statement of statements" [class]="getEventOdd(statement.ChapterId)">
-          <td>{{statement?.id}}</td>
-          <td>{{statement?.ChapterId}}</td>
+          <td class="xs">{{statement?.id}}</td>
+          <td class="xs">{{statement?.ChapterId}}</td>
           <td><em>{{statement?.text}}</em></td>
           <td class="buttons">
             <button [class]="editingStatement && statement.id === editingStatement.id ? 'editing': 'not-editing'" (click)="setEdit(statement)">Éditer</button>
