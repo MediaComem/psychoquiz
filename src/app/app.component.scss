@@ -19,8 +19,7 @@ $menuHeight: 30px;
 
 #main-content {
   .component {
-    margin-top: $menuHeight;
-    padding: 1em 0;
+    //margin-top: $menuHeight;
     animation: 0.5s ease-out 0s 1 fadeIn;
   }
   .component-inner { // subcomponents
@@ -29,6 +28,7 @@ $menuHeight: 30px;
   }
   .admin-component {
     width: 80%;
+    padding: 1em 0;    
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;

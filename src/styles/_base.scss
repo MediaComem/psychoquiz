@@ -1,10 +1,13 @@
 body {
   color: $color-base;
-  color: white;
   margin: 0;
   padding: 0;
   width: 100vw;
   overflow-x: hidden;
+}
+
+.app-component {
+  background: url('/assets/background.jpg') no-repeat center center fixed #071113 / cover;
 }
 
 a {
@@ -98,9 +101,10 @@ table.list {
     }
   }
 }
-th,td {
+
+th,
+td {
   padding: 0.2em 0.5em;
-  
   &.xl {
     width: 3%;
   }
@@ -128,6 +132,9 @@ th,td {
   /* red */
 }
 
+
+
+
 input[type="submit"],
 button,
 a.button {
@@ -140,7 +147,7 @@ a.button {
   padding: 5px 8px;
   outline: 0;
   background: darken($color-base, 70);
-  white-space:nowrap;
+  white-space: nowrap;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
   &:active {
@@ -160,6 +167,42 @@ a.button {
     left: 1px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     background: darken($color-base, 80);
+  }
+  &.bigbutton {
+    background: url('/assets/button_bg.png') repeat-y center center transparent;
+    background-size: 340px auto;
+    font-size: 20px;
+    display:block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+    width: 340px;
+    line-height: 1.5;
+    padding: 0;
+    box-shadow:none;
+    border:none;
+    border-radius:0;
+    font-family: 'Elianto', $font-base;
+    position:relative;
+    &:before, &:after {
+      content: "";
+      display:block;
+      background: url('/assets/button_ba.png') no-repeat top center transparent;
+      background-size: 340px auto;
+      
+      height: 38px;
+      width: 340px;
+      position:absolute;
+      top: -38px;
+    }
+    &:after {
+      transform: rotate(180deg);
+      top: auto;
+      bottom: -38px;
+    }
+    
   }
 }
 

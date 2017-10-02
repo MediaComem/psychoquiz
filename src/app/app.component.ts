@@ -8,5 +8,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 })
 export class AppComponent {
-  title = 'Maison d\'Ailleurs - Star Wars Quiz';
+  title = 'Ton père je suis.';
 }
