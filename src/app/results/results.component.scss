@@ -1,38 +1,46 @@
+.results {
+    border: 1px solid rgba(#0C2C39, 0.8);
+    background: rgba(#0C2C39, 0.3);
+}
 .chart-outer {
   border: 1px solid white;
-  width: 20px;
-  width: 5vw;
+  width: 30px;
+  width: 9vw;
   min-height: 150px;
-  height: 50vh;
+  height: 40vh;
   display: inline-block;
-  position:relative;
-  overflow:hidden;
+  position: relative;
+  overflow: hidden;
   margin: 0 0.3vw;
 }
+
 .title {
-    white-space:nowrap;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-rendering: auto
 }
 
-
 .chart-inner {
-    background:white;
-    width: 100%;
-    min-height: 5px;
-    position:absolute;
-    bottom:0;
-    color: #eee;
+  background: white;
+  width: 100%;
+  min-height: 5px;
+  position: absolute;
+  bottom: 0;
+  color: #eee;
 }
 
 .amount {
-    position:absolute;
-    bottom: 2px;
-    left:0;
-    right:0;
-    color: #000;
-    font-size: 0.8em;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  right: 0;
+  color: #000;
+  font-size: 0.8em;
 }
 
 .profile {
-    text-align:center;
-    margin-bottom: 2em;
+  text-align: center;
+  margin-bottom: 2em;
 }

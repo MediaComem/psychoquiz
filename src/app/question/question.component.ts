@@ -60,7 +60,7 @@ export class QuestionComponent implements OnInit {
     this._chapterService.currentChapter.subscribe(res => {
       this.chapter = res;
       this.statements = res.Statements;
-      if (!res || !res.Statements) {
+      if (!res || !res.Statements || res.Statements.length === 0) {
         this._router.navigate(['situation']);
       }
     });
@@ -97,7 +97,7 @@ export class QuestionComponent implements OnInit {
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
       
-      this.opacity = this.confidenceCalculator(event.throwOutConfidence, 15) * 0.7;
+      this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
 
       if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
         if (event.throwDirection.toString() === 'Symbol(RIGHT)') {

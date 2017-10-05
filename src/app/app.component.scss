@@ -12,23 +12,80 @@ $menuHeight: 30px;
   left: 0;
   right: 0;
   a {
-    border:none;
-    color:white;
+    border: none;
+    color: white;
+  }
+  .title {
+    padding-left: 1em;
+  }
+  .admin {
+    float: right;
+    padding-right: 1em;
+    opacity: 0.7;
   }
 }
 
+#small-logo {
+  &:before {
+    content: "";
+    position:absolute;
+    z-index: -1;
+    left:0;
+    right:0;
+    height: 300px;
+    top: -150px;
+    background: rgba(0,0,0,0.8); /* For browsers that do not support gradients */
+    background: -webkit-radial-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0) 70%); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0) 70%); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0) 70%); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0) 70%); /* Standard syntax */
+  }
+  
+
+  a {
+    border:none;
+    text-decoration:none;
+  }
+  position:fixed;
+  z-index: 2;
+  width: 100vw;
+  height: 100px;
+  p.logo {
+    width: 100px;
+    margin: 0 auto;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+
 #main-content {
+  background: url(/assets/gridbg.png) left top scroll / 120px auto, url(/assets/background.jpg) no-repeat top left fixed / auto;
+  /*background: url('/assets/background.jpg') no-repeat center center fixed #071113,*/
+  min-height: 100vh;
+  max-width: 540px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  //overflow: hidden;
+  &.logoVisible {
+    padding-top: 80px;
+  }
   .component {
-    margin-top: $menuHeight;
-    padding: 1em 0;
+    //margin-top: $menuHeight;
     animation: 0.5s ease-out 0s 1 fadeIn;
   }
-  .component-inner { // subcomponents
-    padding:0;
-    margin:0;
+  .component-inner {
+    // subcomponents
+    padding: 0;
+    margin: 0;
+  }
+  .app-component {
+    padding: 20px;
   }
   .admin-component {
     width: 80%;
+    padding: 1em 0;
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
@@ -44,19 +101,5 @@ $menuHeight: 30px;
   }
   100% {
     opacity: 1
-  }
-}
-
-
-#menu {
-  .title {
-    
-    padding-left: 1em;
-
-  }
-  .admin {
-    float:right;
-    padding-right: 1em;
-    opacity: 0.7;
   }
 }
