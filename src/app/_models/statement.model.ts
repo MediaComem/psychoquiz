@@ -10,4 +10,6 @@ export class Statement {
     public ChapterId: number;
     public Chapter: Chapter;
     public Profiles: Profile[];
+    public accepting: boolean;
+    public refusing: boolean;
 }

@@ -3,9 +3,12 @@
   <div id="answers" class="verticalsplit">
     <div class="left" [style.backgroundColor]="'rgba(255,255,255,'+ opacityLeft +')'">
       <div class="text">Non</div>
+
     </div>
     <div class="right" [style.backgroundColor]="'rgba(255,255,255,'+ opacityRight +')'">
       <div class="text">Oui</div>
+
+
     </div>
   </div>
 
@@ -13,10 +16,14 @@
     <div class="stack" swing-stack [stackConfig]="stackConfig" #swSwing (throwout)="onThrowOut($event)">
       <div class="card" swing-card #questionCard [id]="'statement-' + st.id" *ngFor="let st of statements">
         <div class="card-content">
-          <div class="inner">{{st.text}}</div>
+          <div class="inner">
+            {{st.text}}
+          </div>
+          <div class="info accept" *ngIf="st.accepting"><br>[ Accepter ]</div>
+          <div class="info refuse" *ngIf="st.refusing"><br>[ Refuser ]</div>
+          
+          
         </div>
-        <img class="icon rotate-left" src="assets/arrow.svg" />
-        <img class="icon rotate-right" src="assets/arrow.svg" />
       </div>
     </div>
   </div>

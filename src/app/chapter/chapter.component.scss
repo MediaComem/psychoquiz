@@ -1,0 +1,14 @@
+img.fullwidth {
+    max-width: 540px;
+    width: 100vw;
+    margin-left: -21px; // 1px border. 20px padding;
+    opacity: 0.8;
+}
+.call-to-action {
+    position: absolute;
+    left:0;
+    right:0;
+    bottom: 10%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.4);
+}

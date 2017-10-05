@@ -29,8 +29,11 @@ export class QuestionComponent implements OnInit {
   stackConfig: StackConfig;
   counter: number = 0;
   finished = false;
+  accept: boolean;
+  refuse: boolean;
 
   statements: Statement[];
+  currentCardId: number;
   chapter: Chapter;
   opacity: number = 0;
   opacityLeft: number = 0;
@@ -92,22 +95,48 @@ export class QuestionComponent implements OnInit {
       this.opacityRight = 0;
     });
 
-    //this.swingStack.dragstart.subscribe((event: DragEvent) => {  });
 
+    this.swingStack.dragstart.subscribe((event: DragEvent) => {  
+      
+      this.currentCardId = parseInt(event.target.id.split('-')[1],10);
+
+
+    });
+
+    this.swingStack.dragend.subscribe((event: DragEvent) => {
+      for (let index = 0; index < this.statements.length; index++) {
+        this.statements[index].accepting = false;
+        this.statements[index].refusing = false;
+      }
+    });
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
-      
+
+    
       this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
+
 
       if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
         if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
           //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
-          this.opacityRight = this.opacity;
+          this.opacityRight = 0.5
           this.opacityLeft = 0;
+          for (var index = 0; index < this.statements.length; index++) {
+            if (this.statements[index].id === this.currentCardId) {
+              this.statements[index].accepting = true;
+              this.statements[index].refusing = false;
+            }
+          }
         }
         if (event.throwDirection.toString() === 'Symbol(LEFT)') {
-          this.opacityLeft = this.opacity;
+          this.opacityLeft = 0.5;
           this.opacityRight = 0;
+          for (var index = 0; index < this.statements.length; index++) {
+            if (this.statements[index].id === this.currentCardId) {
+              this.statements[index].accepting = false;
+              this.statements[index].refusing = true;
+            }
+          }
         }
       }
     });
