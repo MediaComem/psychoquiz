@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-
+import { Component, ViewEncapsulation, OnInit, } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +8,25 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 
 })
-export class AppComponent {
-  title = 'Ton père je suis.';
+
+export class AppComponent implements OnInit {
+  
+  logoVisible = false;
+
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe(val => {
+      if (val && val instanceof NavigationEnd) {
+        console.log(val.url);
+        if (val.url === '/' || val.url === '/start') {
+          this.logoVisible = false;
+        } else {
+          this.logoVisible = true;
+        }
+      }
+    });
+  }
 }

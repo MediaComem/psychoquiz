@@ -8,12 +8,6 @@ img {
   max-width: 100%;
 }
 
-img.fullwidth {
-  width: 100vw;
-  max-width: inherit;
-  margin-left: -1em;
-}
-
 #main-content {
   left: 0;
   right: 0;
@@ -47,19 +41,8 @@ h1.component-title {
   position: relative;
 }
 
-.app-component {
-  max-width: 540px;
-  padding: 20px;
-  margin: 0 auto;
-}
 
 .component-container {
-  background: #222;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   >h4 {
     margin-top: 0;
   }

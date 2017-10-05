@@ -4,7 +4,10 @@
         <span class="admin"><a routerLink="admin">admin</a></span>
     </div>
 </section-->
+<section *ngIf="logoVisible" id="small-logo">
+    <p class="logo"><a routerLink="/"><img src="/assets/logo.svg" alt="Logo"/></a></p>
+</section>
 
-<section id="main-content" class="component-container">
+<section id="main-content" [class]="logoVisible ? 'component-container logoVisible':'component-container'">
     <router-outlet></router-outlet>
 </section>
