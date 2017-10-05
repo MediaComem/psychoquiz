@@ -8,7 +8,7 @@ import { Statement } from '../_models/statement.model';
 @Component({
   selector: 'app-chapter',
   templateUrl: './chapter.component.html',
-  styleUrls: ['./chapter.component.css']
+  styleUrls: ['./chapter.component.scss']
 })
 export class ChapterComponent implements OnInit {
 

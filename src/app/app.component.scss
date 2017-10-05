@@ -61,10 +61,10 @@ $menuHeight: 30px;
 
 
 #main-content {
-  background: url(/assets/gridbg.png) left top scroll / 120px auto, url(/assets/background.jpg) no-repeat top left fixed / auto;
+  background: url(/assets/gridbg.png) center top scroll / 120px auto;
   /*background: url('/assets/background.jpg') no-repeat center center fixed #071113,*/
-  min-height: 100vh;
-  max-width: 540px;
+  border: 1px solid rgba(#35616d,0.3);
+  max-width: 538px;
   margin: 0 auto;
   box-sizing: border-box;
   //overflow: hidden;
