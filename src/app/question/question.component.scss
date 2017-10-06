@@ -6,30 +6,30 @@
 }
 
 #viewport {
-  height: 100vh;
+  height: 90vh;
+  max-height: 800px;
   width: 100%;
   margin: 0 auto 0;
   position: relative;
   border-radius: 5em;
   top: 0;
   .stack {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     background: none;
     position: absolute;
     top: 100px;
     top: 30vh;
     left: 50%;
-    margin-left: -100px;
+    margin-left: -140px;
   }
 }
 
 .tdr-component {
-  margin-top: -80px;  
-  
+  margin-top: -80px;
   animation: 1s ease-out 0s 1 fadeIn;
-  .bg {
 
+  .bg { // the image
     background-repeat: no-repeat;
     background-color: #333;
     background-size: cover;
@@ -39,45 +39,51 @@
     -o-filter: blur(5px);
     -ms-filter: blur(5px);
     filter: blur(5px);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom:0;
+    top:0;
   }
 }
 
 .card {
-  width: 200px;
-  height: 200px;
+  width: 280px;
+  height: 280px;
+
+  padding: 20px;
   list-style: none;
-  background: rgba(#000, .9);
+  background: url(/assets/round.png) no-repeat center center / contain;
   border-radius: 50em;
   position: absolute;
   top: 0;
   left: 0;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05) inset, 0px 0px 12px rgba($color-base, 0.6);
   text-align: center;
   box-sizing: border-box;
   cursor: default;
+  &:before {
+    content: "";
+    display:block;
+    background: url(/assets/round_neutral.png) no-repeat center center / contain;
+    width: 280px;
+    height: 280px;
+    left:0;
+    top:0;
+    position:absolute;
+  }
+  &.accepting:before {
+    background-image: url(/assets/round_accept.png);
+  }
+  &.refusing:before {
+    background-image: url(/assets/round_refuse.png);
+  }
   p {
     margin: 0;
   }
-  .icon {
-    position: absolute;
-    top: 75px;
-    height: 60px;
-    width: auto;
-    opacity: 0.2;
-    &:hover {
-      opacity: 0.3;
-    }
-    &.rotate-left {
-      left: 10px;
-    }
-    &.rotate-right {
-      right: 10px;
-    }
-  }
   .card-content {
     height: 100%;
-    margin-left: 22px;
-    margin-right: 22px;
+    margin-left: 40px;
+    margin-right: 40px;
     position: relative;
     display: table;
     .inner {
@@ -85,7 +91,9 @@
       vertical-align: middle;
       text-align: center;
       color: white;
-      width: 156px;
+      width: 160px;
+      font-weight: 800;
+      line-height: 1.2;
     }
     .info {
       position:absolute;
@@ -142,7 +150,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 10, 0.65);
+  background: url(/assets/deco_bg.png) no-repeat -4% 30%, url(/assets/deco_bg.png) no-repeat 80% 0, rgba(10, 10, 10, 0.65);
+  background-size: 30%, 30%, auto;
 }
 
 // 2-ways swipe

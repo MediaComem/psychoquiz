@@ -55,7 +55,7 @@ export class QuestionComponent implements OnInit {
       throwOutDistance: (d) => {
         return 12000;
       }
-    }
+    };
   }
 
   ngOnInit() {
@@ -110,17 +110,20 @@ export class QuestionComponent implements OnInit {
       }
     });
 
+    
+
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
 
     
-      this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
+      //this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
 
 
-      if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
+      //if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
         if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
           //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
           this.opacityRight = 0.5
           this.opacityLeft = 0;
+          // Add the classes only to the current card (element in list that is the currentCardId)
           for (var index = 0; index < this.statements.length; index++) {
             if (this.statements[index].id === this.currentCardId) {
               this.statements[index].accepting = true;
@@ -129,8 +132,10 @@ export class QuestionComponent implements OnInit {
           }
         }
         if (event.throwDirection.toString() === 'Symbol(LEFT)') {
+          //this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
           this.opacityLeft = 0.5;
           this.opacityRight = 0;
+          // Add the classes only to the current card (element in list that is the currentCardId)
           for (var index = 0; index < this.statements.length; index++) {
             if (this.statements[index].id === this.currentCardId) {
               this.statements[index].accepting = false;
@@ -138,7 +143,7 @@ export class QuestionComponent implements OnInit {
             }
           }
         }
-      }
+      //}
     });
   }
 
