@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-    api: 'http://jesuistonpere.comem.ch/api/'
+  api: 'http://localhost:8090/api/'
 };
