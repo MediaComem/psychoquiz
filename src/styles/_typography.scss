@@ -1,6 +1,7 @@
 @font-face {
-  font-family: 'Elianto';
-  src: url('../assets/fonts/elianto-regular-webfont.woff2') format('woff2'), url('../assets/fonts/elianto-regular-webfont.woff') format('woff');
+  font-family: 'eliantoregular';
+  src: url('/assets/fonts/elianto-regular-webfont.woff2') format('woff2'),
+       url('/assets/fonts/elianto-regular-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

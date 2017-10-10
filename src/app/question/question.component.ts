@@ -34,6 +34,7 @@ export class QuestionComponent implements OnInit {
 
   statements: Statement[];
   currentCardId: number;
+  currentCardIndex: number;
   chapter: Chapter;
   opacity: number = 0;
   opacityLeft: number = 0;
@@ -110,10 +111,10 @@ export class QuestionComponent implements OnInit {
     });
 
 
-    this.swingStack.dragstart.subscribe((event: DragEvent) => {  
-      
-      this.currentCardId = parseInt(event.target.id.split('-')[1],10);
+    this.swingStack.dragstart.subscribe((event: DragEvent) => {
 
+      this.currentCardId = parseInt(event.target.id.split('-')[1], 10);
+      this.currentCardIndex = parseInt(event.target.id.split('-')[2], 10);
 
     });
 
@@ -124,39 +125,36 @@ export class QuestionComponent implements OnInit {
       }
     });
 
-    
+
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
-
-    
       //this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
 
-
+      console.log(this.currentCardIndex);
+      console.log(this.statements[this.currentCardIndex]);
       //if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
-        if (event.throwDirection.toString() === 'Symbol(RIGHT)') {
-          //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
-          this.opacityRight = 0.5
-          this.opacityLeft = 0;
-          // Add the classes only to the current card (element in list that is the currentCardId)
-          for (var index = 0; index < this.statements.length; index++) {
-            if (this.statements[index].id === this.currentCardId) {
-              this.statements[index].accepting = false;
-              this.statements[index].refusing = true;
-            }
-          }
-        }
-        if (event.throwDirection.toString() === 'Symbol(LEFT)') {
-          //this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
-          this.opacityLeft = 0.5;
-          this.opacityRight = 0;
-          // Add the classes only to the current card (element in list that is the currentCardId)
-          for (var index = 0; index < this.statements.length; index++) {
-            if (this.statements[index].id === this.currentCardId) {
-              this.statements[index].accepting = true;
-              this.statements[index].refusing = false;
-            }
-          }
-        }
+      if (event.throwDirection.toString() === 'Symbol(RIGHT)' && event.throwOutConfidence === 1) {
+        //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
+        this.opacityRight = 0.5
+        this.opacityLeft = 0;
+        // Add the classes only to the current card (element in list that is the currentCardId)
+        this.statements[this.currentCardIndex].accepting = false;
+        this.statements[this.currentCardIndex].refusing = true;
+
+      } else if (event.throwDirection.toString() === 'Symbol(LEFT)' && event.throwOutConfidence === 1) {
+        //this.opacityLeft = Math.round(event.throwOutConfidence * precision) / precision * 0.7;
+        this.opacityLeft = 0.5;
+        this.opacityRight = 0;
+        // Add the classes only to the current card (element in list that is the currentCardId)
+        this.statements[this.currentCardIndex].accepting = true;
+        this.statements[this.currentCardIndex].refusing = false;
+
+      } else {
+        this.statements[this.currentCardIndex].accepting = false;
+        this.statements[this.currentCardIndex].refusing = false;
+        this.opacityLeft = 0;
+        this.opacityRight = 0;
+      }
       //}
     });
   }
@@ -176,7 +174,7 @@ export class QuestionComponent implements OnInit {
       navigator.vibrate(60);
     }*/
     const id = event.target.attributes.getNamedItem('id').textContent;
-    const stid = id.split('-').length == 2 ? parseInt(id.split('-')[1], 10) : 0;
+    const stid = id.split('-').length >= 2 ? parseInt(id.split('-')[1], 10) : 0;
     const answer = event.throwDirection.toString() === 'Symbol(LEFT)';
     this.opacityLeft = 0.7;
     this.opacityRight = 0.7;

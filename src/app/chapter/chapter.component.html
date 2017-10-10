@@ -1,13 +1,17 @@
 <div class="component app-component">
   <ng-container *ngIf="chapter">
-  <h1 class="component-title">{{chapter.title}}</h1>
-  <p>
+  <!-- <h1 class="component-title">{{chapter.title}}</h1> -->
+  <div class="separator-big"></div>
+  
+  <p class="intro">
     {{chapter.intro}}
   </p>
-  <img [src]="chapter.imgUrl" [alt]="'image for' + chapter.title" class="fullwidth"/>
+  <div class="illustration" [style.backgroundImage]="'url(' + chapter.imgUrl + ')'">
+  <!-- <img [src]="chapter.imgUrl" [alt]="'image for' + chapter.title" class="fullwidth"/> -->
+  </div>
   <div class="call-to-action">
-      <p *ngIf="chapter.Statements"><a class="button" routerLink="tdr">C'est parti, répondre aux affirmations !</a></p>
-      <p *ngIf="chapter.Statements"><em> ({{chapter.Statements.length}} élément<ng-container *ngIf="chapter.Statements.length > 1">s</ng-container>)</em></p>
+      <p *ngIf="chapter.Statements"><a class="button bigbutton" routerLink="tdr"><span class="inner">Commencer!</span></a></p>
+      <!-- <p *ngIf="chapter.Statements"><em> ({{chapter.Statements.length}} élément<ng-container *ngIf="chapter.Statements.length > 1">s</ng-container>)</em></p> -->
   </div>
   </ng-container>
   <ng-container *ngIf="loading">

@@ -5,6 +5,7 @@
       <div class="text">Oui</div>
 
     </div>
+    <div class="separator vertical"></div>
     <div class="right" [style.backgroundColor]="'rgba(255,255,255,'+ opacityRight +')'">
       <div class="text">Non</div>
 
@@ -14,7 +15,7 @@
 
   <div id="viewport">
     <div class="stack" swing-stack [stackConfig]="stackConfig" #swSwing (throwout)="onThrowOut($event)">
-      <div class="card" swing-card #questionCard [id]="'statement-' + st.id" *ngFor="let st of statements" [ngClass]="{'accepting': st.accepting, 'refusing': st.refusing, 'neutral': !st.accepting && !st.refusing}">
+      <div class="card" swing-card #questionCard  *ngFor="let st of statements; let i = index" [id]="'statement-' + st.id + '-' + i" [ngClass]="{'accepting': st.accepting, 'refusing': st.refusing, 'neutral': !st.accepting && !st.refusing}">
         <div class="card-content">
           <div class="inner">
             {{st.text}}
