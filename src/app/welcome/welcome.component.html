@@ -7,7 +7,7 @@
   <div class="separator"></div>
   <div class="call-to-action">
     <div class="new-player" *ngIf="!oldPlayer">
-      <button class="bigbutton" (click)="startNew()">Démarrer l'experience</button>
+      <button class="bigbutton" (click)="startNew()"><span class="inner">Démarrer</span></button>
     </div>
     <div class="old-player" *ngIf="oldPlayer">
       <p>Reprendre session ? &nbsp;&nbsp; <a class="button" routerLink="/situation">Reprendre</a>

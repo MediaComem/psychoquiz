@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(val => {
       if (val && val instanceof NavigationEnd) {
-        console.log(val.url);
         if (val.url === '/' || val.url === '/start') {
           this.logoVisible = false;
         } else {

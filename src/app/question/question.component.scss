@@ -1,9 +1,10 @@
 @import '../../styles/variables';
-
-
 .card-container {
   position: fixed;
 }
+
+$circleSize: 230px;
+$padding: 20px;
 
 #viewport {
   height: 90vh;
@@ -14,22 +15,22 @@
   border-radius: 5em;
   top: 0;
   .stack {
-    width: 300px;
-    height: 300px;
+    width: $circleSize - $padding;
+    height: $circleSize - $padding;
     background: none;
     position: absolute;
     top: 100px;
     top: 30vh;
     left: 50%;
-    margin-left: -140px;
+    margin-left: -($circleSize - $padding/2)/2;
   }
 }
 
 .tdr-component {
-  margin-top: -80px;
+  margin-top: -15px;
   animation: 1s ease-out 0s 1 fadeIn;
-
-  .bg { // the image
+  .bg {
+    // the image
     background-repeat: no-repeat;
     background-color: #333;
     background-size: cover;
@@ -42,16 +43,15 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom:0;
-    top:0;
+    bottom: 0;
+    top: 0;
   }
 }
 
 .card {
-  width: 280px;
-  height: 280px;
-
-  padding: 20px;
+  width: $circleSize - $padding;
+  height: $circleSize - $padding;
+  padding: $padding;
   list-style: none;
   background: url(/assets/round.png) no-repeat center center / contain;
   border-radius: 50em;
@@ -63,13 +63,13 @@
   cursor: default;
   &:before {
     content: "";
-    display:block;
+    display: block;
     background: url(/assets/round_neutral.png) no-repeat center center / contain;
-    width: 280px;
-    height: 280px;
-    left:0;
-    top:0;
-    position:absolute;
+    width: $circleSize - $padding;
+    height: $circleSize - $padding;
+    left: 0;
+    top: 0;
+    position: absolute;
   }
   &.accepting:before {
     background-image: url(/assets/round_accept.png);
@@ -82,8 +82,8 @@
   }
   .card-content {
     height: 100%;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: $padding;
+    margin-right: $padding;
     position: relative;
     display: table;
     .inner {
@@ -91,15 +91,15 @@
       vertical-align: middle;
       text-align: center;
       color: white;
-      width: 160px;
+      width: $circleSize;
       font-weight: 800;
       line-height: 1.2;
     }
     .info {
-      position:absolute;
+      position: absolute;
       opacity: 0.8;
-      left:0;
-      right:0;
+      left: 0;
+      right: 0;
       bottom: 1.2em;
       font-size: 0.8em;
     }
@@ -150,7 +150,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(/assets/deco_bg.png) no-repeat -4% 30%, url(/assets/deco_bg.png) no-repeat 80% 0, rgba(10, 10, 10, 0.65);
+  background: url(/assets/deco_bg.png) no-repeat -4% 30%,
+   url(/assets/deco_bg.png) no-repeat 80% 0,
+    rgba(0, 0, 0, 0.5);
   background-size: 30%, 30%, auto;
 }
 
@@ -161,21 +163,62 @@
   .right {
     flex: 1;
     padding: 1em;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba($color-base, 0.6);
-    position:relative;
+    position: relative;
+  }
+  .separator.vertical {
+    width: 1px;
+    height: 100%;
+    margin: 0 0;
+    box-shadow: 0 0px 25px 2px #D1F7FF;
   }
   .text {
     text-align: center;
     position: absolute;
     bottom: 2em;
     font-size: 2em;
-    font-family: 'Elianto', $font-base;
+    font-family: 'eliantoregular', $font-base;
     font-weight: 400;
     text-transform: uppercase;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
     opacity: 0.6;
   }
   .left {}
   .right {}
+}
+
+#swipeHelp {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+
+  .inner {
+    position:relative;
+    background: #ddd;
+    box-shadow: 0 0 10px #ccc;
+    min-width: 240px;
+    width: 50%;
+    max-width: 400px;
+    padding: 30px;
+    margin: 10vh auto 0 auto;
+    border-radius: 4px;
+    color: #222;
+    font-weight: 600;
+    font-size: 1.2em;
+    .close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height:30px;
+      width:30px;
+      line-height:30px;
+      color: #999;
+      cursor:pointer;
+      font-size: 2em;
+    }
+  }
 }

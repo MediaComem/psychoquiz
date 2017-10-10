@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg7847"
+   version="1.1"
+   viewBox="0 0 135.81944 90.663887"
+   height="90.663887mm"
+   width="135.81944mm">
+  <defs
+     id="defs7841">
+    <clipPath
+       id="clipPath2460"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path2458"
+         d="M 0,1339.783 H 752 V 0 H 0 Z" />
+    </clipPath>
+    <clipPath
+       id="clipPath2476"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         id="path2474"
+         d="M 0,1339.783 H 752 V 0 H 0 Z" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata7844">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-40.191469,-21.102585)"
+     id="layer1">
+    <g
+       transform="matrix(0.35277777,0,0,-0.35277777,109.68869,21.102585)"
+       id="g2450">
+      <path
+         id="path2452"
+         style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         d="M 0,0 V -257" />
+    </g>
+    <g
+       id="g2454"
+       transform="matrix(0.35277777,0,0,-0.35277777,-26.48353,282.96366)">
+      <g
+         clip-path="url(#clipPath2460)"
+         id="g2456">
+        <g
+           transform="translate(477,611.7834)"
+           id="g2462">
+          <path
+             id="path2464"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             d="m 0,0 c 0,-50.258 -40.742,-91 -91,-91 -50.258,0 -91,40.742 -91,91 0,50.258 40.742,91 91,91 C -40.742,91 0,50.258 0,0" />
+        </g>
+      </g>
+    </g>
+    <text
+       id="text2468"
+       style="font-variant:normal;font-weight:bold;font-stretch:normal;font-size:38.80555344px;font-family:Titillium;-inkscape-font-specification:Titillium-Semibold;writing-mode:lr-tb;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+       x="100.97398"
+       y="79.123901">
+      <tspan
+         id="tspan2466"
+         y="79.123901"
+         x="100.97398"
+         style="stroke-width:0.35277775;-inkscape-font-specification:'Titillium Web, Bold';font-family:'Titillium Web';font-weight:bold;font-style:normal;font-stretch:normal;font-variant:normal;font-size:38.80555556px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">?</tspan>
+    </text>
+    <g
+       id="g2470"
+       transform="matrix(0.35277777,0,0,-0.35277777,-26.48353,282.96366)">
+      <g
+         clip-path="url(#clipPath2476)"
+         id="g2472">
+        <g
+           transform="translate(209,614.3303)"
+           id="g2478">
+          <path
+             id="path2480"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             d="m 0,0 v 10.397 l -10,-7.986 -10,-7.986 10,-7.986 10,-7.986 v 10.453 H 51 V 0 Z" />
+        </g>
+        <g
+           transform="translate(554,614.3303)"
+           id="g2482">
+          <path
+             id="path2484"
+             style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             d="M 0,0 V 10.397 L 10,2.411 20,-5.575 10,-13.561 0,-21.547 v 10.453 H -51 V 0 Z" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="text2488"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.58333302px;font-family:'Titillium Web';-inkscape-font-specification:'Titillium Web, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.35277775"
+       aria-label="OUINON">
+      <path
+         id="path8474"
+         style="stroke-width:0.35277775"
+         d="m 57.288036,98.73608 q 0.3175,0.550333 1.17475,0.550333 0.85725,0 1.164166,-0.550333 0.3175,-0.560917 0.3175,-1.862667 0,-1.312333 -0.3175,-1.905 -0.3175,-0.592667 -1.164166,-0.592667 -0.846667,0 -1.164167,0.592667 -0.3175,0.592667 -0.3175,1.905 0,1.30175 0.306917,1.862667 z m 3.481916,0.931333 q -0.66675,0.888997 -2.307166,0.888997 -1.640417,0 -2.31775,-0.888997 -0.66675,-0.899583 -0.66675,-2.804583 0,-1.905 0.66675,-2.82575 0.677333,-0.931334 2.31775,-0.931334 1.640416,0 2.307166,0.931334 0.677333,0.92075 0.677333,2.82575 0,1.905 -0.677333,2.804583 z" />
+      <path
+         id="path8476"
+         style="stroke-width:0.35277775"
+         d="m 64.829718,98.026996 q 0,1.259417 1.280583,1.259417 1.280584,0 1.280584,-1.259417 v -4.79425 h 1.4605 v 4.7625 q 0,1.322917 -0.687917,1.947334 -0.677333,0.61383 -2.053167,0.61383 -1.375833,0 -2.06375,-0.61383 -0.677333,-0.624417 -0.677333,-1.947334 v -4.7625 h 1.4605 z" />
+      <path
+         id="path8478"
+         style="stroke-width:0.35277775"
+         d="m 70.999796,100.42941 v -7.196664 h 1.4605 v 7.196664 z" />
+      <path
+         id="path8480"
+         style="stroke-width:0.35277775"
+         d="m 144.52856,100.42941 v -7.196664 h 2.46592 l 1.73566,5.926667 h 0.10584 v -5.926667 h 1.46049 v 7.196664 h -2.40241 l -1.79917,-5.926664 h -0.10583 v 5.926664 z" />
+      <path
+         id="path8482"
+         style="stroke-width:0.35277775"
+         d="m 154.00701,98.73608 q 0.3175,0.550333 1.17475,0.550333 0.85725,0 1.16417,-0.550333 0.3175,-0.560917 0.3175,-1.862667 0,-1.312333 -0.3175,-1.905 -0.3175,-0.592667 -1.16417,-0.592667 -0.84666,0 -1.16416,0.592667 -0.3175,0.592667 -0.3175,1.905 0,1.30175 0.30691,1.862667 z m 3.48192,0.931333 q -0.66675,0.888997 -2.30717,0.888997 -1.64041,0 -2.31775,-0.888997 -0.66675,-0.899583 -0.66675,-2.804583 0,-1.905 0.66675,-2.82575 0.67734,-0.931334 2.31775,-0.931334 1.64042,0 2.30717,0.931334 0.67733,0.92075 0.67733,2.82575 0,1.905 -0.67733,2.804583 z" />
+      <path
+         id="path8484"
+         style="stroke-width:0.35277775"
+         d="m 160.1517,100.42941 v -7.196664 h 2.46591 l 1.73567,5.926667 h 0.10583 v -5.926667 h 1.4605 v 7.196664 h -2.40241 l -1.79917,-5.926664 h -0.10583 v 5.926664 z" />
+    </g>
+  </g>
+</svg>
