@@ -2,11 +2,11 @@
   <div class="bg" [style.backgroundImage]="'url(' + chapter.imgUrl + ')'"></div>
   <div id="answers" class="verticalsplit">
     <div class="left" [style.backgroundColor]="'rgba(255,255,255,'+ opacityLeft +')'">
-      <div class="text">Non</div>
+      <div class="text">Oui</div>
 
     </div>
     <div class="right" [style.backgroundColor]="'rgba(255,255,255,'+ opacityRight +')'">
-      <div class="text">Oui</div>
+      <div class="text">Non</div>
 
 
     </div>
@@ -24,5 +24,13 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div *ngIf="showHelp" id="swipeHelp" (click)="closeHelp()">
+  <div class="inner">
+      <div  (click)="closeHelp()" class="close">&times;</div>      
+    <p>Pour répondre aux questions, faites glisser le cercle à gauche pour "oui" et à droite pour "non".</p>
+    <p><img src="/assets/swipe_help.svg" alt="swipe help" /></p>
   </div>
 </div>

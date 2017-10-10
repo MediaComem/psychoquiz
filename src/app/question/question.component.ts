@@ -38,6 +38,7 @@ export class QuestionComponent implements OnInit {
   opacity: number = 0;
   opacityLeft: number = 0;
   opacityRight: number = 0;
+  showHelp = true;
 
   constructor(
     private _tinderService: TinderService,
@@ -58,8 +59,21 @@ export class QuestionComponent implements OnInit {
     };
   }
 
+  closeHelp() {
+    this.showHelp = false;
+    localStorage.setItem('hideHelp', 'true');
+  }
+
   ngOnInit() {
     // Get statements from current chapter Observable
+
+    if (!localStorage.getItem('hideHelp')) {
+      this.showHelp = true;
+    } else {
+      this.showHelp = false;
+    }
+
+
     this._chapterService.currentChapter.subscribe(res => {
       this.chapter = res;
       this.statements = res.Statements;
@@ -126,8 +140,8 @@ export class QuestionComponent implements OnInit {
           // Add the classes only to the current card (element in list that is the currentCardId)
           for (var index = 0; index < this.statements.length; index++) {
             if (this.statements[index].id === this.currentCardId) {
-              this.statements[index].accepting = true;
-              this.statements[index].refusing = false;
+              this.statements[index].accepting = false;
+              this.statements[index].refusing = true;
             }
           }
         }
@@ -138,8 +152,8 @@ export class QuestionComponent implements OnInit {
           // Add the classes only to the current card (element in list that is the currentCardId)
           for (var index = 0; index < this.statements.length; index++) {
             if (this.statements[index].id === this.currentCardId) {
-              this.statements[index].accepting = false;
-              this.statements[index].refusing = true;
+              this.statements[index].accepting = true;
+              this.statements[index].refusing = false;
             }
           }
         }
@@ -158,12 +172,12 @@ export class QuestionComponent implements OnInit {
 
   // Answer the statement and send answer to server
   onThrowOut(event: ThrowEvent) {
-    if (navigator.vibrate) {
+    /*if (navigator.vibrate) {
       navigator.vibrate(60);
-    }
+    }*/
     const id = event.target.attributes.getNamedItem('id').textContent;
     const stid = id.split('-').length == 2 ? parseInt(id.split('-')[1], 10) : 0;
-    const answer = event.throwDirection.toString() === 'Symbol(RIGHT)';
+    const answer = event.throwDirection.toString() === 'Symbol(LEFT)';
     this.opacityLeft = 0.7;
     this.opacityRight = 0.7;
     this._tinderService.postAnswer(answer, stid)

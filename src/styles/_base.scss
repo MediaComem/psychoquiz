@@ -125,7 +125,6 @@ td {
 
 .ng-dirty.ng-invalid:not(form) {
   border-color: #a94442;
-  /* red */
 }
 
 
@@ -171,7 +170,6 @@ a.button {
   &.bigbutton {
     $size: 70vw;
     $maxSize: 340px;
-    
     $ratio: 0.15;
     background: url('/assets/button_bg.png') repeat-y center center transparent;
     background-size: $size auto;

@@ -1,6 +1,4 @@
 @import '../../styles/variables';
-
-
 .card-container {
   position: fixed;
 }
@@ -28,8 +26,8 @@
 .tdr-component {
   margin-top: -80px;
   animation: 1s ease-out 0s 1 fadeIn;
-
-  .bg { // the image
+  .bg {
+    // the image
     background-repeat: no-repeat;
     background-color: #333;
     background-size: cover;
@@ -42,15 +40,14 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom:0;
-    top:0;
+    bottom: 0;
+    top: 0;
   }
 }
 
 .card {
   width: 280px;
   height: 280px;
-
   padding: 20px;
   list-style: none;
   background: url(/assets/round.png) no-repeat center center / contain;
@@ -63,13 +60,13 @@
   cursor: default;
   &:before {
     content: "";
-    display:block;
+    display: block;
     background: url(/assets/round_neutral.png) no-repeat center center / contain;
     width: 280px;
     height: 280px;
-    left:0;
-    top:0;
-    position:absolute;
+    left: 0;
+    top: 0;
+    position: absolute;
   }
   &.accepting:before {
     background-image: url(/assets/round_accept.png);
@@ -96,10 +93,10 @@
       line-height: 1.2;
     }
     .info {
-      position:absolute;
+      position: absolute;
       opacity: 0.8;
-      left:0;
-      right:0;
+      left: 0;
+      right: 0;
       bottom: 1.2em;
       font-size: 0.8em;
     }
@@ -162,7 +159,7 @@
     flex: 1;
     padding: 1em;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.05) inset, 0px 0px 8px rgba($color-base, 0.6);
-    position:relative;
+    position: relative;
   }
   .text {
     text-align: center;
@@ -172,10 +169,46 @@
     font-family: 'Elianto', $font-base;
     font-weight: 400;
     text-transform: uppercase;
-    left:0;
-    right:0;
+    left: 0;
+    right: 0;
     opacity: 0.6;
   }
   .left {}
   .right {}
+}
+
+#swipeHelp {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+
+  .inner {
+    position:relative;
+    background: #ddd;
+    box-shadow: 0 0 10px #ccc;
+    min-width: 240px;
+    width: 50%;
+    max-width: 400px;
+    padding: 30px;
+    margin: 10vh auto 0 auto;
+    border-radius: 4px;
+    color: #222;
+    font-weight: 600;
+    font-size: 1.2em;
+    .close {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      height:30px;
+      width:30px;
+      line-height:30px;
+      color: #999;
+      cursor:pointer;
+      font-size: 2em;
+    }
+  }
 }
