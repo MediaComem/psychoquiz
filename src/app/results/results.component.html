@@ -1,23 +1,46 @@
-<div class="component app-component">
-  <h3>Voici vos résultats</h3>
-  <div class="flex results">
-    <div *ngFor="let profile of results" [class]="'profile profile-' + profile.name">
+<div class="gradient">
+
+</div>
+<div id="result-container">
+  <h1>Votre profil</h1>
+  <div class="main-intro">
+    <p>Tout comme la Princesse Leia, vous alliez la beauté et la puissance! (Texte automatique)</p>
+  </div>
+  <div class="profiles tabs">
+    <div *ngFor="let profile of results" [class]="profile == selectedProfile ? 'active profile': 'profile'" (click)="selectedProfile = profile">
       <p class="title">{{profile.name}}</p>
 
-      <div class="chart-outer localPercent">
-        <div class="chart-inner" [style.height]="profile.localPercent * 100 + '%'">
-        </div>
-        <span class="amount">local<br>{{profile.localPercent | percent:'1.0-0'}}</span>
+      <div class="chart">
+        <span class="chart-outer localPercent">
+          <span class="chart-inner" [style.width]="profile.localPercent * 100 + '%'">
+          </span>
+        </span>
+        <span class="amount">
+          {{profile.localPercent | percent:'1.0-0'}}
+        </span>
       </div>
-      <!--div class="globalPercent chart-outer">
-        <div class="chart-inner" [style.height]="profile.globalPercent * 100 + '%'">
-        </div>
-        <span class="amount">global<br>{{profile.globalPercent | percent:'1.0-0'}}</span>
-      </div-->
 
     </div>
   </div>
-  <button (click)="visible = !visible"><ng-container *ngIf="visible">Cacher </ng-container> <ng-container *ngIf="!visible">Afficher</ng-container>les résultats détaillés</button>
+
+</div>
+<div class="profile-description">
+  <div class="profile-title">
+    <div class="separator-big"></div>
+    <div class="image-separator"></div>
+    <h1 class="profile-name">{{selectedProfile?.name}}</h1>
+  </div>
+  <p>{{selectedProfile?.description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet consectetur tortor.
+    Sed fermentum ex sed felis interdum, vel mollis quam lacinia. Quisque nec nisl vulputate, porta leo at, vehicula ante.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet consectetur tortor. Sed fermentum ex sed felis
+    interdum, vel mollis quam lacinia. Quisque nec nisl vulputate, porta leo at, vehicula ante. Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Sed sit amet consectetur tortor. Sed fermentum ex sed felis interdum, vel mollis quam lacinia.
+    Quisque nec nisl vulputate, porta leo at, vehicula ante.
+  </p>
+
+  <button (click)="visible = !visible">
+    <ng-container *ngIf="visible">Cacher </ng-container>
+    <ng-container *ngIf="!visible">Afficher</ng-container>les résultats détaillés</button>
   <pre *ngIf="visible">{{results|json}}</pre>
   <p>
     <button (click)="startNew()">Supprimer les résultats et recommencer</button>
