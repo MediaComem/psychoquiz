@@ -40,7 +40,7 @@ export class QuestionComponent implements OnInit {
   opacityLeft: number = 0;
   opacityRight: number = 0;
   showHelp = true;
-
+  tabVisible = false;
   constructor(
     private _tinderService: TinderService,
     private _chapterService: ChapterService,
@@ -130,8 +130,6 @@ export class QuestionComponent implements OnInit {
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
       //this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
 
-      console.log(this.currentCardIndex);
-      console.log(this.statements[this.currentCardIndex]);
       //if (this.opacityLeft != this.opacity && this.opacityRight != this.opacity) {
       if (event.throwDirection.toString() === 'Symbol(RIGHT)' && event.throwOutConfidence === 1) {
         //this.opacityRight = Math.round(event.throwOutConfidence * precision) / precision * 0.7;

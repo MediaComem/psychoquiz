@@ -1,46 +1,130 @@
-.results {
-    border: 1px solid rgba(#0C2C39, 0.8);
-    background: rgba(#0C2C39, 0.3);
-}
-.chart-outer {
-  border: 1px solid white;
-  width: 30px;
-  width: 9vw;
-  min-height: 150px;
-  height: 40vh;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  margin: 0 0.3vw;
-}
+@import '../../styles/variables';
 
-.title {
-  white-space: nowrap;
-  font-size: 12px;
-  font-weight: 300;
-  text-transform: uppercase;
-  text-rendering: auto
-}
-
-.chart-inner {
-  background: white;
-  width: 100%;
-  min-height: 5px;
-  position: absolute;
-  bottom: 0;
-  color: #eee;
-}
-
-.amount {
-  position: absolute;
-  bottom: 2px;
+.gradient {
+  position: fixed;
   left: 0;
   right: 0;
-  color: #000;
-  font-size: 0.8em;
+  bottom: 0;
+  top: 0; // default
+  z-index: -1;
+  background: #014558;
+  background: -moz-linear-gradient(45deg, #014558 0%, #04171e 51%, #014558 100%);
+  background: -webkit-linear-gradient(45deg, #014558 0%, #04171e 51%, #014558 100%);
+  background: linear-gradient(45deg, #014558 0%, #04171e 51%, #014558 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#014558', endColorstr='#014558', GradientType=1);
+  background-attachment: fixed;
+  &:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: -moz-linear-gradient(-45deg, rgba(4, 23, 30, 0.5) 0%, rgba(4, 23, 30, 0) 36%, rgba(4, 23, 30, 0) 51%, rgba(4, 23, 30, 0) 66%, rgba(4, 23, 30, 0.5) 99%, rgba(4, 23, 30, 0.5) 100%);
+    background: -webkit-linear-gradient(-45deg, rgba(4, 23, 30, 0.5) 0%, rgba(4, 23, 30, 0) 36%, rgba(4, 23, 30, 0) 51%, rgba(4, 23, 30, 0) 66%, rgba(4, 23, 30, 0.5) 99%, rgba(4, 23, 30, 0.5) 100%);
+    background: linear-gradient(135deg, rgba(4, 23, 30, 0.5) 0%, rgba(4, 23, 30, 0) 36%, rgba(4, 23, 30, 0) 51%, rgba(4, 23, 30, 0) 66%, rgba(4, 23, 30, 0.5) 99%, rgba(4, 23, 30, 0.5) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8004171e', endColorstr='#8004171e', GradientType=1);
+    background-attachment: fixed;
+  }
+}
+
+#result-container {
+  z-index: 1;
+  &:after {
+    content: "";
+    background-image: url('/assets/PATTERN_WHITE.png');
+    background-repeat: repeat;
+    background-size: 450px auto;
+    background-position: top left;
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.06;
+  }
+  h1 {
+    font-size: 1.4em;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'eliantoregular', $font-base;
+    font-weight: 400;
+  }
+}
+
+.results {
+  //border: 1px solid rgba(#0C2C39, 0.8);
+  //background: rgba(#0C2C39, 0.3);
+  z-index: 1;
+  position: relative;
 }
 
 .profile {
-  text-align: center;
-  margin-bottom: 2em;
+
+  padding: 1em 2em;
+
+  &.active {
+    background: rgba(255,255,255,0.2);
+  }
+  .title {
+    white-space: nowrap;
+    font-weight: 300;
+    text-rendering: auto;
+    margin: 0 0 0.5em 0;
+  }
+  .chart-outer {
+    border: 1px solid white;
+    box-shadow: 0 0px 2px 1px rgba(#D1F7FF,0.5) inset, 0 0px 16px 1px rgba(#D1F7FF,0.5); 
+    border-radius: 3em;
+    width: 67%;
+    margin-left: 10%;
+    height: 12px;
+    display: inline-block;
+    overflow: hidden;
+    .chart-inner {
+      background: white;
+      display: block;
+      height: 100%;
+    }
+  }
+  .amount {
+    display:inline-block;
+    width: 20%;
+    text-align:right;
+    font-weight:bold;
+  }
+}
+
+.profile-description {
+  
+  &:before {
+    margin-top: 3em;
+    content: "";
+    position:absolute;
+    left:0;
+    right:0;
+    height: 320px;
+    opacity: 0.5;
+    z-index: -1;
+    background: url(/assets/gridresultsbg.png) repeat-x top center / 40px auto;
+  }
+  
+  .profile-name {
+    font-weight: 200;
+    text-transform:uppercase;
+    text-align:center;
+  }
+}
+
+// Set the 20px padding on all the elements
+#result-container {
+  h1, .main-intro {
+    padding: 0 20px;
+  }
+}
+.profile-description {
+  padding: 0 20px;
 }

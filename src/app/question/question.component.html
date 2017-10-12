@@ -1,5 +1,15 @@
 <div *ngIf="!finished" class="component tdr-component app-component">
   <div class="bg" [style.backgroundImage]="'url(' + chapter.imgUrl + ')'"></div>
+  <div class="chapterInfo">
+    <div *ngIf="tabVisible">
+      <h2 class="title">{{chapter.title}}</h2>
+      <p class="intro">{{chapter.intro}}</p>
+    </div>
+    <div (click)="tabVisible = !tabVisible" [class]="tabVisible ? 'tab visible': 'tab not-visible'">
+      <ng-container *ngIf="tabVisible">&lt;&lt;</ng-container>
+      <ng-container *ngIf="!tabVisible">&gt;&gt;</ng-container>
+    </div>
+  </div>
   <div id="answers" class="verticalsplit">
     <div class="left" [style.backgroundColor]="'rgba(255,255,255,'+ opacityLeft +')'">
       <div class="text">Oui</div>
@@ -31,7 +41,7 @@
 <div *ngIf="showHelp" id="swipeHelp" (click)="closeHelp()">
   <div class="inner">
       <div  (click)="closeHelp()" class="close">&times;</div>      
-    <p>Pour répondre aux questions, faites glisser le cercle à gauche pour "oui" et à droite pour "non".</p>
+    <p>Répondez en faisant glisser le cercle.</p>
     <p><img src="/assets/swipe_help.svg" alt="swipe help" /></p>
   </div>
 </div>
