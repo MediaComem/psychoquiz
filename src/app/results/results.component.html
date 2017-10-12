@@ -3,8 +3,9 @@
 </div>
 <div id="result-container">
   <h1>Votre profil</h1>
+  <div class="separator-big"></div>
   <div class="main-intro">
-    <p>Tout comme la Princesse Leia, vous alliez la beauté et la puissance! (Texte automatique)</p>
+    <p>Tout comme {{selectedProfile?.name}}, vous alliez la beauté et la puissance! (Texte automatique à définir)</p>
   </div>
   <div class="profiles tabs">
     <div *ngFor="let profile of results" [class]="profile == selectedProfile ? 'active profile': 'profile'" (click)="selectedProfile = profile">
