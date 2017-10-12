@@ -35,7 +35,6 @@ export class ResultsComponent implements OnInit {
           }
         }
         this.selectedProfile = max;
-        console.log(this.selectedProfile);
       });
   }
 
