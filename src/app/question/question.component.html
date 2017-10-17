@@ -1,13 +1,11 @@
 <div *ngIf="!finished" class="component tdr-component app-component">
   <div class="bg" [style.backgroundImage]="'url(' + chapter.imgUrl + ')'"></div>
-  <div class="chapterInfo">
-    <div *ngIf="tabVisible">
+  <div [class]="tabVisible ? 'chapterInfo visible': 'chapterInfo not-visible'">
+    <div class="tab-content">
       <h2 class="title">{{chapter.title}}</h2>
       <p class="intro">{{chapter.intro}}</p>
     </div>
-    <div (click)="tabVisible = !tabVisible" [class]="tabVisible ? 'tab visible': 'tab not-visible'">
-      <ng-container *ngIf="tabVisible">&lt;&lt;</ng-container>
-      <ng-container *ngIf="!tabVisible">&gt;&gt;</ng-container>
+    <div (click)="tabVisible = !tabVisible" class="tab">
     </div>
   </div>
   <div id="answers" class="verticalsplit">
@@ -31,7 +29,7 @@
             {{st.text}}
           </div>
           <!--div class="info accept" *ngIf="st.accepting"><br>[ Accepter ]</div>
-          <div class="info refuse" *ngIf="st.refusing"><br>[ Refuser ]</div-->          
+          <div class="info refuse" *ngIf="st.refusing"><br>[ Refuser ]</div-->
         </div>
       </div>
     </div>

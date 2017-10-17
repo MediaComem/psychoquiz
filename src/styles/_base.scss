@@ -2,7 +2,11 @@ body {
   color: $color-base;
   margin: 0;
   padding: 0;
-  background: url(/assets/background.jpg) no-repeat top center fixed #071113 / cover;
+  background-image: url('/assets/background.jpg');
+  background-color: #2b5a69;
+  background-position: top center;
+  background-attachment: fixed;
+  background-size: cover;
   font-size: 16px;
 }
 

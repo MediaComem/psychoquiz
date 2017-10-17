@@ -52,7 +52,11 @@ export class QuestionComponent implements OnInit {
       allowedDirections: [/*Direction.UP, Direction.DOWN, */Direction.LEFT, Direction.RIGHT],
       // Now need to send offsetX and offsetY with element instead of just offset
       throwOutConfidence: (offsetX, offsetY, element) => {
-        return Math.min(Math.max(Math.abs(offsetX) / (element.offsetWidth / 1.7), Math.abs(offsetY) / (element.offsetHeight / 2)), 1);
+        return Math.min(
+          Math.max(
+            Math.abs(offsetX) / (element.offsetWidth / 4.4),
+            Math.abs(offsetY) / (element.offsetHeight / 3)),
+        1);
       },
       throwOutDistance: (d) => {
         return 12000;
