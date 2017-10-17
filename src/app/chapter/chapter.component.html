@@ -10,8 +10,7 @@
   <!-- <img [src]="chapter.imgUrl" [alt]="'image for' + chapter.title" class="fullwidth"/> -->
   </div>
   <div class="call-to-action">
-      <p *ngIf="chapter.Statements"><a class="button bigbutton" routerLink="tdr"><span class="inner">Commencer!</span></a></p>
-      <!-- <p *ngIf="chapter.Statements"><em> ({{chapter.Statements.length}} élément<ng-container *ngIf="chapter.Statements.length > 1">s</ng-container>)</em></p> -->
+      <button *ngIf="chapter.Statements" class="button bigbutton" (click)="start()"><span class="inner">Commencer !</span></button>
   </div>
   </ng-container>
   <ng-container *ngIf="loading">

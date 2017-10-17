@@ -50,11 +50,11 @@ $padding: 20px;
     -moz-transition: 0.8s ease-in-out;
     -o-transition: 0.8s ease-in-out;
     transition: 0.8s ease-in-out;
-    background-image: url(/assets/background.jpg);
+    background-image: url('/assets/background_tile.jpg');
     background-color: #2b5a69;
     background-position: top center;
     background-attachment: fixed;
-    background-size: cover;
+    background-size: 750px;
 
     .title {
       margin-top: 0;
