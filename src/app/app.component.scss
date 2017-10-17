@@ -32,7 +32,7 @@ $menuHeight: 30px;
 #small-logo {
   //position:fixed;
   position:relative;
-  z-index: 2;
+  z-index: 4;
   width: 100vw;
   height: 50px;
   .separator {
@@ -75,7 +75,11 @@ $menuHeight: 30px;
 }
 
 #main-content {
-  background: url(/assets/gridbg.png) center top scroll / 120px auto;
+  background-image: url('/assets/gridbg.png');
+  background-color: transparent;
+  background-position: top center;
+  background-attachment: scroll;
+  background-size: 120px auto;
   /*background: url('/assets/background.jpg') no-repeat center center fixed #071113,*/
   border: 1px solid rgba(#35616d, 0.3);
   max-width: 538px;

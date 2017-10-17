@@ -5,7 +5,6 @@
 
 $circleSize: 230px;
 $padding: 20px;
-
 #viewport {
   height: 90vh;
   max-height: 800px;
@@ -27,11 +26,107 @@ $padding: 20px;
 }
 
 .chapterInfo {
-  position:absolute;
-  z-index: 10;
-  background: rgba(0,0,0,0.8);
-  left:0;
-  right:0;
+  position: absolute;
+  z-index: 3;
+  left: -10px;
+  right: -10px;
+  .tab {
+    cursor: pointer;
+    background-image: url('/assets/tab.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 30px;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+  }
+  
+  .tab-content {
+    overflow: hidden;
+    max-height: 0; //default;
+    -webkit-transition: 0.8s ease-in-out;
+    -moz-transition: 0.8s ease-in-out;
+    -o-transition: 0.8s ease-in-out;
+    transition: 0.8s ease-in-out;
+    background-image: url(/assets/background.jpg);
+    background-color: #2b5a69;
+    background-position: top center;
+    background-attachment: fixed;
+    background-size: cover;
+
+    .title {
+      margin-top: 0;
+      font-weight:400;
+      padding-top: 20px;
+      font-size: 22px;
+      padding-left: 20px;
+      &:after {
+        content: "";
+        width: 100%;
+        position: relative;
+        left: -10px;
+        display: block;
+        background-image: url('/assets/left_separator.png');
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: contain;
+        height: 17px;
+      }
+    }
+    p {
+      padding: 0 30px 2em;
+    }
+  }
+  &:after {
+    content: "";
+    height:0;
+    opacity: 0;
+    position: absolute;
+    display: block;
+    left: 10px;
+    right: 10px;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    background: transparent;
+    background: -moz-linear-gradient(top, rgba(black, 0.6) 0%, rgba(black, 0) 100%);
+    background: -webkit-linear-gradient(top, rgba(black, 0.6) 0%, rgba(black, 0) 100%);
+    background: linear-gradient(to bottom, rgba(black, 0.6) 0%, rgba(black, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=0);
+  }
+  &.visible {
+    .tab {
+      -moz-transform: scale(1, -1);
+      -webkit-transform: scale(1, -1);
+      -o-transform: scale(1, -1);
+      -ms-transform: scale(1, -1);
+      transform: scale(1, -1);
+      margin-top: -30px;
+      position: relative;
+      &:after {
+        height: 50px;
+      }
+    }
+    .tab-content {
+      max-height: 50vh;
+      -webkit-transition: 0.8s ease-in-out;
+      -moz-transition: 0.8s ease-in-out;
+      -o-transition: 0.8s ease-in-out;
+      transition: 0.8s ease-in-out;
+    }
+    &:after { // gradient
+      height: 150px;
+      opacity: 1;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition: 0.3s ease-in-out;
+      -o-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  
 }
 
 .tdr-component {
@@ -42,12 +137,11 @@ $padding: 20px;
     background-repeat: no-repeat;
     background-color: #333;
     background-size: cover;
-    background-position: center center;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+    background-position: center center; // -webkit-filter: blur(2px);
+    // -moz-filter: blur(2px);
+    // -o-filter: blur(2px);
+    // -ms-filter: blur(2px);
+    // filter: blur(2px);
     position: absolute;
     left: 0;
     right: 0;
@@ -158,10 +252,8 @@ $padding: 20px;
   left: 0;
   right: 0;
   bottom: 0;
-  background: url(/assets/deco_bg.png) no-repeat -4% 30%,
-   url(/assets/deco_bg.png) no-repeat 80% 0,
-    rgba(0, 0, 0, 0.5);
-  background-size: 30%, 30%, auto;
+  background: url(/assets/deco_bg.png) no-repeat -4% 30%, url(/assets/deco_bg.png) no-repeat 45% 70%, url(/assets/deco_bg.png) no-repeat 80% 0, rgba(0, 0, 0, 0.5);
+  background-size: 35%, 71%, 44%, auto;
 }
 
 // 2-ways swipe
@@ -175,8 +267,8 @@ $padding: 20px;
   }
   .separator.vertical {
     width: 1px;
-    height: 100%;
-    margin: 0 0;
+    height: 95%;
+    margin: 8% 0;
     box-shadow: 0 0px 25px 2px #D1F7FF;
   }
   .text {
@@ -202,10 +294,9 @@ $padding: 20px;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 3;
-
+  z-index: 10;
   .inner {
-    position:relative;
+    position: relative;
     background: #ddd;
     box-shadow: 0 0 10px #ccc;
     min-width: 240px;
@@ -221,11 +312,11 @@ $padding: 20px;
       position: absolute;
       top: 5px;
       right: 5px;
-      height:30px;
-      width:30px;
-      line-height:30px;
+      height: 30px;
+      width: 30px;
+      line-height: 30px;
       color: #999;
-      cursor:pointer;
+      cursor: pointer;
       font-size: 2em;
     }
   }
