@@ -2,11 +2,12 @@ body {
   color: $color-base;
   margin: 0;
   padding: 0;
-  background-image: url('/assets/background.jpg');
+  background-image: url('/assets/background_tile.jpg');
+  background-repeat: repeat;
   background-color: #2b5a69;
   background-position: top center;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: 750px;
   font-size: 16px;
 }
 
@@ -137,8 +138,13 @@ td {
   background: rgba(white, 0.7);
   margin: 2em 0;
 }
+
 .separator-big {
-  background: url('/assets/separator.png') no-repeat center center transparent/ contain;
+  background-image: url('/assets/separator.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  background-size: contain;
   height: 40px;
   height: 7vh;
   width: 100%;
@@ -176,13 +182,16 @@ a.button {
     background: darken(#D1F7FF, 80);
   }
   &.bigbutton {
-    $size: 70vw;
+    display:block;
+    $size: 70vw; 
     $maxSize: 340px;
     $ratio: 0.15;
-    background: url('/assets/button_bg.png') repeat-y center center transparent;
+    background-image: url('/assets/button_bg.png');// had to replace with 4px height because iphone doesn't sees image with 2px height.
+    background-repeat:  repeat-y;
+    background-position: center center;
+    background-color: transparent;
     background-size: $size auto;
     font-size: $size/15;
-    display: block;
     margin-top: 3em;
     margin-bottom: 3em;
     margin-left: auto;

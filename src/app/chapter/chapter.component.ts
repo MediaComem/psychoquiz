@@ -40,5 +40,9 @@ export class ChapterComponent implements OnInit {
 
       });
   }
+  
+  start() {
+    this._router.navigate(['situation/tdr']);
+  }
 
 }
