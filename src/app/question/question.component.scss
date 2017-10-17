@@ -37,10 +37,14 @@ $padding: 20px;
     background-repeat: no-repeat;
     background-position: center;
     height: 30px;
+    margin-top: -1px;
+    margin-left:10px;
+    margin-right:10px;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2s ease-in-out;
     -o-transition: 0.2s ease-in-out;
     transition: 0.2s ease-in-out;
+    border-top: 0px solid white;
   }
   
   .tab-content {
@@ -92,9 +96,9 @@ $padding: 20px;
     -o-transition: 0.5s ease-in-out;
     transition: 0.5s ease-in-out;
     background: transparent;
-    background: -moz-linear-gradient(top, rgba(black, 0.6) 0%, rgba(black, 0) 100%);
-    background: -webkit-linear-gradient(top, rgba(black, 0.6) 0%, rgba(black, 0) 100%);
-    background: linear-gradient(to bottom, rgba(black, 0.6) 0%, rgba(black, 0) 100%);
+    background: -moz-linear-gradient(top, rgba(black, 0.8) 0%, rgba(black, 0) 100%);
+    background: -webkit-linear-gradient(top, rgba(black, 0.8) 0%, rgba(black, 0) 100%);
+    background: linear-gradient(to bottom, rgba(black, 0.8) 0%, rgba(black, 0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=0);
   }
   &.visible {
@@ -106,6 +110,8 @@ $padding: 20px;
       transform: scale(1, -1);
       margin-top: -30px;
       position: relative;
+      border-top: 1px solid white;
+
       &:after {
         height: 50px;
       }
@@ -118,7 +124,7 @@ $padding: 20px;
       transition: 0.8s ease-in-out;
     }
     &:after { // gradient
-      height: 150px;
+      height: 50vh;
       opacity: 1;
       -webkit-transition: 0.3s ease-in-out;
       -moz-transition: 0.3s ease-in-out;
@@ -131,7 +137,9 @@ $padding: 20px;
 
 .tdr-component {
   margin-top: -15px;
+  top: -1px;
   animation: 1s ease-out 0s 1 fadeIn;
+  overflow:hidden;
   .bg {
     // the image
     background-repeat: no-repeat;
