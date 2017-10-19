@@ -41,11 +41,11 @@
   <pre *ngIf="visible">{{results|json}}</pre>
   <p>
     <button *ngIf="!shared" (click)="startNew()">Supprimer les résultats et recommencer</button>
-    <button *ngIf="shared" class="bigbutton" (click)="startNew()">Démarrer !</button>
+    <button *ngIf="shared" class="bigbutton" (click)="startNew()"><span class="inner">Démarrer !</span></button>
   </p>
 
   <div *ngIf="!shared" class="share-box">
-    <button class="bigbutton" [disabled]="shareLink" (click)="share()">partager</button>
+    <button class="bigbutton" [disabled]="shareLink" (click)="share()"><span class="inner">partager</span></button>
     <p *ngIf="shareLink" class="url">
       <a [href]="shareLink">{{shareLink}}</a>
     </p>
