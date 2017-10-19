@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ParticipationService } from '../_services/participation.service';
 import { Profile } from '../_models/profile.model';
 
@@ -13,29 +13,59 @@ export class ResultsComponent implements OnInit {
   results: any;
   visible = false;
   selectedProfile: any;
+  loading = false;
+  shared: boolean;
+  shareLink: string;
 
   constructor(
     private _participationService: ParticipationService,
+    private _activatedRoute: ActivatedRoute,
     private _router: Router
   ) { }
 
 
   ngOnInit() {
-    this._participationService.getResults()
-      .subscribe(res => {
-        this.results = res;
-        let max = {
-          localPercent: 0
-        };
-
-        for (let i = 0; i < res.length; i++) {
-          var element = res[i];
-          if (res[i].localPercent >= max.localPercent) {
-            max = res[i];
-          }
-        }
-        this.selectedProfile = max;
+    this.loading = true;
+    if (this._router.url.startsWith('/s/')) {
+      this.shared = true;
+      this._activatedRoute.params.subscribe(res => {
+        this._participationService.getResultsByCode(res.code)
+          .subscribe(res => {
+            this.setResults(res);
+          });
       });
+    } else {
+      this.shared = false;
+      this._participationService.getResults()
+      .subscribe(res => {
+        this.setResults(res);
+      });
+    }
+  }
+
+  private setResults(res) {
+    this.results = res;
+    let max = {
+      localPercent: 0
+    };
+
+    for (let i = 0; i < res.length; i++) {
+      var element = res[i];
+      if (res[i].localPercent >= max.localPercent) {
+        max = res[i];
+      }
+    }
+    this.selectedProfile = max;
+    this.loading = false;
+  }
+
+
+  share() {
+    this._participationService.getShareLink()
+      .subscribe(res => {
+        this.shareLink = "http://"+window.location.hostname +'/s/' + res;
+        console.log(this.shareLink);
+      })
   }
 
   startNew() {

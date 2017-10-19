@@ -2,10 +2,12 @@
 
 </div>
 <div id="result-container">
-  <h1>Votre profil</h1>
+  <h1 *ngIf="!shared">Votre profil</h1>
+  <h1 *ngIf="shared">Ton père, je suis ?</h1>
   <div class="separator-big"></div>
   <div class="main-intro">
-    <p>Tout comme {{selectedProfile?.name}}, vous alliez la beauté et la puissance! (Texte automatique à définir)</p>
+    <p *ngIf="shared">Cette vue représente une participation partagée.</p>
+    <p>Les personnages de Star Wars expriment tous des parts de nous-mêmes. Appuyez sur les noms pour en savoir plus.</p>
   </div>
   <div class="profiles tabs">
     <div *ngFor="let profile of results" [class]="profile == selectedProfile ? 'active profile': 'profile'" (click)="selectedProfile = profile">
@@ -31,19 +33,21 @@
     <div class="image-separator"></div>
     <h1 class="profile-name">{{selectedProfile?.name}}</h1>
   </div>
-  <p>{{selectedProfile?.description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet consectetur tortor.
-    Sed fermentum ex sed felis interdum, vel mollis quam lacinia. Quisque nec nisl vulputate, porta leo at, vehicula ante.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet consectetur tortor. Sed fermentum ex sed felis
-    interdum, vel mollis quam lacinia. Quisque nec nisl vulputate, porta leo at, vehicula ante. Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit. Sed sit amet consectetur tortor. Sed fermentum ex sed felis interdum, vel mollis quam lacinia.
-    Quisque nec nisl vulputate, porta leo at, vehicula ante.
-  </p>
+  <p>{{selectedProfile?.description}}</p>
 
   <button (click)="visible = !visible">
     <ng-container *ngIf="visible">Cacher </ng-container>
     <ng-container *ngIf="!visible">Afficher</ng-container>les résultats détaillés</button>
   <pre *ngIf="visible">{{results|json}}</pre>
   <p>
-    <button (click)="startNew()">Supprimer les résultats et recommencer</button>
+    <button *ngIf="!shared" (click)="startNew()">Supprimer les résultats et recommencer</button>
+    <button *ngIf="shared" class="bigbutton" (click)="startNew()">Démarrer !</button>
   </p>
+
+  <div *ngIf="!shared" class="share-box">
+    <button class="bigbutton" [disabled]="shareLink" (click)="share()">partager</button>
+    <p *ngIf="shareLink" class="url">
+      <a [href]="shareLink">{{shareLink}}</a>
+    </p>
+  </div>
 </div>

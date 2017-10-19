@@ -11,6 +11,8 @@ import { Participation } from '../_models/participation.model';
 import { environment } from '../../environments/environment';
 
 const ROUTE = environment.api + 'participations';
+const SHARE_ROUTE = environment.api + 'share/';
+
 
 @Injectable()
 export class ParticipationService {
@@ -36,6 +38,8 @@ export class ParticipationService {
         }
 
     }
+
+
 
     newParticipation(): Observable<Participation> {
         this.angulartics2.eventTrack.next({
@@ -75,6 +79,40 @@ export class ParticipationService {
                 .catch(this.httpHelper.handleError);
         } else {
             return Observable.of(null);
+        }
+
+    }
+
+    getResultsByCode(code): Observable<any> {
+
+        this.angulartics2.eventTrack.next({
+            action: 'Appel aux résultat partagé',
+            properties: {
+                category: 'Participation'
+            }
+        });
+
+        return this.http.get(SHARE_ROUTE + code, this.options)
+            .map(res => {
+                if (res.json() && res.json().status === 'success') {
+                    return res.json().data;
+                }
+            })
+            .catch(this.httpHelper.handleError);
+    }
+
+
+    getShareLink(): Observable<string> {
+        const token = localStorage.getItem('participation');
+        if (token) {
+            return this.http.get(ROUTE + '/' + token + '/share')
+                .map(res => {
+                    if (res.json() && res.json().status === 'success') {
+                        console.log(res.json().data);
+                        return res.json().data;
+                    }
+                })
+                .catch(this.httpHelper.handleError);
         }
 
     }

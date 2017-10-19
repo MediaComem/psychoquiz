@@ -54,6 +54,10 @@ const appRoutes: Routes = [
     component: ResultsComponent
   },
   {
+    path: 's/:code',
+    component: ResultsComponent
+  },
+  {
     path: 'start',
     component: WelcomeComponent
   },
