@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Angulartics2 } from 'angulartics2';
 
 import { Observable } from 'rxjs';
 import { HttpHelper } from './http.helper';
@@ -28,7 +29,8 @@ export class ChapterService {
     });
     constructor(
         private http: Http,
-        private httpHelper: HttpHelper
+        private httpHelper: HttpHelper,
+        private angulartics2: Angulartics2        
     ) { }
 
 
@@ -37,8 +39,20 @@ export class ChapterService {
             .map(res => {
                 if (res.json().status == 'success') {
                     // Set current chapter as observable
-                    this._chapterSource.next(res.json().data);
-                    return res.json().data || {};
+                    let data = res.json().data;
+
+                    this.angulartics2.eventTrack.next({
+                        action: 'Situation au hasard: ' + data.number + ' - ' + data.intro,
+                        properties: {
+                            category: 'Situation'
+                        }
+                    });
+
+
+
+                    
+                    this._chapterSource.next(data);
+                    return data || {};
                 }
                 throw new Error(res.json().message || 'Error with API');
             })

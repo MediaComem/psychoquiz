@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -100,6 +102,7 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes),
     SwingModule,
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),    
     BrowserModule,
     FormsModule,
     HttpModule

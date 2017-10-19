@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation, OnInit, } from '@angular/core';
+import { Angulartics2GoogleAnalytics } from 'angulartics2';
+
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 @Component({
@@ -10,12 +12,13 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class AppComponent implements OnInit {
-  
+
   logoVisible = false;
 
-  constructor(private router: Router) {
-
-  }
+  constructor(
+    private router: Router,
+    private angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics
+  ) { }
 
   ngOnInit() {
     this.router.events.subscribe(val => {
