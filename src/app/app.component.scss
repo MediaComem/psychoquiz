@@ -75,13 +75,7 @@ $menuHeight: 30px;
 }
 
 #main-content {
-  background-image: url('/assets/gridbg.png');
-  background-color: transparent;
-  background-position: top center;
-  background-attachment: scroll;
-  background-size: 120px auto;
-  /*background: url('/assets/background.jpg') no-repeat center center fixed #071113,*/
-  border: 1px solid rgba(#35616d, 0.3);
+
   max-width: 538px;
   margin: 0 auto;
   box-sizing: border-box; //overflow: hidden;

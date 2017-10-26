@@ -1,31 +1,52 @@
 img.fullwidth {
-    max-width: 540px;
-    width: 100vw;
-    margin-left: -21px; // 1px border. 20px padding;
-    opacity: 0.8;
+  max-width: 540px;
+  width: 100vw;
+  margin-left: -21px; // 1px border. 20px padding;
+  opacity: 0.8;
 }
+
 .intro {
-    font-size: 1.4em;
-    font-weight: 300;
-    opacity: 0.8;
-    text-shadow: 0 0 1px rgba(0,0,0,0.8);
-    line-height: 1.2;
-    margin-bottom: 1em;
+  font-size: 1.4em;
+  font-weight: 300;
+  opacity: 0.8;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+  margin-bottom: 1em;
 }
+
 .illustration {
-    margin-left: -21px; // 1px border. 20px padding;
-    width: 100vw;
-    max-width: 540px;
-    height: 40vh;
-    background-size: cover;
-    background-position: center center;
-    opacity: 0.9;
+  margin-left: -21px; // 1px border. 20px padding;
+  width: 100vw;
+  max-width: 540px;
+  height: 300px;
+  height: 45vh;
+  
+  background-size: 480px;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  position:relative;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url(/assets/black_noise.png);
+    background-size: 80px;
+    z-index: -1;
+  }
 }
+
 .call-to-action {
-    text-align: center;
-    background-color: rgba(0,0,0,0.8);
-    overflow: hidden;
-    margin-left: -21px; // 1px border. 20px padding;
-    width: 100vw;
-    max-width: 540px;
+  text-align: center;
+  background-image: url(/assets/bg_undersitu.png), url(/assets/black_noise.png);
+  background-repeat: no-repeat, repeat;
+  background-position: top center;
+  background-size: 480px, 80px;
+  overflow: hidden;
+  margin-left: -21px; // 1px border. 20px padding;
+  width: 100vw;
+  max-width: 540px;
 }
