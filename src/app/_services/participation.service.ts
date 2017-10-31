@@ -108,7 +108,6 @@ export class ParticipationService {
             return this.http.get(ROUTE + '/' + token + '/share')
                 .map(res => {
                     if (res.json() && res.json().status === 'success') {
-                        console.log(res.json().data);
                         return res.json().data;
                     }
                 })

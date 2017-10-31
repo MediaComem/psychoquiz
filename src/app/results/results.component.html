@@ -1,10 +1,11 @@
-<div class="gradient">
-
+<div class="gradient"></div>
+<div class="loadbar" *ngIf="loading">
+    <div class="gps_ring"></div>
 </div>
-<div id="result-container">
+<div id="result-container" *ngIf="!loading">
   <h1 *ngIf="!shared">Votre profil</h1>
   <h1 *ngIf="shared">Ton père, je suis ?</h1>
-  <div class="separator-big"></div>
+  <div class="separator-medium"></div>
   <div class="main-intro">
     <p *ngIf="shared">Cette vue représente une participation partagée.</p>
     <p>Les personnages de Star Wars expriment tous des parts de nous-mêmes. Appuyez sur les noms pour en savoir plus.</p>
@@ -27,13 +28,21 @@
   </div>
 
 </div>
-<div class="profile-description">
+<div class="profile-description" *ngIf="!loading">
   <div class="profile-title">
-    <div class="separator-big"></div>
-    <div class="image-separator"></div>
+    <div class="separator-profile rotated"></div>
+    <div class="image-separator">
+      <img *ngIf="selectedProfile" [src]="'/assets/profiles/'+selectedProfile.name+'.png'" alt="profile pic" />
+    </div>
     <h1 class="profile-name">{{selectedProfile?.name}}</h1>
   </div>
-  <p>{{selectedProfile?.description}}</p>
+  <p>{{selectedProfile?.body}}</p>
+  <div class="separator"></div>
+  <p class="morale">
+    <em>{{selectedProfile?.description}}</em>
+  </p>
+
+  <div class="separator-profile"></div>
 
   <button (click)="visible = !visible">
     <ng-container *ngIf="visible">Cacher </ng-container>
@@ -41,11 +50,15 @@
   <pre *ngIf="visible">{{results|json}}</pre>
   <p>
     <button *ngIf="!shared" (click)="startNew()">Supprimer les résultats et recommencer</button>
-    <button *ngIf="shared" class="bigbutton" (click)="startNew()"><span class="inner">Démarrer !</span></button>
+    <button *ngIf="shared" class="bigbutton" (click)="startNew()">
+      <span class="inner">Démarrer !</span>
+    </button>
   </p>
 
   <div *ngIf="!shared" class="share-box">
-    <button class="bigbutton" [disabled]="shareLink" (click)="share()"><span class="inner">partager</span></button>
+    <button class="bigbutton" [disabled]="shareLink" (click)="share()">
+      <span class="inner">partager</span>
+    </button>
     <p *ngIf="shareLink" class="url">
       <a [href]="shareLink">{{shareLink}}</a>
     </p>

@@ -1,7 +1,10 @@
+<button class="show_help" (click)="showHelp = !showHelp">?</button>
 <div *ngIf="!finished" class="component tdr-component app-component">
   <div class="bg" [style.backgroundImage]="'url(' + chapter.imgUrl + ')'"></div>
   <div [class]="tabVisible ? 'chapterInfo visible': 'chapterInfo not-visible'">
+    
     <div class="tab-content">
+        <div class="separator fake"></div>
       <h2 class="title">{{chapter.title}}</h2>
       <p class="intro">{{chapter.intro}}</p>
     </div>

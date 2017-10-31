@@ -149,6 +149,16 @@ td {
   height: 7vh;
   width: 100%;
 }
+.separator-medium {
+  background-image: url('/assets/separator_2.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  background-size: contain;
+  height: 50px;
+  width: 70%;
+  margin: 0 auto;
+}
 
 input[type="submit"],
 button,

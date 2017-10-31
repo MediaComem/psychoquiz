@@ -33,7 +33,7 @@ export class ProfilesComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this._profileService.addProfile(this.model.name, this.model.description)
+    this._profileService.addProfile(this.model.name, this.model.description, this.model.body)
       .subscribe(res => {
         this.profiles.push(res);
         this.profileForm.reset();

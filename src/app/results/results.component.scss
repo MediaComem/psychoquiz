@@ -1,5 +1,4 @@
 @import '../../styles/variables';
-
 .gradient {
   position: fixed;
   left: 0;
@@ -63,11 +62,11 @@
 }
 
 .profile {
-
+  cursor: pointer;
   padding: 1em 2em;
-
+  padding: 1vh 2em;
   &.active {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
   }
   .title {
     white-space: nowrap;
@@ -77,7 +76,7 @@
   }
   .chart-outer {
     border: 1px solid white;
-    box-shadow: 0 0px 2px 1px rgba(#D1F7FF,0.5) inset, 0 0px 16px 1px rgba(#D1F7FF,0.5); 
+    box-shadow: 0 0px 2px 1px rgba(#D1F7FF, 0.5) inset, 0 0px 16px 1px rgba(#D1F7FF, 0.5);
     border-radius: 3em;
     width: 67%;
     margin-left: 10%;
@@ -91,40 +90,74 @@
     }
   }
   .amount {
-    display:inline-block;
+    display: inline-block;
     width: 20%;
-    text-align:right;
-    font-weight:bold;
+    text-align: right;
+    font-weight: bold;
   }
 }
 
 .profile-description {
-  
   &:before {
     margin-top: 3em;
     content: "";
-    position:absolute;
-    left:0;
-    right:0;
-    height: 320px;
-    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 600px;
+    opacity: 1;
     z-index: -1;
     background: url(/assets/gridresultsbg.png) repeat-x top center / 40px auto;
+    background: url(/assets/gridresultsbg.png) repeat-x top center / 40px auto, -moz-linear-gradient(top, rgba(15, 58, 72, 0) 0%, rgba(15, 58, 72, 0.6) 11%, rgba(15, 58, 72, 0.8) 40%, rgba(15, 58, 72, 0.53) 60%, rgba(15, 58, 72, 0) 100%);
+    background: url(/assets/gridresultsbg.png) repeat-x top center / 40px auto, -webkit-linear-gradient(top, rgba(15, 58, 72, 0) 0%, rgba(15, 58, 72, 0.6) 11%, rgba(15, 58, 72, 0.8) 40%, rgba(15, 58, 72, 0.53) 60%, rgba(15, 58, 72, 0) 100%);
+    background: url(/assets/gridresultsbg.png) repeat-x top center / 40px auto, linear-gradient(to bottom, rgba(15, 58, 72, 0) 0%, rgba(15, 58, 72, 0.6) 11%, rgba(15, 58, 72, 0.8) 40%, rgba(15, 58, 72, 0.53) 60%, rgba(15, 58, 72, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000f3a48', endColorstr='#000f3a48', GradientType=0);
   }
-  
   .profile-name {
     font-weight: 200;
-    text-transform:uppercase;
-    text-align:center;
+    text-transform: uppercase;
+    text-align: center;
   }
 }
 
 // Set the 20px padding on all the elements
 #result-container {
-  h1, .main-intro {
+  h1,
+  .main-intro {
     padding: 0 20px;
   }
 }
+
 .profile-description {
   padding: 0 20px;
+}
+
+.separator-profile {
+  background-image: url('/assets/separator_profile.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: transparent;
+  background-size: contain;
+  height: 100px;
+  width: 100%;
+  &.rotated {
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
+.image-separator {
+  text-align: center;
+  margin-top: -90px;
+  position: relative;
+  z-index: 10;
+  img {
+    width: 100px;
+  }
+}
+
+.morale {
+  padding: 0 1em;
+  text-align: center;
 }

@@ -35,13 +35,14 @@ export class ProfileService {
 
     }
 
-    addProfile(name: string, description: string): Observable<Profile> {
-        const body = {
+    addProfile(name: string, description: string, body: string): Observable<Profile> {
+        const data = {
             name: name,
             description: description,
+            body: body,
         };
 
-        return this.http.post(ROUTE, body, this.options)
+        return this.http.post(ROUTE, data, this.options)
             .map(this.httpHelper.extractData)
             .catch(this.httpHelper.handleError);
     }

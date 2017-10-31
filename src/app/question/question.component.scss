@@ -1,6 +1,25 @@
 @import '../../styles/variables';
 
 
+.show_help {
+  position:absolute;
+  z-index: 10;
+  top: 12px;
+  right: 12px;
+  font-weight:bold;
+  border-radius: 3em;
+  font-weight: 700;
+  width: 30px;
+  height: 30px;
+  border-width: 2px;
+  font-size: 14px;
+  line-height: 1;
+  &:active {
+    position:absolute;
+    left: inherit;
+  }
+}
+
 #main-content {
   background:none;
 }
@@ -32,9 +51,12 @@ $padding: 20px;
 
 .chapterInfo {
   position: absolute;
-  z-index: 3;
+  z-index:4;
   left: -10px;
   right: -10px;
+  .separator.fake {
+    margin:-1px 0 0 0;
+  }
   .tab {
     cursor: pointer;
     background-image: url('/assets/tab.png');
@@ -139,7 +161,7 @@ $padding: 20px;
 
 .tdr-component {
   margin-top: -15px;
-  top: -1px;
+  top: 0px;
   animation: 1s ease-out 0s 1 fadeIn;
   overflow: hidden;
   .bg {
