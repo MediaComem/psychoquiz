@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
       { property: 'og:url', content: 'http://jesuistonpere.comem.ch'},
       { property: 'og:site_name', content: 'Ton Père Je suis'},
       { property: 'og:locale', content: 'fr_CH'},
-      { property: 'og:type', content: 'website'}
+      { property: 'og:type', content: 'feed'}
     ]);
 
     this.router.events.subscribe(val => {
@@ -58,9 +58,14 @@ export class AppComponent implements OnInit {
   share() {
     
       const params: UIParams = {
-        href: 'http://jesuistonpere.comem.ch',
-        method: 'share'
+        method: 'feed',
+        link: 'http://jesuistonpere.comem.ch',
+        picture: '/assets/share/share_base.jpg',
+        name: 'custom name',
+        caption: 'custom caption',
+        description: 'custom description',
       };
+
     
       this.fb.ui(params)
         .then((res: UIResponse) => console.log(res))
