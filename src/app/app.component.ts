@@ -56,11 +56,11 @@ export class AppComponent implements OnInit {
     });
   }
   share() {
-    
+      const url = 'http://jesuistonpere.comem.ch';
       const params: UIParams = {
         method: 'feed',
-        link: 'http://jesuistonpere.comem.ch',
-        picture: '/assets/share/share_base.jpg',
+        link: url,
+        picture: url + '/assets/share/share_base.jpg',
         name: 'custom name',
         caption: 'custom caption',
         description: 'custom description',
