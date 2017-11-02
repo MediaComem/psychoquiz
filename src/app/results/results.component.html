@@ -1,6 +1,6 @@
 <div class="gradient"></div>
 <div class="loadbar" *ngIf="loading">
-    <div class="gps_ring"></div>
+  <div class="gps_ring"></div>
 </div>
 <div id="result-container" *ngIf="!loading">
   <h1 *ngIf="!shared">Votre profil</h1>
@@ -43,6 +43,11 @@
   </p>
 
   <div class="separator-profile"></div>
+
+  <p class="logo">
+    <img width="250px" src="/assets/logo.svg" alt="Logo" />
+  </p>
+
 
   <button (click)="visible = !visible">
     <ng-container *ngIf="visible">Cacher </ng-container>

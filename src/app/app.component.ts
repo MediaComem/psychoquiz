@@ -26,8 +26,8 @@ export class AppComponent implements OnInit {
   ) {
     const initParams: InitParams = {
       appId: '1969313496672662',
-      xfbml: true,
-      version: 'v2.8'
+      xfbml: false,
+      version: 'v2.3'
     };
 
     fb.init(initParams);
@@ -35,7 +35,8 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.metaService.addTags([
+    // Below is useless, javsacript not executed by facebook.
+    /*this.metaService.addTags([
       { property: 'og:title', content: 'Ton père je suis' },
       { property: 'og:description', content: 'Lorem ipsum dolor set amet bla bla bla' },
       { property: 'og:image', content: 'http://jesuistonpere.comem.ch/assets/share/share_base.jpg' },
@@ -43,7 +44,7 @@ export class AppComponent implements OnInit {
       { property: 'og:site_name', content: 'Ton Père Je suis' },
       { property: 'og:locale', content: 'fr_CH' },
       { property: 'og:type', content: 'feed' }
-    ]);
+    ]);*/
 
     this.router.events.subscribe(val => {
       if (val && val instanceof NavigationEnd) {
@@ -60,12 +61,8 @@ export class AppComponent implements OnInit {
     const params: UIParams = {
       method: 'feed',
       link: url,
-      href: url,
       picture: url + '/assets/share/share_base.jpg',
-      name: 'custom name',
       caption: 'custom caption',
-      description: 'custom description',
-      hashtag: '#tonperejesuis'
     };
 
 

@@ -37,6 +37,7 @@ import { ProfilesComponent } from './admin/profiles/profiles.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ChapterComponent } from './chapter/chapter.component';
 import { LinkProfilesComponent } from './admin/statements/link-profiles/link-profiles.component';
+import { CreditsComponent } from './credits/credits.component';
 
 
 
@@ -61,6 +62,10 @@ const appRoutes: Routes = [
   {
     path: 'start',
     component: WelcomeComponent
+  },
+  {
+    path: 'credits',
+    component: CreditsComponent
   },
   {
     path: 'admin/login',
@@ -102,7 +107,8 @@ const appRoutes: Routes = [
     WelcomeComponent,
     ChapterComponent,
     StatisticsComponent,
-    LinkProfilesComponent
+    LinkProfilesComponent,
+    CreditsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
