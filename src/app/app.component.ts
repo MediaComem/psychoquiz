@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     private metaService: Meta
   ) {
     const initParams: InitParams = {
-      appId: '113869198637480',
+      appId: '1969313496672662',
       xfbml: true,
       version: 'v2.8'
     };
