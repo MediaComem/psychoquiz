@@ -59,10 +59,16 @@ export class AppComponent implements OnInit {
   share() {
     const url = 'http://jesuistonpere.comem.ch';
     const params: UIParams = {
-      method: 'feed',
-      link: url,
-      picture: url + '/assets/share/share_base.jpg',
-      caption: 'custom caption',
+      method: 'share_open_graph',
+      action_type: 'og.shares',
+      action_properties: JSON.stringify({
+          object: {
+              'og:url': url,
+              'og:title': 'OG Title',
+              'og:description': 'OG Description',
+              'og:image': '/assets/share/share_base.jpg'
+          }
+      })
     };
 
 
