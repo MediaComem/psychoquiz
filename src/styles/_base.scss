@@ -306,3 +306,15 @@ blockquote p {
     vertical-align: -0.2em;
   }
 }
+
+img.icon {
+  height: 12px;
+  width: auto;
+}
+
+.facebook {
+  background: rgba(#4267b2, 0.8);
+  &:hover {
+    background: rgba(#365899, 1);
+  }
+}

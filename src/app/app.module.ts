@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+import { FacebookModule } from 'ngx-facebook';
 
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +41,7 @@ import { LinkProfilesComponent } from './admin/statements/link-profiles/link-pro
 
 
 const appRoutes: Routes = [
-  { path: '',   redirectTo: '/start', pathMatch: 'full' },
+  { path: '', redirectTo: '/start', pathMatch: 'full' },
   {
     path: 'situation',
     component: ChapterComponent // single random chapter (intro)
@@ -69,13 +70,13 @@ const appRoutes: Routes = [
     path: 'admin',
     canActivate: [AuthGuard],
     component: AdminComponent,
-     children: [
+    children: [
       { path: '', component: OverviewComponent },
       { path: 'situations', component: ChaptersComponent },
       { path: 'profiles', component: ProfilesComponent },
       { path: 'statements', component: StatementsComponent },
-      { path: 'statements/:id', component: LinkProfilesComponent},
-      { path: 'statistics', component: StatisticsComponent}
+      { path: 'statements/:id', component: LinkProfilesComponent },
+      { path: 'statistics', component: StatisticsComponent }
     ]
   },
   {
@@ -106,7 +107,8 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes),
     SwingModule,
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),    
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    FacebookModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule
