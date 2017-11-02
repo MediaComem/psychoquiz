@@ -66,7 +66,7 @@ export class AppComponent implements OnInit {
               'og:url': url,
               'og:title': 'OG Title',
               'og:description': 'OG Description',
-              'og:image': '/assets/share/share_base.jpg'
+              'og:image': url + '/assets/share/share_base.jpg'
           }
       })
     };
