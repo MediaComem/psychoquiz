@@ -19,6 +19,7 @@ export class ResultsComponent implements OnInit {
   shared: boolean;
   shareLink: string;
   winner_machine: string;
+  max: any;
 
   constructor(
     private fb: FacebookService,
@@ -66,6 +67,7 @@ export class ResultsComponent implements OnInit {
       res[i].accordeonOpen = false;
       if (res[i].localPercent >= max.localPercent) {
         max = res[i];
+        this.max = res[i];
         setTimeout(() => {
           res[i].accordeonOpen = true;
         }, 1000);
