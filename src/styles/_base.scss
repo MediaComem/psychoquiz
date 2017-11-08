@@ -149,6 +149,7 @@ td {
   height: 7vh;
   width: 100%;
 }
+
 .separator-medium {
   background-image: url('/assets/separator_2.png');
   background-repeat: no-repeat;
@@ -192,12 +193,12 @@ a.button {
     background: darken(#D1F7FF, 80);
   }
   &.bigbutton {
-    display:block;
-    $size: 70vw; 
+    display: block;
+    $size: 70vw;
     $maxSize: 340px;
     $ratio: 0.15;
-    background-image: url('/assets/button_bg.png');// had to replace with 4px height because iphone doesn't sees image with 2px height.
-    background-repeat:  repeat-y;
+    background-image: url('/assets/button_bg.png'); // had to replace with 4px height because iphone doesn't sees image with 2px height.
+    background-repeat: repeat-y;
     background-position: center center;
     background-color: transparent;
     background-size: $size auto;
@@ -225,6 +226,13 @@ a.button {
       vertical-align: middle;
       padding: 0 $size / 12;
     }
+    .icon {
+      height: 32px;
+      position: absolute;
+      right: 57px;
+      top: 50%;
+      margin-top: -16px;
+    }
     &:before,
     &:after {
       content: "";
@@ -235,6 +243,17 @@ a.button {
       width: $size;
       position: absolute;
       top: -$size*$ratio;
+    }
+    &.facebook {
+      background-color: transparent;
+      background-image: url('/assets/button_bg_fb.png'); // had to replace with 4px height because iphone doesn't sees image with 2px height.
+      &:before,
+      &:after {
+        background-image: url('/assets/button_ba_fb.png');
+      }
+      &:hover {
+        background-color: transparent;
+      }
     }
     &:after {
       transform: rotate(180deg);
@@ -312,9 +331,9 @@ img.icon {
   width: auto;
 }
 
-.facebook {
-  background: rgba(#4267b2, 0.8);
+button.facebook {
+  background-color: rgba(#4267b2, 0.8);
   &:hover {
-    background: rgba(#365899, 1);
+    background-color: rgba(#365899, 1);
   }
 }

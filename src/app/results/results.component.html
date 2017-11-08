@@ -61,8 +61,8 @@
   </p>
 
   <div *ngIf="!shared" class="share-box">
-    <button class="bigbutton" [disabled]="shareLink" (click)="share()">
-      <span class="inner">partager</span>
+    <button class="bigbutton share facebook" [disabled]="shareLink" (click)="share()">
+      <span class="inner">Partager</span>&nbsp;&nbsp;&nbsp;<img class="icon" src="/assets/icon-facebook.svg" alt="sur facebook"/>
     </button>
     <p *ngIf="shareLink" class="url">
       <a [href]="shareLink">{{shareLink}}</a>

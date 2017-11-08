@@ -18,6 +18,7 @@ export class ResultsComponent implements OnInit {
   loading = false;
   shared: boolean;
   shareLink: string;
+  winner_machine: string;
 
   constructor(
     private fb: FacebookService,
@@ -57,22 +58,24 @@ export class ResultsComponent implements OnInit {
 
   private setResults(res) {
     this.results = res;
-    let max = {
+    let max: any = {
       localPercent: 0
     };
 
     for (let i = 0; i < res.length; i++) {
-      var element = res[i];
+      const element = res[i];
       if (res[i].localPercent >= max.localPercent) {
         max = res[i];
       }
     }
     this.selectedProfile = max;
+    this.winner_machine = max.name.replace(/\s+/g, '_').toLowerCase();
     this.loading = false;
   }
 
 
-  /*share() {
+  /* // legacy behaviour, not to use.
+  share() {
     this._participationService.getShareLink()
       .subscribe(res => {
         this.shareLink = "http://"+window.location.hostname +'/s/' + res;
@@ -80,8 +83,8 @@ export class ResultsComponent implements OnInit {
       })
   }*/
 
-  share(profile) {
-    const url = 'http://jesuistonpere.comem.ch/api/shareHtml/' + profile;
+  share() {
+    const url = 'http://jesuistonpere.comem.ch/api/shareHtml/' + this.winner_machine;
     const params: UIParams = {
       method: 'share',
       href: url
