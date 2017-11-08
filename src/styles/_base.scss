@@ -215,6 +215,7 @@ a.button {
     border: none;
     border-radius: 0;
     font-family: 'eliantoregular', $font-base;
+    letter-spacing: -0.03em;
     position: relative;
     white-space: initial;
     .inner {
@@ -227,11 +228,12 @@ a.button {
       padding: 0 $size / 12;
     }
     .icon {
-      height: 32px;
+      height: 24px;
       position: absolute;
-      right: 57px;
+      right: 14%;
       top: 50%;
-      margin-top: -16px;
+      margin-top: -12px;
+      z-index:2;
     }
     &:before,
     &:after {
@@ -271,6 +273,11 @@ a.button {
         width: $maxSize;
         padding: 0 $maxSize / 12;
       }
+      .icon {
+        height: 32px;
+        right: 14%;
+        margin-top: -16px;
+      } 
       &:before,
       &:after {
         background-size: $maxSize auto;

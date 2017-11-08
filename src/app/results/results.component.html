@@ -11,50 +11,56 @@
     <p>Les personnages de Star Wars expriment tous des parts de nous-mêmes. Appuyez sur les noms pour en savoir plus.</p>
   </div>
   <div class="profiles tabs">
-    <div *ngFor="let profile of results" [class]="profile == selectedProfile ? 'active profile': 'profile'" (click)="selectedProfile = profile">
-      <p class="title">{{profile.name}}</p>
-
-      <div class="chart">
-        <span class="chart-outer localPercent">
-          <span class="chart-inner" [style.width]="profile.localPercent * 100 + '%'">
+    <div *ngFor="let profile of results" [class]="profile.accordeonOpen ?'profile open':'profile closed'" (click)="openAccordeon(profile)">
+        <div class="arrow"></div>
+        
+      <div class="head">
+        <p class="title">{{profile.name}}</p>
+        <div class="chart">
+          <span class="chart-outer localPercent">
+            <span class="chart-inner" [style.width]="profile.localPercent * 100 + '%'">
+            </span>
           </span>
-        </span>
-        <span class="amount">
-          {{profile.localPercent | percent:'1.0-0'}}
-        </span>
+          <span class="amount">
+            {{profile.localPercent | percent:'1.0-0'}}
+          </span>
+        </div>
+      </div>
+
+      <div class="content profile-description">
+        <div class="profile-title">
+          <div class="separator-profile rotated"></div>
+          <div class="image-separator">
+            <img *ngIf="profile" [src]="'/assets/profiles/'+profile.name+'.png'" alt="profile pic" />
+          </div>
+          <h1 class="profile-name">{{profile?.name}}</h1>
+        </div>
+        <p>{{profile?.body}}</p>
+        <p class="morale">
+          <em>{{profile?.description}}</em>
+        </p>
+
+        <div class="separator-profile"></div>
       </div>
 
     </div>
   </div>
 
 </div>
-<div class="profile-description" *ngIf="!loading">
-  <div class="profile-title">
-    <div class="separator-profile rotated"></div>
-    <div class="image-separator">
-      <img *ngIf="selectedProfile" [src]="'/assets/profiles/'+selectedProfile.name+'.png'" alt="profile pic" />
-    </div>
-    <h1 class="profile-name">{{selectedProfile?.name}}</h1>
-  </div>
-  <p>{{selectedProfile?.body}}</p>
-  <div class="separator"></div>
-  <p class="morale">
-    <em>{{selectedProfile?.description}}</em>
-  </p>
+<div class="footer-results" *ngIf="!loading">
 
-  <div class="separator-profile"></div>
 
   <p class="logo">
-    <img width="250px" src="/assets/logo.svg" alt="Logo" />
+    <img width="270px" src="/assets/logo.svg" alt="Logo" />
   </p>
 
 
-  <button (click)="visible = !visible">
+  <!--button (click)="visible = !visible">
     <ng-container *ngIf="visible">Cacher </ng-container>
     <ng-container *ngIf="!visible">Afficher</ng-container>les résultats détaillés</button>
-  <pre *ngIf="visible">{{results|json}}</pre>
+  <pre *ngIf="visible">{{results|json}}</pre-->
   <p>
-    <button *ngIf="!shared" (click)="startNew()">Supprimer les résultats et recommencer</button>
+    <button *ngIf="!shared" class="bigbutton"(click)="startNew()"><span class="inner">Recommencer</span></button>
     <button *ngIf="shared" class="bigbutton" (click)="startNew()">
       <span class="inner">Démarrer !</span>
     </button>
@@ -62,7 +68,8 @@
 
   <div *ngIf="!shared" class="share-box">
     <button class="bigbutton share facebook" [disabled]="shareLink" (click)="share()">
-      <span class="inner">Partager</span>&nbsp;&nbsp;&nbsp;<img class="icon" src="/assets/icon-facebook.svg" alt="sur facebook"/>
+      <span class="inner">Partager</span>&nbsp;&nbsp;&nbsp;
+      <img class="icon" src="/assets/icon-facebook.svg" alt="sur facebook" />
     </button>
     <p *ngIf="shareLink" class="url">
       <a [href]="shareLink">{{shareLink}}</a>

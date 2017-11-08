@@ -1,5 +1,6 @@
 p.intro {
     margin-top: 0;
+    text-align:center;
 }
 p.logo {
     margin: 0 auto;
@@ -7,4 +8,8 @@ p.logo {
     img {
         height: 40vh;
     }
+}
+
+.call-to-action p {
+    margin-bottom: 6em;
 }

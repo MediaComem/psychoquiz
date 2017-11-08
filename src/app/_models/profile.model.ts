@@ -6,4 +6,5 @@ export class Profile {
     public description: string;
     public body: string;
     public Weight: Weight;
+    public accordeonOpen: boolean;
 }

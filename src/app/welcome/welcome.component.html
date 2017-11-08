@@ -2,10 +2,20 @@
   <p class="pulse logo">
     <img src="/assets/logo.svg" alt="Logo" />
   </p>
-  <p class="intro">
-    Et si <em>Star Wars</em> n’était pas qu’un film, mais un mythe qui, bien que de manière imagée, t’inviterait à voir qu’il y a un peu de Dark Vador, d’Obi-Wan Kenobi ou de Luke Skywalker en toi ? Lance-toi dans l’aventure et… que la Force soit avec toi !
+  <p class="intro" *ngIf="!oldPlayer">
+    Et si
+    <em>Star Wars</em> n’était pas qu’un film, mais un mythe qui, bien que de manière imagée, t’inviterait à voir qu’il y a un
+    peu de Dark Vador, d’Obi-Wan Kenobi ou de Luke Skywalker en toi ? Lance-toi dans l’aventure et… que la Force soit avec
+    toi !
   </p>
-  <div class="separator"></div>
+  <p class="intro" *ngIf="!oldPlayerFinished">
+    Tu as une partie en cours.
+  </p>
+  <p class="intro" *ngIf="oldPlayerFinished">
+    Tu as déjà joué !
+  </p>
+  <br>
+  <br>
   <div class="call-to-action">
     <div class="new-player" *ngIf="!oldPlayer">
       <button class="bigbutton" (click)="startNew()">
@@ -13,12 +23,16 @@
       </button>
     </div>
     <div class="old-player" *ngIf="oldPlayer">
-      <p *ngIf="!oldPlayerFinished">Tu as une partie en cours! &nbsp;&nbsp;
-        <a class="button" routerLink="/situation">Reprendre</a>
+      <p *ngIf="!oldPlayerFinished">
+        <a class="button bigbutton" routerLink="/situation">
+          <span class="inner">Reprendre</span>
+        </a>
       </p>
-      <p *ngIf="oldPlayerFinished">Tu as déjà joué ! &nbsp;&nbsp;
-          <a class="button" routerLink="/situation">Voir &amp; partager les résultats</a>
-        </p>
+      <p *ngIf="oldPlayerFinished">
+        <a class="button bigbutton" routerLink="/results">
+          <span class="inner">Résultats</span>
+        </a>
+      </p>
       <button class="bigbutton" (click)="startNew()">
         <span class="inner">Recommencer</span>
       </button>

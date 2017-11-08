@@ -57,20 +57,35 @@ export class ResultsComponent implements OnInit {
 
 
   private setResults(res) {
-    this.results = res;
     let max: any = {
       localPercent: 0
     };
 
     for (let i = 0; i < res.length; i++) {
       const element = res[i];
+      res[i].accordeonOpen = false;
       if (res[i].localPercent >= max.localPercent) {
         max = res[i];
+        setTimeout(() => {
+          res[i].accordeonOpen = true;
+        }, 1000);
       }
     }
+    this.results = res;
     this.selectedProfile = max;
     this.winner_machine = max.name.replace(/\s+/g, '_').toLowerCase();
     this.loading = false;
+  }
+  public openAccordeon(profile) {
+    for (let index = 0; index < this.results.length; index++) {
+      const el = this.results[index];
+      if (el.name === profile.name) { // close if open or open if closed
+        el.accordeonOpen = !el.accordeonOpen;
+      } else { // close all the others.
+        el.accordeonOpen = false;
+      }
+      
+    }
   }
 
 
