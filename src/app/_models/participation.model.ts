@@ -1,8 +1,8 @@
 import { Chapter } from './chapter.model';
 
 export class Participation {
-    token: string;
-    currentChapterId: number;
-    finished: boolean;
-    currentChapter: Chapter;
+    public token: string;
+    public currentChapterId: number;
+    public finished: boolean;
+    public currentChapter: Chapter;
 }

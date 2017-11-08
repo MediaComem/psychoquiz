@@ -33,8 +33,8 @@ export class TinderService {
                 category: 'Tinder'
             }
         });
-        let body = { answer: answer, StatementId: stid };
-        let ptok = localStorage.getItem('participation');
+        const body = { answer: answer, StatementId: stid };
+        const ptok = localStorage.getItem('participation');
 
         return this.http.post(ROUTE + '?pt=' + ptok, body, new RequestOptions())
             .map(this.httpHelper.extractData)

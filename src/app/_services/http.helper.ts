@@ -9,7 +9,7 @@ export class HttpHelper {
      * @param res the response we want to extract
      */
     public extractData(res: Response) {
-        if (res.json().status == 'success') {
+        if (res.json().status === 'success') {
             return res.json().data || {};
         }
         throw new Error(res.json().message || 'Error with API');
@@ -31,5 +31,4 @@ export class HttpHelper {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-    
 }

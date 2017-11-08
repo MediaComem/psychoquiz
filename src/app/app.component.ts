@@ -41,8 +41,8 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  share(profile) {
-    const url = 'http://jesuistonpere.comem.ch/api/shareHtml/' + profile;
+  share() {
+    const url: string = window.location.toString();
     const params: UIParams = {
       method: 'share',
       href: url

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ParticipationService } from '../_services/participation.service';
+import { FacebookService, InitParams, UIParams, UIResponse } from 'ngx-facebook';
+
 import { Profile } from '../_models/profile.model';
 
 @Component({
@@ -18,10 +20,19 @@ export class ResultsComponent implements OnInit {
   shareLink: string;
 
   constructor(
+    private fb: FacebookService,
     private _participationService: ParticipationService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router
-  ) { }
+  ) {
+    const initParams: InitParams = {
+      appId: '1969313496672662',
+      xfbml: true,
+      version: 'v2.3'
+    };
+
+    fb.init(initParams);
+  }
 
 
   ngOnInit() {
@@ -30,18 +41,19 @@ export class ResultsComponent implements OnInit {
       this.shared = true;
       this._activatedRoute.params.subscribe(res => {
         this._participationService.getResultsByCode(res.code)
-          .subscribe(res => {
-            this.setResults(res);
+          .subscribe(resu => {
+            this.setResults(resu);
           });
       });
     } else {
       this.shared = false;
       this._participationService.getResults()
-      .subscribe(res => {
-        this.setResults(res);
-      });
+        .subscribe(res => {
+          this.setResults(res);
+        });
     }
   }
+
 
   private setResults(res) {
     this.results = res;
@@ -60,12 +72,26 @@ export class ResultsComponent implements OnInit {
   }
 
 
-  share() {
+  /*share() {
     this._participationService.getShareLink()
       .subscribe(res => {
         this.shareLink = "http://"+window.location.hostname +'/s/' + res;
         console.log(this.shareLink);
       })
+  }*/
+
+  share(profile) {
+    const url = 'http://jesuistonpere.comem.ch/api/shareHtml/' + profile;
+    const params: UIParams = {
+      method: 'share',
+      href: url
+    };
+
+
+    this.fb.ui(params)
+      .then((res: UIResponse) => console.log(res))
+      .catch((e: any) => console.error(e));
+
   }
 
   startNew() {
