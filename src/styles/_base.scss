@@ -233,7 +233,7 @@ a.button {
       right: 14%;
       top: 50%;
       margin-top: -12px;
-      z-index:2;
+      z-index: 2;
     }
     &:before,
     &:after {
@@ -277,7 +277,7 @@ a.button {
         height: 32px;
         right: 14%;
         margin-top: -16px;
-      } 
+      }
       &:before,
       &:after {
         background-size: $maxSize auto;
@@ -343,4 +343,32 @@ button.facebook {
   &:hover {
     background-color: rgba(#365899, 1);
   }
+}
+
+h2.left-title {
+  margin-top: 0;
+  font-weight: 400;
+  padding-top: 20px;
+  font-size: 22px;
+  &:after {
+    content: "";
+    width: 100%;
+    position: relative;
+    left: -20px;
+    display: block;
+    background-image: url('/assets/left_separator.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    height: 17px;
+  }
+}
+
+.logo a {
+  border:none;
+}
+
+.tpjs-logo {
+  text-align: center;
+  
 }

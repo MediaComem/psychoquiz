@@ -86,7 +86,6 @@ export class ResultsComponent implements OnInit {
       } else { // close all the others.
         el.accordeonOpen = false;
       }
-      
     }
   }
 
