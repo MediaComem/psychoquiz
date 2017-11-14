@@ -112,16 +112,22 @@ export class QuestionComponent implements OnInit {
     //this.swingStack.throwoutleft.subscribe(
     //  (event: ThrowEvent) => console.log('Manual hook: ', event));
 
-    this.hammer = new Hammer(this.chapterInfoTab.nativeElement, {});
+    this.hammer = new Hammer(this.chapterInfoTab.nativeElement, {
+      preset: []
+    });
 
     this.hammer.add(new Hammer.Swipe({
       event: 'swipedown',
-      direction: Hammer.DIRECTION_DOWN
+      direction: Hammer.DIRECTION_DOWN,
+      threshold: 5,
+      velocity: 0.001
     }));
 
     this.hammer.add(new Hammer.Swipe({
       event: 'swipeup',
-      direction: Hammer.DIRECTION_UP
+      direction: Hammer.DIRECTION_UP,
+      threshold: 5,
+      velocity: 0.001
     }));
 
     this.hammer.on('swipeup', event => {
