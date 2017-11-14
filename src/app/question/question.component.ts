@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
+import * as Hammer from 'hammerjs';
 import {
   StackConfig,
   Stack,
@@ -23,9 +24,11 @@ import { ChapterService } from '../_services/chapter.service';
 })
 
 export class QuestionComponent implements OnInit {
+  @ViewChild('chapterInfoTab') chapterInfoTab: ElementRef;
   @ViewChild('swSwing') swingStack: SwingStackComponent;
   @ViewChildren('questionCard') swingCards: QueryList<SwingCardComponent>;
 
+  hammer: any;
   stackConfig: StackConfig;
   counter: number = 0;
   finished = false;
@@ -41,6 +44,7 @@ export class QuestionComponent implements OnInit {
   opacityRight: number = 0;
   showHelp = true;
   tabVisible = false;
+
   constructor(
     private _tinderService: TinderService,
     private _chapterService: ChapterService,
@@ -103,17 +107,39 @@ export class QuestionComponent implements OnInit {
     // every card has methods - destroy, throwIn, throwOut etc
     //this.swingCards.forEach((c) => console.log(c.getCard()));
 
-
     // this is how you can manually hook up to the
     // events instead of providing the event method in the template
     //this.swingStack.throwoutleft.subscribe(
     //  (event: ThrowEvent) => console.log('Manual hook: ', event));
 
+    this.hammer = new Hammer(this.chapterInfoTab.nativeElement, {});
+
+    this.hammer.add(new Hammer.Swipe({
+      event: 'swipedown',
+      direction: Hammer.DIRECTION_DOWN
+    }));
+
+    this.hammer.add(new Hammer.Swipe({
+      event: 'swipeup',
+      direction: Hammer.DIRECTION_UP
+    }));
+
+    this.hammer.on('swipeup', event => {
+      if (this.tabVisible) {
+        this.tabVisible = false;
+      }
+    });
+
+    this.hammer.on('swipedown', event => {
+      if (!this.tabVisible) {
+        this.tabVisible = true;
+      }
+    });
+
     this.swingStack.throwin.subscribe((event: ThrowEvent) => {
       this.opacityLeft = 0;
       this.opacityRight = 0;
     });
-
 
     this.swingStack.dragstart.subscribe((event: DragEvent) => {
 
@@ -128,8 +154,6 @@ export class QuestionComponent implements OnInit {
         this.statements[index].refusing = false;
       }
     });
-
-
 
     this.swingStack.dragmove.subscribe((event: DragEvent) => {
       //this.opacity = this.confidenceCalculator(event.throwOutConfidence, 30) * 0.7;
@@ -159,6 +183,12 @@ export class QuestionComponent implements OnInit {
       }
       //}
     });
+  }
+
+  ngOnDestroy() {
+    if (this.hammer) {
+      this.hammer.destroy();
+    }
   }
 
   confidenceCalculator(confidence, precision) {

@@ -8,7 +8,7 @@
       <h2 class="title">{{chapter.title}}</h2>
       <p class="intro">{{chapter.intro}}</p>
     </div>
-    <div (click)="tabVisible = !tabVisible" class="tab">
+    <div #chapterInfoTab (click)="tabVisible = !tabVisible" class="tab">
     </div>
   </div>
   <div id="answers" class="verticalsplit">
