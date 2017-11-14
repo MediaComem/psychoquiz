@@ -12,21 +12,20 @@
     </div>
   </div>
   <div id="answers" class="verticalsplit">
-    <div class="left" [style.backgroundColor]="'rgba(255,255,255,'+ opacityLeft +')'">
+    <div #yesArea class="left" [style.backgroundColor]="'rgba(255,255,255,'+ opacityLeft +')'">
       <div class="text">Oui</div>
-
     </div>
     <div class="separator vertical"></div>
-    <div class="right" [style.backgroundColor]="'rgba(255,255,255,'+ opacityRight +')'">
+    <div #noArea class="right" [style.backgroundColor]="'rgba(255,255,255,'+ opacityRight +')'">
       <div class="text">Non</div>
 
 
     </div>
   </div>
 
-  <div id="viewport">
-    <div class="stack" swing-stack [stackConfig]="stackConfig" #swSwing (throwout)="onThrowOut($event)">
-      <div class="card" swing-card #questionCard  *ngFor="let st of statements; let i = index" [id]="'statement-' + st.id + '-' + i" [ngClass]="{'accepting': st.accepting, 'refusing': st.refusing, 'neutral': !st.accepting && !st.refusing}">
+  <div #swingViewport id="viewport">
+    <div #swingStack class="stack" swing-stack [stackConfig]="stackConfig" (throwout)="onThrowOut($event)">
+      <div class="card" swing-card #questionCard  *ngFor="let st of statements; let i = index" [attr.card-statement]='st.id' [attr.card-index]='i' [ngClass]="{'accepting': st.accepting, 'refusing': st.refusing, 'neutral': !st.accepting && !st.refusing}">
         <div class="card-content">
           <div class="inner">
             {{st.text}}
