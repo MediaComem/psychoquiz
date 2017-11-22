@@ -100,7 +100,7 @@ export class ResultsComponent implements OnInit {
   }*/
 
   share() {
-    const url = 'http://jesuistonpere.comem.ch/api/shareHtml/' + this.winner_machine;
+    const url = 'http://jesuistonpere.ch/api/shareHtml/' + this.winner_machine;
     const params: UIParams = {
       method: 'share',
       href: url
