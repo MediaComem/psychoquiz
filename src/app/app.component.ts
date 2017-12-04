@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class AppComponent implements OnInit {
 
+  footerVisible = true;
   logoVisible = false;
 
   constructor(
@@ -30,9 +31,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.router.events.subscribe(val => {
       if (val && val instanceof NavigationEnd) {
+
+        // Show the footer everywhere except during the quiz
+        // (i.e. the "/situation" and "/situation/tdr" routes).
+        this.footerVisible = val.url.indexOf('/situation') < 0;
+
         if (val.url === '/' || val.url === '/start') {
           this.logoVisible = false;
         } else {
@@ -41,6 +46,7 @@ export class AppComponent implements OnInit {
       }
     });
   }
+
   share() {
     const url: string = window.location.toString();
     const params: UIParams = {
@@ -52,6 +58,5 @@ export class AppComponent implements OnInit {
     this.fb.ui(params)
       .then((res: UIResponse) => console.log(res))
       .catch((e: any) => console.error(e));
-
   }
 }
