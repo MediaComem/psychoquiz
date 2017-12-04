@@ -8,7 +8,7 @@
     peu de Dark Vador, d’Obi-Wan Kenobi ou de Luke Skywalker en toi ? Lance-toi dans l’aventure et… que la Force soit avec
     toi !
   </p>
-  <p class="intro" *ngIf="!oldPlayerFinished">
+  <p class="intro" *ngIf="oldPlayer && !oldPlayerFinished">
     Tu as une partie en cours.
   </p>
   <p class="intro" *ngIf="oldPlayerFinished">
