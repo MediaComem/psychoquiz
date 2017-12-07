@@ -1,6 +1,9 @@
 <div class="component admin-component">
   <h1 class="component-title"><a routerLink="/admin" >Administration</a></h1>
-  <div class="component-container">
+  <div class="component-container" *ngIf='config && !config.adminEnabled'>
+    <p>L'interface d'administration a été désactivée. Veuillez contacter l'administrateur système.</p>
+  </div>
+  <div class="component-container" *ngIf='config && config.adminEnabled'>
     <div class="flex">
       <a routerLinkActive="active" routerLink="situations" class="button btn activity">
         Situations

@@ -20,12 +20,11 @@ import { HttpHelper } from './_services/http.helper';
 
 import { AuthService } from './_services/auth.service';
 import { ChapterService } from './_services/chapter.service';
+import { ConfigService } from './_services/config.service';
 import { ProfileService } from './_services/profile.service';
 import { StatementService } from './_services/statement.service';
 import { ParticipationService } from './_services/participation.service';
 import { TinderService } from './_services/tinder.service';
-
-
 
 import { LoginComponent } from './admin/login/login.component';
 import { OverviewComponent } from './admin/overview/overview.component';
@@ -128,6 +127,7 @@ const appRoutes: Routes = [
   providers: [
     HttpHelper,
     ChapterService,
+    ConfigService,
     ProfileService,
     StatementService,
     AuthService,
