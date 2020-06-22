@@ -1,0 +1,11 @@
+/Dockerfile
+/e2e
+/.editorconfig
+/.git
+/.gitignore
+/karma.conf.js
+/node_modules
+/protractor.conf.js
+/psychoquiz.pdf
+/PsychoQuizBackend.html
+/schema.png
